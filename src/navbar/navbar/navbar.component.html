@@ -29,16 +29,23 @@
                 <div style="margin-left: 20px;">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item nav-width">
-                            <a class="nav-link active" aria-current="page" href="#">{{'navbar.login'|translate}}</a>
+                            <a class="nav-link active" aria-current="page"  routerLink="LoginUser" routerLinkActive="active"  >{{'navbar.login'|translate}}</a>
                         </li>
                         <li class="nav-item nav-width">
-                            <a class="nav-link active" aria-current="page" href="#">{{'navbar.register'|translate}}</a>
+                            <a class="nav-link active" aria-current="page"  routerLink="RegisterUser" routerLinkActive="active" >{{'navbar.register'|translate}}</a>
+                        </li>
+                        <li class="nav-item nav-width">
+                            <a class="nav-link active" aria-current="page"  routerLink="RegisterAdmin" routerLinkActive="active" >{{'navbar.registerAdmin'|translate}}</a>
                         </li>
                         <li class="nav-item nav-width">
                             <a class="nav-link active" aria-current="page" href="#">UserName</a>
                         </li>
                         <li class="nav-item nav-width">
-                            <a class="nav-link active" aria-current="page" href="#">{{'navbar.signout'|translate}}</a>
+                            <!-- <a class="nav-link active" aria-current="page" onclick="logout()">{{'navbar.signout'|translate}}</a> -->
+                            <button class="btn btn-link nav-link active text-danger" (click)="logout()">Logout</button>
+
+
+
                         </li>
                     </ul>
                 </div>

@@ -2,6 +2,8 @@
     "navbar": {
         "login": "تسجيل دخول",
         "register": "انشاء حساب",
+        "registerAdmin": "للادمن انشاء حساب",
+
         "signout": "تسجيل خروج",
         "searchPlaceholder": "... ابحث عن أى شــئ",
         "home": "الرئيسية",

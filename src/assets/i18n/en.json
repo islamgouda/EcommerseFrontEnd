@@ -2,6 +2,7 @@
     "navbar":{
     "login":"Login",
     "register":"Register",
+    "registerAdmin": "ٌRegiseter Admin",
     "signout":"Signout",
     "searchPlaceholder":"Search any thing ..",
     "home":"Home",
