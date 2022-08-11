@@ -1,0 +1,48 @@
+<p>delete-category works!</p>
+<div class="row">
+    <div class="col-3"></div>
+    <div [hidden]="errorMessage.length<=0" class="col-6">
+        <div class="alert alert-danger text-center">
+            <strong>{{errorMessage}}</strong>
+          </div>
+    </div>
+    <div class="col-3"></div>
+</div>
+<div class="row" [hidden]="errorMessage.length>0">
+    <div class="col-12 col-md-1"></div>
+    <div class="col-12 col-md-10">
+        <div class="col-12">
+            <div class="alert alert-danger text-center">
+                <strong>{{'category.areYouSureToDeleteSubCategory'|translate}} - {{subCategoryName}}</strong>
+              </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-6">
+                <div class="card border-secondary minHeight">
+                    <div class="card-header">{{category.name}}</div>
+                    <div class="card-body text-secondary">
+                        <p class="card-text">{{category.description}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 rtl">
+                <div class="card border-secondary minHeight">
+                    <div class="card-header">{{category.nameAr}}</div>
+                    <div class="card-body text-secondary">
+                        <p class="card-text">{{category.descriptionAr}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    <button (click)="back()" routerLinkActive="router-link-active"  class="btn btn-outline-success form-control mt-3 mb-2">{{'category.cancel'|translate}}</button>
+                </div>
+                <div class="col-12 col-md-4">
+                    <button (click)="confirmDeleteCategory()" routerLinkActive="router-link-active"  class="btn btn-outline-danger form-control mt-3 mb-2">{{'category.delete'|translate}}</button>
+                </div>
+            </div>
+            <hr class="mt-4">
+        </div>
+    </div>
+    <div class="col-12 col-md-1"></div>
+</div>

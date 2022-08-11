@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="row mt-4">
+    <div class="col-12 col-md-3 ">
+            <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#category" aria-expanded="false" aria-controls="collapseExample">
+                 {{'category.categories'|translate}}
+            </button>
+            <div id="category" class="collapse">
+                <a routerLink="/admin/adminLayout/showCategories" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'category.showAllCategories'|translate}}</a>
+                <a routerLink="/admin/adminLayout/addCategory" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'category.addNewCategory'|translate}}</a>
+            </div>
+
+            <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#subCategory" aria-expanded="false" aria-controls="collapseExample">
+               {{'subCategory.subCategory'|translate}}
+            </button>
+            <div id="subCategory" class="mt-2 collapse">
+                <a routerLink="/admin/adminLayout/showSubCategories" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'subCategory.showAllsubCategories'|translate}}</a>
+                <a routerLink="/admin/adminLayout/addSubCategory" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'subCategory.addNewsubCategory'|translate}}</a>
+            </div>
+
+            <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#Products" aria-expanded="false" aria-controls="collapseExample">
+                {{'product.product'|translate}}
+            </button>
+            <div  id="Products" class="mt-2 collapse">
+                <a routerLink="/admin/adminLayout/showProducts" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'product.showAllproducts'|translate}}</a>
+                <a routerLink="/admin/adminLayout/addProduct" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'product.addNewproduct'|translate}}</a>
+            </div> 
+            
+            <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#discount" aria-expanded="false" aria-controls="collapseExample">
+                {{'discount.allDiscounts'|translate}}
+            </button>
+            <div  id="discount" class="mt-2 collapse">
+                <a routerLink="/admin/adminLayout/showAllDiscounts" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'discount.allDiscounts'|translate}}</a>
+                <a routerLink="/admin/adminLayout/addDiscount" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'discount.addNewdiscount'|translate}}</a>
+            </div>
+            
+            <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#partners" aria-expanded="false" aria-controls="collapseExample">
+                {{'partner.partners'|translate}}
+            </button>
+            <div  id="partners" class="mt-2 collapse">
+                <a routerLink="/admin/adminLayout/showAllPartners" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'partner.showAllPartners'|translate}}</a>
+                <a routerLink="/admin/adminLayout/addNewPartner" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'partner.addNewPartner'|translate}}</a>
+            </div>
+
+    </div>
+    <div class="col-12 col-md-9 shadow p-3">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+</div>

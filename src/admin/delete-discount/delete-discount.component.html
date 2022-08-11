@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-3"></div>
+    <div [hidden]="errorMessage.length<=0" class="col-6">
+        <div class="alert alert-danger text-center">
+            <strong>{{errorMessage}}</strong>
+          </div>
+    </div>
+    <div class="col-3"></div>
+</div>
+<div class="row" [hidden]="errorMessage.length>0">
+    <div class="col-12 col-md-1"></div>
+    <div class="col-12 col-md-10">
+        <div class="col-12">
+            <div class="alert alert-danger text-center">
+                <strong>{{'subCategory.areYouSureToDeleteSubCategory'|translate}} - {{discountName}}</strong>
+              </div>
+        </div>
+
+        <div class="row mb-3" >
+            
+            <div class="col-12 col-md-12">
+                <div class="card text-center">
+                    <div class="card-header text-white" [style.backgroundColor]="activeStatuscolor">
+                        {{activeStatusTransform(discountModel.isActive)}}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" *ngIf="isEnglishLang">{{discountModel.name}}</h5>
+                        <h5 class="card-title" *ngIf="!isEnglishLang">{{discountModel.nameAr}}</h5>
+                        <p class="card-text" *ngIf="isEnglishLang">{{discountModel.description}}</p>
+                        <p class="card-text" *ngIf="!isEnglishLang">{{discountModel.descriptionAr}}</p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <div class="row">
+                            <div class="col-5">
+                                {{discountModel.startTime}}
+                            </div>
+                            <div class="col-2 fs-3 text-dark">
+                                {{discountModel.discountPercent|percent}}
+                            </div>
+                            <div class="col-5">
+                                {{discountModel.endTime}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12 col-md-0"></div>
+                    <div class="col-12 col-md-5">
+                        <a (click)="confirmDeleteDiscount()" class="btn form-control btn-outline-danger">{{'discount.delete'|translate}}</a>
+                    </div>
+                    <div class="col-12 col-md-2"></div>
+                    <div class="col-12 col-md-5">
+                        <a (click)="back()" class="btn form-control btn-outline-warning">{{'discount.cancel'|translate}}</a>
+                    </div>
+                    <div class="col-12 col-md-0"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-12 col-md-1"></div>
+</div>

@@ -1,0 +1,145 @@
+<div class="row">
+    <div class="col-12">
+        <div [hidden]="productsList.length>0" class="alert alert-warning text-center">
+            <strong>{{'product.noProducts'|translate}}</strong>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-1 col-md-1"></div>
+    <div class="col-1 col-md-10">
+        <h4 [hidden]="productsList.length<=0" class="shadow bg-light text-dark text-center p-2 fs-4 mb-4 rounded-pill">{{'product.products'|translate}}</h4>
+    </div>
+    <div class="col-1 col-md-1"></div>
+</div>
+<div class="row mb-5  border-bottom border-2 border-dark" *ngFor="let product of productsList">
+    <!-- {{product|json}} -->
+
+
+    <div class="card">
+        <div class="card-header">
+          <div class="row" [class]="textDirection">
+            <div class="col-6 ">
+            <span class="font-size-18 mb-2 fw-bold">
+                {{'product.quantity'|translate}} : 
+            </span>  
+            <span class="font-size-16 mb-2">
+                {{product.quantity}}
+            </span>
+        </div>
+        <div class="col-6 ">
+            <span class="font-size-18 mb-2 fw-bold">
+                {{'product.price'|translate}} : 
+            </span>  
+            <span class="font-size-16 mb-2">
+                {{product.price}}
+            </span>
+        </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-md-5">
+                <img src="https://picsum.photos/200" width="100%" height="200">
+            </div>
+            <div class="col-12 col-md-7">
+                <div class="fs-3" [class]="textDirection" *ngIf="textDirection=='ltr';else arabicDisplay;">
+                    <div class="font-size-20 mb-2 fw-bold">
+                        {{'product.productNameInen'|translate}}
+                    </div>  
+                    <div class="font-size-14 mb-2">
+                        {{product.name}}
+                    </div>
+                    <hr/>
+                    <div class="font-size-20 mb-2 fw-bold">
+                        {{'product.productDescriptionInen'|translate}}
+                    </div> 
+                     <div class="font-size-16 mb-2">
+                         {{product.description}}
+                     </div>
+                     <hr/>
+                     <div class="font-size-20 mb-2 fw-bold text-success" *ngIf="product.haveDiscount">
+                        {{'product.haveDiscount'|translate}}
+                    </div> 
+                    <div class="font-size-20 mb-2 fw-bold text-danger" *ngIf="!product.haveDiscount">
+                        {{'product.haveNoDiscount'|translate}}
+                    </div> 
+                     <div class="font-size-16 mb-2" *ngIf="product.haveDiscount">
+                         {{product.discountValue}}
+                     </div>
+                </div>
+                <ng-template #arabicDisplay>
+                    <div class="fs-3" [class]="textDirection" >
+                        <div class="font-size-20 mb-2 fw-bold">
+                            {{'product.productNameInar'|translate}}
+                        </div>  
+                        <div class="font-size-14 mb-2">
+                            {{product.nameAr}}
+                        </div>
+                        <hr/>
+                        <div class="font-size-20 mb-2 fw-bold">
+                            {{'product.productDescriptionInar'|translate}}
+                        </div> 
+                         <div class="font-size-16 mb-2">
+                            {{product.descriptionAr}}
+                         </div>
+                         <hr>
+                         <div class="font-size-20 mb-2 fw-bold text-success" *ngIf="product.haveDiscount">
+                            {{'product.haveDiscount'|translate}}
+                        </div> 
+                        <div class="font-size-20 mb-2 fw-bold text-danger" *ngIf="!product.haveDiscount">
+                            {{'product.haveNoDiscount'|translate}}
+                        </div> 
+                         <div class="font-size-16 mb-2" *ngIf="product.haveDiscount">
+                             {{product.discountValue}}
+                         </div>
+                    </div>
+                </ng-template>
+                
+            </div>
+          </div>
+        </div>
+        <div class="card-header">
+            <div class="row" [class]="textDirection">
+                <div class="col-6 ">
+                <span class="font-size-18 mb-2 fw-bold">
+                    {{'product.category'|translate}} : 
+                </span>  
+                <span class="font-size-16 mb-2">
+                    {{product.category}}
+                </span>
+            </div>
+            <div class="col-6 ">
+                <span class="font-size-18 mb-2 fw-bold">
+                    {{'product.subCategory'|translate}} : 
+                </span>  
+                <span class="font-size-16 mb-2">
+                    {{product.subCategory}}
+                </span>
+            </div>
+              </div>
+          </div>
+      </div>
+
+
+    <div class="row mt-2 mb-3">
+        <div class="col-12 col-md-1"></div>
+        <div class="col-12 col-md-4">
+            <a routerLink="/admin/adminLayout/deleteProduct/{{product.id}}" class="btn form-control btn-outline-danger">{{'product.delete'|translate}}</a>
+        </div>
+        <div class="col-12 col-md-2"></div>
+        <div class="col-12 col-md-4">
+            <a routerLink="/admin/adminLayout/updateProduct/{{product.id}}" class="btn form-control btn-outline-success">{{'product.update'|translate}}</a>
+        </div>
+        <div class="col-12 col-md-1"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-1 col-md-1"></div>
+    <div class="col-1 col-md-10">
+        <button (click)="back()" class="mt-4 form-control btn btn-outline-warning mt-3">{{'product.back'|translate}}</button>
+    </div>
+    <div class="col-1 col-md-1"></div>
+</div>
+
+

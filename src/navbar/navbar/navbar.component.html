@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #D7DBDD;color: #1A5276;">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="/assets/images/logo.png" width="50" width="50"></a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" >
+                    <a routerLink="home" routerLinkActive="active" class="nav-link" aria-current="page">{{'navbar.home' | translate}}</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="products" routerLinkActive="active"  class="nav-link" >{{'navbar.products' | translate}}</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="category/showCategories" routerLinkActive="active" class="nav-link" >{{'navbar.categories'|translate}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">{{'navbar.contactUs'|translate}}</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="admin/adminLayout" routerLinkActive="active" class="nav-link">{{'navbar.admin'|translate}}</a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="{{'navbar.searchPlaceholder'|translate}}" aria-label="Search">
+                <div style="margin-left: 20px;">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item nav-width">
+                            <a class="nav-link active" aria-current="page" href="#">{{'navbar.login'|translate}}</a>
+                        </li>
+                        <li class="nav-item nav-width">
+                            <a class="nav-link active" aria-current="page" href="#">{{'navbar.register'|translate}}</a>
+                        </li>
+                        <li class="nav-item nav-width">
+                            <a class="nav-link active" aria-current="page" href="#">UserName</a>
+                        </li>
+                        <li class="nav-item nav-width">
+                            <a class="nav-link active" aria-current="page" href="#">{{'navbar.signout'|translate}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid" style="background-color: #CACFD2;">
+    <div class="row">
+        <div class="col-12 col-md-8"></div>
+        <div class="col-12 col-md-2 mt-1">
+            <div class="row">
+                <div class="col-12 col-md-2">
+                    <i class="fa-solid fa-globe fs-4 mt-2"></i>
+                </div>
+                <div class="col-12 col-md-10">
+                <select class=" form-select boredr border-2 text-center" #userLang (change)="changeSelectedLanguage(userLang.value)">
+                    <option class="select-item-dropdown" value="en" [selected]="lang == 'en'">English</option>
+                    <option value="ar" [selected]="lang == 'ar'">عـــربى</option>
+                </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-2">
+            <div class="row">
+                <div class="col-12 col-md-6 cart-wish-container"><i class="fa-solid fa-heart cart-wish-icon"></i> 12</div>
+                
+                <div class="col-12 col-md-6 cart-wish-container">
+                    <a routerLink="cart" class="text-decoration-none text-dark"><i class="fa-solid fa-cart-shopping cart-wish-icon"></i>10</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

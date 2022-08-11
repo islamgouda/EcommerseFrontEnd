@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-3"></div>
+    <div [hidden]="errorMessage.length<=0" class="col-6">
+        <div class="alert alert-danger text-center">
+            <strong>{{errorMessage}}</strong>
+          </div>
+    </div>
+    <div class="col-3"></div>
+</div>
+<div class="row" [hidden]="errorMessage.length>0">
+    <div class="col-12 col-md-1"></div>
+    <div class="col-12 col-md-10">
+        <div class="col-12">
+            <div class="alert alert-danger text-center">
+                <strong>{{'subCategory.areYouSureToDeleteSubCategory'|translate}} - {{subCategoryName}}</strong>
+              </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-12 ">
+                <img src="https://picsum.photos/200" width="100%" height="300" class="mb-3 br-15 ">
+            </div>
+            <div class="col-6">
+                <div class="card border-secondary minHeight">
+                    <div class="card-header">{{subCategory.name}}</div>
+                    <div class="card-body text-secondary">
+                        <p class="card-text">{{subCategory.description}}</p>
+                    </div>
+                    <div class="card-body text-muted">
+                        <p class="card-text">{{subCategory.categoryId}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 rtl">
+                <div class="card border-secondary minHeight">
+                    <div class="card-header">{{subCategory.nameAr}}</div>
+                    <div class="card-body text-secondary">
+                        <p class="card-text">{{subCategory.descriptionAr}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    <button (click)="back()" routerLinkActive="router-link-active"  class="btn btn-outline-success form-control mt-3 mb-2">{{'subCategory.cancel'|translate}}</button>
+                </div>
+                <div class="col-12 col-md-4">
+                    <button (click)="confirmDeleteSubCategory()" routerLinkActive="router-link-active"  class="btn btn-outline-danger form-control mt-3 mb-2">{{'subCategory.delete'|translate}}</button>
+                </div>
+            </div>
+            <hr class="mt-4">
+        </div>
+    </div>
+    <div class="col-12 col-md-1"></div>
+</div>

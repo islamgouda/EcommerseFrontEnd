@@ -1,0 +1,64 @@
+
+<div class="row">
+    <div class="col-12">
+        <div [hidden]="discountsList.length>0" class="alert alert-warning text-center">
+            <strong>{{'discount.noDiscount'|translate}}</strong>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-1 col-md-1"></div>
+    <div class="col-1 col-md-10">
+        <h4 [hidden]="discountsList.length<=0" class="shadow bg-light text-dark text-center p-2 fs-4 mb-4 rounded-pill">{{'discount.allDiscounts'|translate}}</h4>
+    </div>
+    <div class="col-1 col-md-1"></div>
+</div>
+<div class="row mb-3" *ngFor="let discount of discountsList">
+    {{activeStatusTransform(discount.isActive)}}
+    <div class="col-12 col-md-1"></div>
+    <div class="col-12 col-md-10">
+        <div class="card text-center">
+            <div class="card-header text-white" [style.backgroundColor]="activeStatuscolor">
+                {{activeState}}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title" *ngIf="isEnglishLang">{{discount.name}}</h5>
+                <h5 class="card-title" *ngIf="!isEnglishLang">{{discount.nameAr}}</h5>
+                <p class="card-text" *ngIf="isEnglishLang">{{discount.description}}</p>
+                <p class="card-text" *ngIf="!isEnglishLang">{{discount.descriptionAr}}</p>
+                <div class="row">
+                    <div class="col-12 col-md-1"></div>
+                    <div class="col-12 col-md-4">
+                        <a routerLink="/admin/adminLayout/deleteDiscount/{{discount.id}}" class="btn form-control btn-outline-danger">{{'discount.delete'|translate}}</a>
+                    </div>
+                    <div class="col-12 col-md-2"></div>
+                    <div class="col-12 col-md-4">
+                        <a routerLink="/admin/adminLayout/updateDiscount/{{discount.id}}" class="btn form-control btn-outline-success">{{'discount.update'|translate}}</a>
+                    </div>
+                    <div class="col-12 col-md-1"></div>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                <div class="row">
+                    <div class="col-5">
+                        {{discount.startTime}}
+                    </div>
+                    <div class="col-2 fs-3 text-dark">
+                        {{discount.discountPercent|percent}}
+                    </div>
+                    <div class="col-5">
+                        {{discount.endTime}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-1"></div>
+</div>
+<div class="row">
+    <div class="col-1 col-md-1"></div>
+    <div class="col-1 col-md-10">
+        <button (click)="back()" class="mt-4 form-control btn btn-outline-warning mt-3">{{'discount.cancel'|translate}}</button>
+    </div>
+    <div class="col-1 col-md-1"></div>
+</div>

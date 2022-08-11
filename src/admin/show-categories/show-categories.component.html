@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-12">
+        <div [hidden]="categoriesList.length>0" class="alert alert-danger text-center">
+            <strong>{{'category.noCategories'|translate}}</strong>
+          </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div [hidden]="serverErrorMessage.length==0" class="alert alert-danger text-center">
+            <strong>{{serverErrorMessage}}</strong>
+          </div>
+    </div>
+</div>
+<h4 [hidden]="categoriesList.length<=0" class="shadow bg-light text-dark text-center p-2 fs-4 rounded-pill">{{'category.categories'|translate}}</h4>
+
+<div class="row">
+    <div class="col-12">
+        <div [hidden]="!isShownSuccessAlert" class="alert alert-success text-center">
+            <strong>{{deleteState}}</strong>
+          </div>
+    </div>
+    <div class="col-12">
+        <div hidden="!isShownErrorAlert" class="alert alert-danger text-center">
+            <strong>{{deleteState}}</strong>
+          </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12" *ngFor="let category of categoriesList;index as i">
+        <div class="row mb-4">
+            <div class="col-6">
+                <div class="card border-secondary minHeight">
+                    <div class="card-header">{{category.name}}</div>
+                    <div class="card-body text-secondary">
+                        <p class="card-text">{{category.description}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 rtl">
+                <div class="card border-secondary minHeight">
+                    <div class="card-header">{{category.nameAr}}</div>
+                    <div class="card-body text-secondary">
+                        <p class="card-text">{{category.descriptionAr}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-1"></div>
+                <div class="col-12 col-md-4">
+                    <button routerLink="/admin/adminLayout/addCategory/{{category.id}}" routerLinkActive="router-link-active"  class="btn btn-outline-success form-control mt-3 mb-2">{{'category.update'|translate}}</button>
+                </div>
+                <div class="col-12 col-md-2 card mt-3 mb-1 pt-2 shadow text-center fs-4">{{i+1}}</div>
+                <div class="col-12 col-md-4">
+                    <button type="button" routerLink="/admin/adminLayout/deleteCategory/{{category.id}}"   class="btn btn-outline-danger form-control mt-3 mb-2">{{'category.delete'|translate}}</button>
+                </div>
+                <div class="col-12 col-md-1 "></div>
+            </div>
+            
+            <hr class="mt-4">
+        </div>
+    </div>
+</div>

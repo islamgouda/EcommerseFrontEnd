@@ -1,0 +1,32 @@
+.nav-width{
+    width: 110px;
+    border-left: 1px solid grey;
+    text-align: center;
+}
+.nav-width:first-child{
+    border-left:none ;
+}
+.cart-wish-icon{
+    color: grey;
+    font-size: 25px;
+    transition: all .3s ease-in-out;
+}
+.cart-wish-container{
+    text-align: center;
+    font-size: 20px;
+    padding: 6px;
+    transition: all .3s ease-in-out;
+    background-color: rgba(128, 128, 128, 0.093);
+}
+.cart-wish-container:hover .cart-wish-icon{
+    color: brown;
+}
+.cart-wish-container:hover
+{
+    background-color: white;
+}
+.select-item-dropdown {
+    padding: 1px 30px ;
+    border-bottom: 1px solid #0f31ac ;
+}
+
