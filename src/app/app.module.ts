@@ -26,6 +26,9 @@ import { ShowProductsComponent } from 'src/admin/show-products/show-products.com
 import { UProductsComponent } from './uproducts/uproducts.component';
 import { UProductDetailsComponent } from './uproduct-details/uproduct-details.component';
 import { CartComponent } from './cart/cart.component';
+import { LoginUserComponent } from './Authentication/login-user/login-user.component';
+import { RegisterUserComponent } from './Authentication/register-user/register-user.component';
+import { RegisterAdminComponent } from './Authentication/register-admin/register-admin.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -44,7 +47,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     ShowProductsComponent,
     UProductsComponent,
     UProductDetailsComponent,
-    CartComponent
+    CartComponent,
+    LoginUserComponent,
+    RegisterUserComponent,
+    RegisterAdminComponent
   ],
   imports: [
     BrowserModule,

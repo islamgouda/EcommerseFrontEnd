@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginUserComponent } from './Authentication/login-user/login-user.component';
+import { RegisterAdminComponent } from './Authentication/register-admin/register-admin.component';
+import { RegisterUserComponent } from './Authentication/register-user/register-user.component';
 import { CartComponent } from './cart/cart.component';
 import { CustomLayoutComponent } from './custom-layout/custom-layout.component';
 import { DefaultLayoutComponent } from './default-layout/default-layout.component';
@@ -17,6 +20,10 @@ const routes: Routes = [
   {path:"navbar",loadChildren:()=>import("../navbar/navbar.module").then(x=>x.NavbarModule)},
   {path:"footer",loadChildren:()=>import("../footer/footer.module").then(x=>x.FooterModule)},
   {path:'admin',loadChildren:()=>import("../admin/admin.module").then(m=>m.AdminModule)},
+  {path:"RegisterUser",component:RegisterUserComponent,pathMatch:"full"},
+  {path:"LoginUser",component:LoginUserComponent,pathMatch:"full"},
+  {path:"RegisterAdmin",component:RegisterAdminComponent,pathMatch:"full"},
+
   {path:"**",component:PageNotFoundComponent} //wild card
 ];
 
