@@ -14,7 +14,7 @@
             </div>
             <div class="form-group mt-2">
                 <label for="nameAr" class="mb-1">{{'category.categoryNameInar'|translate}}</label>
-                <input type="text" pattern="[أ-ي 0-9]{2,100}" #nameAr="ngModel" required [class.validInput]="nameAr.valid" [class.invalidInput]="nameAr.invalid && nameAr.touched"  id="nameAr" name="nameAr" [(ngModel)]="categoryModel.nameAr" class="form-control">
+                <input type="text" pattern="[أ-ي 0-9]{2,100}" #nameAr="ngModel" required [class.validInput]="nameAr.valid" [class.invalidInput]="nameAr.invalid && nameAr.touched"  id="nameAr" name="nameAr" [(ngModel)]="categoryModel.name_Ar" class="form-control">
                 <div class="text-danger" *ngIf="nameAr.invalid && nameAr.touched">
                     <small class="text-danger" *ngIf="nameAr.errors!['required']">{{'category.nameRequiredError'|translate}}</small>
                     <small class="text-danger" *ngIf="nameAr.errors!['pattern']">{{'category.namepatternErrorAr'|translate}}</small>
@@ -32,7 +32,7 @@
 
             <div class="form-group mt-2">
                 <label for="descriptionAr" class="mb-1">{{'category.categoryDescriptionInar'|translate}}</label>
-                <input type="text" pattern="[أ-ي 0-9]{10,100}" #descriptionAr="ngModel" required [class.validInput]="descriptionAr.valid" [class.invalidInput]="descriptionAr.invalid && descriptionAr.touched"  id="descriptionAr" name="descriptionAr" [(ngModel)]="categoryModel.descriptionAr" class="form-control">
+                <input type="text" pattern="[أ-ي 0-9]{10,100}" #descriptionAr="ngModel" required [class.validInput]="descriptionAr.valid" [class.invalidInput]="descriptionAr.invalid && descriptionAr.touched"  id="descriptionAr" name="descriptionAr" [(ngModel)]="categoryModel.description_Ar" class="form-control">
                 <div class="text-danger" *ngIf="descriptionAr.invalid && descriptionAr.touched">
                     <small class="text-danger" *ngIf="descriptionAr.errors!['required']">{{'category.descriptionRequiredError'|translate}}</small>
                     <small class="text-danger" *ngIf="descriptionAr.errors!['pattern']">{{'category.descriptionpatternErrorAr'|translate}}</small>

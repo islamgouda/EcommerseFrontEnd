@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ICategory } from 'src/helpers/interfaces/icategory';
 import { IProduct } from 'src/helpers/interfaces/iproduct';
 import { ISubCategory } from 'src/helpers/interfaces/isub-category';
 import { CategoryService } from 'src/helpers/services/category.service';
@@ -13,15 +14,17 @@ import { SubCategoryService } from 'src/helpers/services/sub-category.service';
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.scss']
 })
-export class AddProductComponent implements OnInit {
+export class AddProductComponent implements OnInit,AfterViewInit {
 
   textDirection:string;
   language:string;
   updateProductWithId:number=-1;
-  productModel:IProduct={name:"",description:"",nameAr:"",descriptionAr:"",CategoryID:null,discountID:null,quantity:"",isAvailable:true,partnerID:null,price:"",subCategoryID:-1,images:[]};
-  allProducts:IProduct[]=[];
+  productModel:IProduct={name:"",description:"",nameAr:"",descriptionAr:"",CategoryID:-1,discountID:null,quantity:"",isAvailable:true,partnerID:null,price:"",subCategoryID:-1,images:[]};
+  // allProducts:IProduct[]=[];
   // allCategories:ICategory[]=[];
   allSubCategories:ISubCategory[]=[];
+  relatedSubCategories:ISubCategory[]=[];
+  allCategories:ICategory[]=[];
   ProductId:number=-1;
   errorMessage:string="";
   // goToAddCategoriesFirst:string=""
@@ -29,7 +32,7 @@ export class AddProductComponent implements OnInit {
   constructor(private location:Location,private activatedRoute:ActivatedRoute,
     private sharedService:SharedService, private router:Router,
     private productService:ProductService,
-    private categoryService:CategoryService,private subCatService:SubCategoryService,private subCategoryService:SubCategoryService) { 
+    private categoryService:CategoryService,private catService:CategoryService,private subCategoryService:SubCategoryService) { 
     this.textDirection = this.sharedService.textDirection;
     this.language = localStorage.getItem("lang")||"en";
     // this.goToAddCategoriesFirst = this.textDirection=="ltr"?"No Categories Exists ,Go To add At Least one":
@@ -42,20 +45,37 @@ export class AddProductComponent implements OnInit {
     // this.getAllCategories();
     // this.getAllProducts();
     this.getAllSubCategories();
+    this.getAllCategories();
     this.ProductId  = this.getUrlParameter("id");
-    this.getSelectedProduct();
+    // this.getSelectedProduct();
+  }
+  ngAfterViewInit(): void {
   }
   getAllSubCategories(){
-    this.subCatService.getAllSubCategories().subscribe(
+    this.subCategoryService.getAllSubCategories().subscribe(
       data=>this.allSubCategories = data,
     );
   }
-  
-  // getAllCategories(){
-  //   this.categoryService.getAllCategories().subscribe(
-  //     data=>this.allCategories = data,
-  //   );
-  // }
+  noSubCatRelatedToThisCategory:string="";
+  isSubCatSelectOptionHidden:boolean=true;
+  onChangeCategory(){
+     this.subCategoryService.getAllSubCategories().subscribe(
+      data=>{
+        this.relatedSubCategories = data.filter(c=>c.categoryId==this.productModel.CategoryID);
+        if(this.relatedSubCategories.length==0){
+          this.noSubCatRelatedToThisCategory = "No Sub Categories Related To this Category !";
+          this.sharedService.showSnackBar(this.noSubCatRelatedToThisCategory,4000,'warningSnackBar');
+        }else{
+          this.isSubCatSelectOptionHidden = false;
+        }
+      }
+     );
+  }
+  getAllCategories(){
+    this.categoryService.getAllCategories().subscribe(
+      data=>this.allCategories = data,
+    );
+  }
   // getAllProducts(){
   //   this.productService.getAllProducts().subscribe(
   //     data=>this.allProducts = data,

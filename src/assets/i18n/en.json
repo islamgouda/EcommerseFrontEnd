@@ -123,6 +123,8 @@
         "imageErrorFormat":"you have to select format in .png|.jpg|.svg|.jpeg",
         "selectCategory":"Select Category",
         "selectSubCategory":"Select Sub Category",
+        "selectProduct":"Select Product",
+        "selectDiscount":"Select Discount",
         "deletedSuccessfully":"Deleted Done Successfully !",
         "updatedSuccessfully":"Updated Done Successfully !",
         "quantity":"Quantity",
@@ -179,6 +181,15 @@
         "startTimeRequiredError":"Start time is required",
         "startTimePatternError":"select valid start time date",
         "endTimeRequiredError":"End time is required",
-        "endTimePatternError":"select valid end time date"
+        "endTimePatternError":"select valid end time date",
+        "assignDisountToProduct":"Assign Disount To Product"
+    },
+    "home":{
+        "showAllProducts":"Show All Products",
+        "productsByCategory":"Products By Category",
+        "productsBySubCategory":"Products By Sub Category",
+        "productsByPartner":"Products By Partner",
+        "productsByProductName":"Products By Product Name",
+        "productsByPrice":"Products By Price"
     }
 }

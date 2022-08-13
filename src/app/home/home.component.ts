@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/helpers/services/shared.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  textDirection:string;
+  constructor(private sharedService:SharedService) {
+    this.textDirection = this.sharedService.textDirection;
+   }
 
   ngOnInit(): void {
   }
