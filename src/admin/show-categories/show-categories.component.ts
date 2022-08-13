@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { delay } from 'rxjs';
-import { ICategory } from 'src/helpers/interfaces/icategory';
+import { ICategory, I_Category } from 'src/helpers/interfaces/icategory';
 import { CategoryService } from 'src/helpers/services/category.service';
 import { SharedService } from 'src/helpers/services/shared.service';
 
@@ -17,7 +17,7 @@ export class ShowCategoriesComponent implements OnInit {
   categoryId:any;
   isShownSuccessAlert:boolean=false;
   isShownErrorAlert:boolean=false;
-  categoriesList:ICategory[]=[];
+  categoriesList:I_Category[]=[];
   getAllCategoryState:string="";
   deleteState:string=""
   isDeleted:boolean=false;
@@ -45,11 +45,6 @@ export class ShowCategoriesComponent implements OnInit {
     },3000);
   }
 
-  // modalValue(id:any){
-  //   this.categoryName = (localStorage.getItem('lang')=="ar"?this.categoriesList.
-  //   find(x=>x.id==id)?.nameAr:this.categoriesList.find(x=>x.id==id)?.name)||"";
-  //   this.categoryId = id;
-  // }
 
   deleteCategory(id:any){
     this.categoryService.deleteCategory(id).subscribe(
@@ -67,7 +62,7 @@ export class ShowCategoriesComponent implements OnInit {
   }
   serverErrorMessage:string="";
   getAllCategories(){
-    this.categoryService.getAllCategories().subscribe(
+    this.categoryService.getCategories().subscribe(
       (data)=>{
         console.log(data);
         this.categoriesList = data;

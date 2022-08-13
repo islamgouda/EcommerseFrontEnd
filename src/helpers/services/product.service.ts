@@ -27,6 +27,13 @@ export class ProductService {
             catchError(error=>this.gerericService.handleError(error))
            );
    }
+   getProducts():Observable<IProduct[]>
+   {
+    return this.httpClient.get<IProduct[]>(this.productApi,this.gerericService.httpOptions).
+           pipe(
+            catchError(error=>this.gerericService.handleError(error))
+           );
+   }
    deleteProduct(id:number):Observable<boolean>
    {
      return this.httpClient.delete<boolean>(`${this.productApi}/${id}`).pipe(

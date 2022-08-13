@@ -1,12 +1,17 @@
-
 <div class="container-fluid">
-    <div class="row">
-        <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-            <div class="col-md-6 px-0">
-              <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-              <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-              <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
-            </div>
-          </div>
+  <div class="row" [class]="textDirection">
+    <div class="col-12 col-md-3 home-bg" [class.pt-3]="textDirection=='rtl'">
+      <div>      
+        <a routerLink="/home/AllProducts" routerLinkActive="active" class="btn text-dark  btn-outline-light form-control mb-2">{{'home.showAllProducts'|translate}}</a>
+        <a routerLink="/home/productsByCategory" routerLinkActive="active" class="btn text-dark btn-outline-light form-control mb-2">{{'home.productsByCategory'|translate}}</a>
+        <a routerLink="/home/productsBySubCategory" routerLinkActive="active" class="btn text-dark btn-outline-light form-control mb-2">{{'home.productsBySubCategory'|translate}}</a>
+        <a routerLink="/home/productsByPartner" routerLinkActive="active" class="btn text-dark btn-outline-light form-control mb-2">{{'home.productsByPartner'|translate}}</a>
+        <a routerLink="/home/productsByProductName" routerLinkActive="active" class="btn text-dark btn-outline-light form-control mb-2">{{'home.productsByProductName'|translate}}</a>
+        <a routerLink="/home/productsByPrice" routerLinkActive="active" class="btn text-dark btn-outline-light form-control mb-2">{{'home.productsByPrice'|translate}}</a>
+      </div>
     </div>
+    <div class="col-12 col-md-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>

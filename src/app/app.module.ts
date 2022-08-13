@@ -29,6 +29,12 @@ import { CartComponent } from './cart/cart.component';
 import { LoginUserComponent } from './Authentication/login-user/login-user.component';
 import { RegisterUserComponent } from './Authentication/register-user/register-user.component';
 import { RegisterAdminComponent } from './Authentication/register-admin/register-admin.component';
+import { AllProductsComponent } from './home/all-products/all-products.component';
+import { ProductsByCategoryComponent } from './home/products-by-category/products-by-category.component';
+import { ProductsBySubCategoryComponent } from './home/products-by-sub-category/products-by-sub-category.component';
+import { ProductsByPartnerComponent } from './home/products-by-partner/products-by-partner.component';
+import { ProductsByProductNameComponent } from './home/products-by-product-name/products-by-product-name.component';
+import { ProductsByPriceComponent } from './home/products-by-price/products-by-price.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -50,7 +56,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     CartComponent,
     LoginUserComponent,
     RegisterUserComponent,
-    RegisterAdminComponent
+    RegisterAdminComponent,
+    AllProductsComponent,
+    ProductsByCategoryComponent,
+    ProductsBySubCategoryComponent,
+    ProductsByPartnerComponent,
+    ProductsByProductNameComponent,
+    ProductsByPriceComponent
   ],
   imports: [
     BrowserModule,

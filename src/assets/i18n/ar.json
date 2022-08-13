@@ -5,7 +5,7 @@
         "registerAdmin": "للادمن انشاء حساب",
 
         "signout": "تسجيل خروج",
-        "searchPlaceholder": "... ابحث عن أى شــئ",
+        "searchPlaceholder": "ابحث عن أى شــئ...",
         "home": "الرئيسية",
         "products": "المنتجات",
         "categories": "الأصناف",
@@ -121,6 +121,8 @@
         "imageErrorFormat":"لا بد من اختيار صورة من صيغة  .png|.jpg|.svg|.jpeg",
         "selectCategory":"اختر الصنف",
         "selectSubCategory":"اختر الصنف الفرعى",
+        "selectProduct":"اختر منتج ",
+        "selectDiscount":"اختر الخصم ",
         "deletedSuccessfully":"تمت عملية الحذف بنجاج",
         "updatedSuccessfully":"تمت عملية التعديل بنجاج",
         "quantity":"الكمية",
@@ -177,8 +179,16 @@
         "startTimeRequiredError":"يجب ادخال وقت بداية الخصم",
         "startTimePatternError":"اختر وقت بداية الخصم بطريقة صحيحة",
         "endTimeRequiredError":"يجب ادخال وقت نهاية الخصم",
-        "endTimePatternError":"اختر وقت نهاية الخصم بطريقة صحيحة"
+        "endTimePatternError":"اختر وقت نهاية الخصم بطريقة صحيحة",
+        "assignDisountToProduct":"اسناد خصم لمنتج"
+    },
+    "home":{
+        "showAllProducts":"عرض جميع المنتجات",
+        "productsByCategory":"فلتر النتجات بالصنف",
+        "productsBySubCategory":"فلتر المنتجات بالصنف الفرعى",
+        "productsByPartner":"فلتر النتجات بالبائع",
+        "productsByProductName":"فلتر باسم المنتج",
+        "productsByPrice":"فلتر بالسعر"
     }
-
 
 }
