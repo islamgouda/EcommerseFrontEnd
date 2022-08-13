@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IDisplayProducts } from 'src/helpers/interfaces/idisplay-products';
+import { ProductService } from 'src/helpers/services/product.service';
 
 @Component({
   selector: 'app-all-products',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllProductsComponent implements OnInit {
 
-  constructor() { }
+  products:IDisplayProducts[]=[];
+  haveDiscount:boolean=true;
+  discount:string=this.haveDiscount?"Have Discount":"Have No Discount";
+  constructor(private productService:ProductService) { }
 
   ngOnInit(): void {
+    this.allProducts();
+  }
+  allProducts(){
+    this.productService.getAllProducts().subscribe(
+      data=>{
+        this.products = data;
+      }
+    )
   }
 
 }

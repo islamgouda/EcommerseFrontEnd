@@ -1,6 +1,6 @@
-<div class="container-fluid">
-  <div class="row" [class]="textDirection">
-    <div class="col-12 col-md-3 home-bg" [class.pt-3]="textDirection=='rtl'">
+<div class="container-fluid" >
+  <div class="row" [class]="textDirection" >
+    <div class="col-12 col-md-3 home-bg" [class.pt-3]="textDirection=='rtl'" style="padding-right:0;padding-left:0;">
       <div>      
         <a routerLink="/home/AllProducts" routerLinkActive="active" class="btn text-dark  btn-outline-light form-control mb-2">{{'home.showAllProducts'|translate}}</a>
         <a routerLink="/home/productsByCategory" routerLinkActive="active" class="btn text-dark btn-outline-light form-control mb-2">{{'home.productsByCategory'|translate}}</a>
@@ -10,7 +10,7 @@
         <a routerLink="/home/productsByPrice" routerLinkActive="active" class="btn text-dark btn-outline-light form-control mb-2">{{'home.productsByPrice'|translate}}</a>
       </div>
     </div>
-    <div class="col-12 col-md-9">
+    <div class="col-12 col-md-9" style="padding-right:0;padding-left:0;">
       <router-outlet></router-outlet>
     </div>
   </div>

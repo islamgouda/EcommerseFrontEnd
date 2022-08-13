@@ -17,10 +17,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { UProductsComponent } from './uproducts/uproducts.component';
 
 const routes: Routes = [
-  {path:"",component:HomeComponent}, //deafualt page
+  {path:"",redirectTo: '/home', pathMatch: 'full'}, //deafualt page
   {path:'home',component:HomeComponent,children:[
+    {path:"",component:AllProductsComponent},
     {path:'AllProducts',component:AllProductsComponent},
-    {path:'',component:AllProductsComponent},
     {path:'productsByCategory',component:ProductsByCategoryComponent},
     {path:'productsBySubCategory',component:ProductsBySubCategoryComponent},
     {path:'productsByPartner',component:ProductsByPartnerComponent},

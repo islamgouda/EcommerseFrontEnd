@@ -35,6 +35,7 @@ import { ProductsBySubCategoryComponent } from './home/products-by-sub-category/
 import { ProductsByPartnerComponent } from './home/products-by-partner/products-by-partner.component';
 import { ProductsByProductNameComponent } from './home/products-by-product-name/products-by-product-name.component';
 import { ProductsByPriceComponent } from './home/products-by-price/products-by-price.component';
+import { HighLightBorderDirective } from 'src/helpers/customeDirective/high-light-border.directive';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -42,6 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
+    HighLightBorderDirective,
     DefaultLayoutComponent,
     CustomLayoutComponent,
     PageNotFoundComponent,
@@ -95,6 +97,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     },
     HttpClient
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
