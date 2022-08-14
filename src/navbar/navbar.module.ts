@@ -15,7 +15,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     CommonModule,

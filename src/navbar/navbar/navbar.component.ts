@@ -2,7 +2,10 @@ import { throwDialogContentAlreadyAttachedError } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+
 import { LoginServiceService } from 'src/Services/login-service.service';
+
+import { SharedService } from 'src/helpers/services/shared.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,17 +16,24 @@ export class NavbarComponent implements OnInit {
   username:string=" ";
  
 
-  lang:any;
-  constructor(private translateservice:TranslateService,private router:Router,private loginService:LoginServiceService) {
-    this.loginService.getMe().subscribe((name) => {
-        this.username=name.userName;
-      });
+
+
+  lang:any; 
+  textDirection:string;
+  constructor(private translateservice:TranslateService,private router:Router,private sharedService:SharedService,private loginService:LoginServiceService) {
+
     this.translateservice.setDefaultLang("en");
     this.translateservice.use(localStorage.getItem('lang')||'en');
+    this.textDirection = this.sharedService.textDirection
+     this.loginService.getMe().subscribe((name) => {
+        this.username=name.userName;
    }
 
   ngOnInit(): void {
     this.lang = localStorage.getItem("lang")||"en";
+  }
+  goSearchProduct(){
+    this.router.navigate(['/home/productsByProductName'])
   }
   changeSelectedLanguage(event:any){
     localStorage.setItem("lang",event);

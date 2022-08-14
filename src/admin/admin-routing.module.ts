@@ -7,6 +7,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { AddSubCategoryComponent } from './add-sub-category/add-sub-category.component';
 import { AdminLandingPageComponent } from './admin-landing-page/admin-landing-page.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
+import { AssignDisountToProductComponent } from './assign-disount-to-product/assign-disount-to-product.component';
 import { DeleteCategoryComponent } from './delete-category/delete-category.component';
 import { DeleteDiscountComponent } from './delete-discount/delete-discount.component';
 import { DeletePartnerComponent } from './delete-partner/delete-partner.component';
@@ -45,6 +46,7 @@ const routes: Routes = [
         {path:'showAllDiscounts',component:ShowDiscountsComponent},
         {path:'updateDiscount/:id',component:AddDiscountComponent},
         {path:'deleteDiscount/:id',component:DeleteDiscountComponent},
+        {path:'assignDisountToProduct',component:AssignDisountToProductComponent},
 
   ]},
 

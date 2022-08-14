@@ -7,3 +7,13 @@ export interface ISubCategory {
     image:string;
     categoryId:number;
 }
+
+export interface I_SubCategory {
+    id?:number;
+    Name:string;
+    arabicName:string;
+    Description:string;
+    arabicDescription:string;
+    CategoryId:any;
+    image:any;
+}

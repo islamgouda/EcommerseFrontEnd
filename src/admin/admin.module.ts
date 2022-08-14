@@ -21,6 +21,7 @@ import { ShowPartnersComponent } from './show-partners/show-partners.component';
 import { DeleteDiscountComponent } from './delete-discount/delete-discount.component';
 import { ShowDiscountsComponent } from './show-discounts/show-discounts.component';
 import { DeleteProductComponent } from './delete-product/delete-product.component';
+import { AssignDisountToProductComponent } from './assign-disount-to-product/assign-disount-to-product.component';
 
 //adding to execute localization
 export function HttpLoaderFactory(http: HttpClient) {
@@ -46,6 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddDiscountComponent,
     ShowDiscountsComponent,
     DeleteProductComponent,
+    AssignDisountToProductComponent,
   ],
   imports: [
     CommonModule,

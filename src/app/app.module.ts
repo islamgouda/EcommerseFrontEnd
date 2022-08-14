@@ -29,9 +29,20 @@ import { CartComponent } from './cart/cart.component';
 import { LoginUserComponent } from './Authentication/login-user/login-user.component';
 import { RegisterUserComponent } from './Authentication/register-user/register-user.component';
 import { RegisterAdminComponent } from './Authentication/register-admin/register-admin.component';
+
+
+
 import { AuthInterceptor } from 'src/Shared/auth.interceptor';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { BeaPartnerComponent } from './bea-partner/bea-partner.component';
+import { AllProductsComponent } from './home/all-products/all-products.component';
+import { ProductsByCategoryComponent } from './home/products-by-category/products-by-category.component';
+import { ProductsBySubCategoryComponent } from './home/products-by-sub-category/products-by-sub-category.component';
+import { ProductsByPartnerComponent } from './home/products-by-partner/products-by-partner.component';
+import { ProductsByProductNameComponent } from './home/products-by-product-name/products-by-product-name.component';
+import { ProductsByPriceComponent } from './home/products-by-price/products-by-price.component';
+import { HighLightBorderDirective } from 'src/helpers/customeDirective/high-light-border.directive';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -39,6 +50,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
+    HighLightBorderDirective,
     DefaultLayoutComponent,
     CustomLayoutComponent,
     PageNotFoundComponent,
@@ -54,8 +66,17 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginUserComponent,
     RegisterUserComponent,
     RegisterAdminComponent,
+
     UserDashboardComponent,
     BeaPartnerComponent
+
+    AllProductsComponent,
+    ProductsByCategoryComponent,
+    ProductsBySubCategoryComponent,
+    ProductsByPartnerComponent,
+    ProductsByProductNameComponent,
+    ProductsByPriceComponent
+
   ],
   imports: [
     BrowserModule,
@@ -93,6 +114,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     },
     HttpClient
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
