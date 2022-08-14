@@ -1,6 +1,10 @@
+import { throwDialogContentAlreadyAttachedError } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+
+import { LoginServiceService } from 'src/Services/login-service.service';
+
 import { SharedService } from 'src/helpers/services/shared.service';
 
 @Component({
@@ -9,14 +13,18 @@ import { SharedService } from 'src/helpers/services/shared.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
+  username:string=" ";
   lang:any; 
   textDirection:string;
-  constructor(private translateservice:TranslateService,private router:Router,private sharedService:SharedService) {
+  constructor(private translateservice:TranslateService,private router:Router,private sharedService:SharedService,private loginService:LoginServiceService) 
+   {
     this.translateservice.setDefaultLang("en");
     this.translateservice.use(localStorage.getItem('lang')||'en');
-    this.textDirection = this.sharedService.textDirection;
-   }
+    this.textDirection = this.sharedService.textDirection
+     this.loginService.getMe().subscribe((name) => {
+        this.username=name.userName;
+   });
+  }
 
   ngOnInit(): void {
     this.lang = localStorage.getItem("lang")||"en";
@@ -33,7 +41,10 @@ export class NavbarComponent implements OnInit {
 
     localStorage.removeItem('token');
     localStorage.removeItem('expiration');
-    this.router.navigate(['discounts']);
+    this.router.navigate(['']).then(()=>{
+      window.location.reload();
+
+     })
 
 
   }
