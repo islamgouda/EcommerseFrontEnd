@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { LoginServiceService } from 'src/Services/login-service.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,10 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   title = 'FinalProject';
-  constructor(private tarnslateService:TranslateService){
+  constructor(private tarnslateService:TranslateService,private loginservic:LoginServiceService){
     this.tarnslateService.setDefaultLang("en");
     this.tarnslateService.use(localStorage.getItem('lang')||'en');
+    //console.log(this.loginservic.UserName);
   }
+ 
 }

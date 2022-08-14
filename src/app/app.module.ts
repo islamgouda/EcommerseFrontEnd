@@ -29,6 +29,9 @@ import { CartComponent } from './cart/cart.component';
 import { LoginUserComponent } from './Authentication/login-user/login-user.component';
 import { RegisterUserComponent } from './Authentication/register-user/register-user.component';
 import { RegisterAdminComponent } from './Authentication/register-admin/register-admin.component';
+import { AuthInterceptor } from 'src/Shared/auth.interceptor';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { BeaPartnerComponent } from './bea-partner/bea-partner.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -50,7 +53,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     CartComponent,
     LoginUserComponent,
     RegisterUserComponent,
-    RegisterAdminComponent
+    RegisterAdminComponent,
+    UserDashboardComponent,
+    BeaPartnerComponent
   ],
   imports: [
     BrowserModule,
@@ -80,6 +85,11 @@ export function HttpLoaderFactory(http: HttpClient) {
       provide: HTTP_INTERCEPTORS,
       useClass: LanguageInterceptor,
       multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
     },
     HttpClient
   ],
