@@ -68,7 +68,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterAdminComponent,
 
     UserDashboardComponent,
-    BeaPartnerComponent
+    BeaPartnerComponent,
 
     AllProductsComponent,
     ProductsByCategoryComponent,

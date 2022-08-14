@@ -14,20 +14,17 @@ import { SharedService } from 'src/helpers/services/shared.service';
 })
 export class NavbarComponent implements OnInit {
   username:string=" ";
- 
-
-
-
   lang:any; 
   textDirection:string;
-  constructor(private translateservice:TranslateService,private router:Router,private sharedService:SharedService,private loginService:LoginServiceService) {
-
+  constructor(private translateservice:TranslateService,private router:Router,private sharedService:SharedService,private loginService:LoginServiceService) 
+   {
     this.translateservice.setDefaultLang("en");
     this.translateservice.use(localStorage.getItem('lang')||'en');
     this.textDirection = this.sharedService.textDirection
      this.loginService.getMe().subscribe((name) => {
         this.username=name.userName;
-   }
+   });
+  }
 
   ngOnInit(): void {
     this.lang = localStorage.getItem("lang")||"en";
