@@ -10,6 +10,7 @@ import { Ipartner } from 'src/helpers/interfaces/iPartner2';
 export class BeaPartnerComponent implements OnInit {
   partner:Ipartner ={name:"", numberOfBranches:0};
   responsedata:any;
+  ResponseMessage:string="";
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {

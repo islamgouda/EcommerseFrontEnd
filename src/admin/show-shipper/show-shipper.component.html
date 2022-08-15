@@ -1,0 +1,19 @@
+<style>
+    .fakeimg {
+      height: 200px;
+      background: #aaa;
+    }
+    </style>
+<p>Our Shippers</p>
+<div class="container mt-5">
+    <div class="row" >
+        <div class="col-sm-4"*ngFor="let Shipper of  responsedata.data">
+            <h2 class="text-danger">About Partner Number {{Shipper.id}}</h2>
+        <div class="fakeimg">
+        <h3 class="text-white">Company Name {{Shipper.name}}</h3>
+        <h2 class="text-white">officePhone {{Shipper.officePhone}}</h2>
+            </div>
+        <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+        </div>
+    </div>
+</div>    

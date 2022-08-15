@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IPartner } from 'src/helpers/interfaces/ipartner';
 import { PartnerService } from 'src/helpers/services/partner.service';
 import { SharedService } from 'src/helpers/services/shared.service';
+import { AdminReportsService } from 'src/Services/admin-reports.service';
+import { IPartnerRequests } from 'src/Shared/IRequest';
 
 @Component({
   selector: 'app-add-partner',
@@ -16,11 +18,15 @@ export class AddPartnerComponent implements OnInit {
   language:string;
   updatePartnerWithId:number;
   partnerModel:IPartner={name:"",type:"",userId:-1,numberOfBranches:0};
+  AllRequests:IPartnerRequests[]=[];
   allPartners:IPartner[]=[];
   partnerID:number=-1;
   errorMessage:string="";
-  goToAddCategoriesFirst:string=""
-  constructor(private location:Location,private activatedRoute:ActivatedRoute,private sharedService:SharedService, private router:Router,private partnerService:PartnerService) { 
+  goToAddCategoriesFirst:string="";
+  requestId:number=0;
+ 
+
+  constructor(private adminreports:AdminReportsService,private location:Location,private activatedRoute:ActivatedRoute,private sharedService:SharedService, private router:Router,private partnerService:PartnerService) { 
     this.textDirection = this.sharedService.textDirection;
     this.language = localStorage.getItem("lang")||"en";
     this.updatePartnerWithId = -1; 
@@ -29,9 +35,26 @@ export class AddPartnerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllPartners();
-    this.partnerID  = this.getUrlParameter("id");
-    this.getSelectedPartner();
+    ////
+    this.adminreports.GetAllPartnersRequests().subscribe(
+      data=>{
+        console.log(data);
+        this.AllRequests=data;
+        console.log(this.AllRequests);
+      }
+    );
+    /////
+    // this.getAllPartners();
+    // this.partnerID  = this.getUrlParameter("id");
+    // this.getSelectedPartner();
+  }
+  SelectPartnerRequest()
+  {
+    this.adminreports.AddPartnersRequest(this.requestId).subscribe(
+      data=>{
+        console.log(data);
+      }
+    )
   }
   getAllPartners(){
     this.partnerService.getAllPartners().subscribe(

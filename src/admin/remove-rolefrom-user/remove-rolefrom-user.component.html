@@ -1,0 +1,160 @@
+<h1>Table of Users Assigned to All Roles In The System <code>Take Control</code></h1>
+<p>Trying to make a Control of users that have assigned Roles</p>
+<h4 class="text-danger">Notes:</h4>
+<h4 class="text-danger">if You Remove User it will automaticlly Remove from Role Assigned </h4>
+<p class="warning">Be Aware</p>
+<!-- <main class="st_viewport">
+  <div class="st_wrap_table" data-table_id="0">
+    <header class="st_table_header">
+      <h2>Admins</h2>
+      <div class="st_row">
+        <div class="st_column _rank">ID</div>
+        <div class="st_column _name">Name</div>
+        <div class="st_column _surname">email</div>
+        <div class="st_column _section">Action</div>
+      </div>
+    </header>
+    <div class="st_table">
+      <div class="st_row" *ngFor="let item of ResponseData.admins">
+        <div class="st_column _rank">{{item.id}}</div>
+        <div class="st_column _name">{{item.userName}}</div>
+        <div class="st_column _surname">{{item.email}}</div>
+        <div class="st_column _section"><button class="btn btn-danger">Remove</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="st_wrap_table" data-table_id="1">
+    <header class="st_table_header">
+      <h2>Sub_Admins</h2>
+      <div class="st_row">
+        <div class="st_column _rank">ID</div>
+        <div class="st_column _name">Name</div>
+        <div class="st_column _surname">email</div>
+        <div class="st_column _section">Action</div>
+      </div>
+    </header>
+    <div class="st_table">
+        <div class="st_row" *ngFor="let item of ResponseData.sAdmins">
+            <div class="st_column _rank">{{item.id}}</div>
+            <div class="st_column _name">{{item.userName}}</div>
+            <div class="st_column _surname">{{item.email}}</div>
+            <div class="st_column _section"><button class="btn btn-danger">Remove</button></div>
+          </div>
+    </div>
+  </div>
+  <div class="st_wrap_table" data-table_id="2">
+    <header class="st_table_header">
+      <h2>Partners</h2>
+      <div class="st_row">
+        <div class="st_column _rank">ID</div>
+        <div class="st_column _name">Name</div>
+        <div class="st_column _surname">email</div>
+        <div class="st_column _section">Action</div>
+      </div>
+    </header>
+    <div class="st_table">
+        <div class="st_row" *ngFor="let item of ResponseData.partners">
+            <div class="st_column _rank">{{item.id}}</div>
+            <div class="st_column _name">{{item.userName}}</div>
+            <div class="st_column _surname">{{item.email}}</div>
+            <div class="st_column _section"><button class="btn btn-danger">Remove</button></div>
+          </div>
+    </div>
+  </div>
+  <div class="st_wrap_table" data-table_id="3">
+    <header class="st_table_header">
+      <h2>Shippers</h2>
+      <div class="st_row">
+        <div class="st_column _rank">ID</div>
+        <div class="st_column _name">Name</div>
+        <div class="st_column _surname">email</div>
+        <div class="st_column _section">Action</div>
+      </div>
+    </header>
+    <div class="st_table">
+        <div class="st_row" *ngFor="let item of ResponseData. shippers">
+            <div class="st_column _rank">{{item.id}}</div>
+            <div class="st_column _name">{{item.userName}}</div>
+            <div class="st_column _surname">{{item.email}}</div>
+            <div class="st_column _section"><button class="btn btn-danger">Remove</button></div>
+          </div>
+    </div>
+  </div>
+      
+</main> -->
+<div class="st_wrap_table" data-table_id="0">
+    <header class="st_table_header">
+      <h2>Admins</h2>
+      <div class="st_row">
+        <div class="st_column _rank">ID</div>
+        <div class="st_column _name">Name</div>
+        <div class="st_column _surname">email</div>
+        <div class="st_column _section">Action</div>
+      </div>
+    </header>
+    <div class="st_table">
+      <div class="st_row" *ngFor="let item of ResponseData.admins">
+        <div class="st_column _rank">{{item.id}}</div>
+        <div class="st_column _name">{{item.userName}}</div>
+        <div class="st_column _surname">{{item.email}}</div>
+        <div class="st_column _section"><button (click)="RemoveFromRole(item.id,'Admin')" class="btn btn-danger">Remove</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="st_wrap_table" data-table_id="1">
+    <header class="st_table_header">
+      <h2>Sub_Admins</h2>
+      <div class="st_row">
+        <div class="st_column _rank">ID</div>
+        <div class="st_column _name">Name</div>
+        <div class="st_column _surname">email</div>
+        <div class="st_column _section">Action</div>
+      </div>
+    </header>
+    <div class="st_table">
+        <div class="st_row" *ngFor="let item of ResponseData.sAdmins">
+            <div class="st_column _rank">{{item.id}}</div>
+            <div class="st_column _name">{{item.userName}}</div>
+            <div class="st_column _surname">{{item.email}}</div>
+            <div class="st_column _section"><button (click)="RemoveFromRole(item.id,'SubAdmin')" class="btn btn-danger">Remove</button></div>
+          </div>
+    </div>
+  </div>
+<div class="st_wrap_table" data-table_id="2">
+    <header class="st_table_header">
+      <h2>Partners</h2>
+      <div class="st_row">
+        <div class="st_column _rank">ID</div>
+        <div class="st_column _name">Name</div>
+        <div class="st_column _surname">email</div>
+        <div class="st_column _section">Action</div>
+      </div>
+    </header>
+    <div class="st_table">
+        <div class="st_row" *ngFor="let item of ResponseData.partners">
+            <div class="st_column _rank">{{item.id}}</div>
+            <div class="st_column _name">{{item.userName}}</div>
+            <div class="st_column _surname">{{item.email}}</div>
+            <div class="st_column _section"><button (click)="RemoveFromRole(item.id,'Partener')" class="btn btn-danger">Remove</button></div>
+          </div>
+    </div>
+  </div>
+<div class="st_wrap_table" data-table_id="3">
+    <header class="st_table_header">
+      <h2>Shippers</h2>
+      <div class="st_row">
+        <div class="st_column _rank">ID</div>
+        <div class="st_column _name">Name</div>
+        <div class="st_column _surname">email</div>
+        <div class="st_column _section">Action</div>
+      </div>
+    </header>
+    <div class="st_table">
+        <div class="st_row" *ngFor="let item of ResponseData. shippers">
+            <div class="st_column _rank">{{item.id}}</div>
+            <div class="st_column _name">{{item.userName}}</div>
+            <div class="st_column _surname">{{item.email}}</div>
+            <div class="st_column _section"><button class="btn btn-danger"(click)="RemoveFromRole(item.id,'Shiper')">Remove</button></div>
+          </div>
+    </div>
+  </div>

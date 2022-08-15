@@ -1,9 +1,11 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddDiscountComponent } from './add-discount/add-discount.component';
 import { AddPartnerComponent } from './add-partner/add-partner.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { AddRoleToUserComponent } from './add-role-to-user/add-role-to-user.component';
+import { AddShipperComponent } from './add-shipper/add-shipper.component';
 import { AddSubCategoryComponent } from './add-sub-category/add-sub-category.component';
 import { AdminLandingPageComponent } from './admin-landing-page/admin-landing-page.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
@@ -13,10 +15,12 @@ import { DeleteDiscountComponent } from './delete-discount/delete-discount.compo
 import { DeletePartnerComponent } from './delete-partner/delete-partner.component';
 import { DeleteProductComponent } from './delete-product/delete-product.component';
 import { DeleteSubCategoryComponent } from './delete-sub-category/delete-sub-category.component';
+import { RemoveRolefromUserComponent } from './remove-rolefrom-user/remove-rolefrom-user.component';
 import { ShowCategoriesComponent } from './show-categories/show-categories.component';
 import { ShowDiscountsComponent } from './show-discounts/show-discounts.component';
 import { ShowPartnersComponent } from './show-partners/show-partners.component';
 import { ShowProductsComponent } from './show-products/show-products.component';
+import { ShowShipperComponent } from './show-shipper/show-shipper.component';
 import { ShowSubCategoriesComponent } from './show-sub-categories/show-sub-categories.component';
 
 const routes: Routes = [
@@ -47,6 +51,12 @@ const routes: Routes = [
         {path:'updateDiscount/:id',component:AddDiscountComponent},
         {path:'deleteDiscount/:id',component:DeleteDiscountComponent},
         {path:'assignDisountToProduct',component:AssignDisountToProductComponent},
+
+        {path:'showallshippers',component:ShowShipperComponent},
+        {path:'addshipper',component:AddShipperComponent},
+
+        {path:'AddToRole',component:AddRoleToUserComponent},
+        {path:'RemoveFromRole',component:RemoveRolefromUserComponent},
 
   ]},
 

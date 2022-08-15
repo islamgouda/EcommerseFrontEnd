@@ -40,6 +40,7 @@ import { ProductsByPartnerComponent } from './home/products-by-partner/products-
 import { ProductsByProductNameComponent } from './home/products-by-product-name/products-by-product-name.component';
 import { ProductsByPriceComponent } from './home/products-by-price/products-by-price.component';
 import { HighLightBorderDirective } from 'src/helpers/customeDirective/high-light-border.directive';
+import { BeaShipperComponent } from './bea-shipper/bea-shipper.component';
 
 import { AdminModule } from 'src/admin/admin.module';
 import { PartnerModule } from 'src/partner/partner.module';
@@ -80,7 +81,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductsByPartnerComponent,
     ProductsByProductNameComponent,
     ProductsByPriceComponent,
+
+    BeaShipperComponent,
     ProductsByPriceComponent
+
+    
+
   ],
   imports: [
     BrowserModule,
@@ -106,6 +112,7 @@ export function HttpLoaderFactory(http: HttpClient) {
    
   ],
   exports:[
+   
   ],
   providers: [
     {

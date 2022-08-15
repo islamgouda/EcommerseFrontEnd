@@ -1,0 +1,27 @@
+<p>bea-shipper works!</p>
+<div class="container p-3">
+    <div class="row">
+     <div class="col-sm-3"></div>  
+     <div class="col-sm-6 p-3"style="border:1px solid gray ;">  
+     <form >
+    <div class="mb-3 mt-3" > 
+      <label for="name" class="form-label">Company Name:</label>
+      <input  type="text" [(ngModel)]="name" required class="form-control"  id="name" placeholder="Enter Name" name="name" >
+    </div>
+    <div class="mb-3">
+      <label for="pwd" class="form-label">Arabic Name:</label>
+      <input  type="text" [(ngModel)]="arabicName" required class="form-control"  id="pwd" placeholder="Enter Your arabicName" name="pswd">
+    </div>
+    <div class="mb-3">
+        <label for="pwd" class="form-label">Office Phone</label>
+        <input  type="text" [(ngModel)]="officePhone" required class="form-control"  id="pwd" placeholder="Enter officePhone" name="officePhone">
+      </div>
+      <button class="btn btn-primary" (click)="createRequest()">Submit</button><br>
+      <small *ngIf="responseMessage.success===true">{{ responseMessage.message}}:{{responseMessage.data}}</small><br>
+      <small class="text-danger" *ngIf="responseMessage.success===false">{{ responseMessage.message}}::{{responseMessage.data}}</small><br>
+    </form>
+    
+</div>
+<div class="col-sm-3"></div>
+</div>
+</div>
