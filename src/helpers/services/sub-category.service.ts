@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, retry } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ISubCategory, I_SubCategory } from '../interfaces/isub-category';
+import { ISubCategory, ISubCategoryResponse } from '../interfaces/isub-category';
 import { GenericApiHandlerService } from './generic-api-handler.service';
 
 
@@ -10,56 +10,58 @@ import { GenericApiHandlerService } from './generic-api-handler.service';
   providedIn: 'root'
 })
 export class SubCategoryService {
-  subCategoryUrl:string = "http://localhost:3000/subCategories";
-  subCatEndPoint:string=environment.apiURL;
-  constructor(private httpClient:HttpClient,private gerericService:GenericApiHandlerService) {
-   }
-
-   addNewSubCategory(model:I_SubCategory):Observable<I_SubCategory>
-   {
-    return this.httpClient.post<I_SubCategory>(this.subCatEndPoint+"/api/SubCategory/CreateSubCategory",model)
-    .pipe(catchError(error=>this.gerericService.handleError(error)));
-   }
-
-   updateSubCategory(id:number,model:I_SubCategory):Observable<boolean>
-   {
-     return this.httpClient.put<boolean>(`${this.subCategoryUrl}/${id}`,model,this.gerericService.httpOptions).pipe(
-       catchError(error=>this.gerericService.handleError(error))
-     );
-   }
+  endPoint:string=environment.apiURL;
+  constructor(private http:HttpClient,private gerericService:GenericApiHandlerService) {}
 
 
-  //  ========================================================================
-  //  ========================================================================
-  //  ---------------------local host ----------------------------------------
-  //  ========================================================================
-  //  ========================================================================
-   
-   getAllSubCategories():Observable<ISubCategory[]>
-   {
-    return this.httpClient.get<ISubCategory[]>(this.subCategoryUrl,this.gerericService.httpOptions).
-           pipe(
-            catchError(error=>this.gerericService.handleError(error))
-           );
-   }
-   deteleSubCategory(id:number):Observable<boolean>
-   {
-     return this.httpClient.delete<boolean>(`${this.subCategoryUrl}/${id}`).pipe(
-      catchError(error=>this.gerericService.handleError(error))
-    );
-   }
-   getSubCategoryById(id:number):Observable<ISubCategory>{
-    return this.httpClient.get<ISubCategory>(this.subCategoryUrl+"/"+id)
-    .    pipe(retry(3),catchError((error)=>this.gerericService.handleError(error)));
-  } 
-  getSubCategoriesByCategoryId(id:number):Observable<ISubCategory[]>{
-    // ------------start real code from API----------------------------------------------------
-    // function return type ==> 
-    return this.httpClient.get<ISubCategory[]>(this.subCategoryUrl+"/"+id,this.gerericService.httpOptions).
-    pipe(catchError(error=>this.gerericService.handleError(error)));
-    //-------------end real code from API------------------------------------------------------
-  
+  add(model:any){
+    const request = new XMLHttpRequest();
+    request.open("post", "http://localhost:5092/api/SubCategory/CreateSubCategory");
+    request.send(model);
+    return request.DONE;
+    // let url="http://localhost:5092/api/SubCategory/CreateSubCategory";
+    // return this.http.post<any>(url,model).pipe(
+    //   // retry(3),
+    //   // catchError((error)=>this.gerericService.handleError(error))
+    //   );
+  }
+  update(id:number,model:any){
+    const request = new XMLHttpRequest();
+    request.open("put", "http://localhost:5092/api/SubCategory/updateSubcategory?Id="+id);
+    request.send(model);
+    return request.DONE;
+    // let url="http://localhost:5092/api/SubCategory/updateSubcategory?Id="+id;
+    // return this.http.put(url,model).pipe(
+    //   retry(3),
+    //   );
   }
   
+  delete(id:number){
+    let url="http://localhost:5092/api/SubCategory/DeleteSubCategory?Id="+id;
+    return this.http.delete(url).pipe(
+      retry(3)
+      );
+
+  }
+  getAll():Observable<ISubCategoryResponse>{
+    let url="http://localhost:5092/api/SubCategory/getAllSubcategory";
+    return this.http.get<ISubCategoryResponse>(url).pipe(
+      retry(3),
+      );
+
+  }
+
+  getById(id:number):Observable<ISubCategoryResponse>{
+    let url="http://localhost:5092/api/SubCategory/GetsubCategoryByID/"+id;
+    return this.http.get<ISubCategoryResponse>(url).pipe(
+      retry(3),
+      );
+  }
+  getByCategoryId(id:number):Observable<ISubCategoryResponse>{
+    let url="http://localhost:5092/api/SubCategory/SubCategorysByCategoryID/"+id;
+    return this.http.get<ISubCategoryResponse>(url).pipe(
+      retry(3),
+      );
+  }
 
 }

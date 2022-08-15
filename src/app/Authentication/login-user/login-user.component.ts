@@ -17,7 +17,11 @@ export class LoginUserComponent implements OnInit {
   url:string='http://localhost:5092/api/Authentication/login';
   responseData:any;
   userlogin:UserLogin={email:"",password:""};
+
+  // constructor(private http:HttpClient,private router:Router) { }
+
   constructor(private http:HttpClient,private router:Router,private lservice:LoginServiceService) { }
+
   alert:boolean=false;
   ngOnInit(): void {
   }
