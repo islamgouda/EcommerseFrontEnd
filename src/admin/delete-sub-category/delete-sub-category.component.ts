@@ -15,7 +15,7 @@ export class DeleteSubCategoryComponent implements OnInit {
 
   textDirection:string="";
   subCategoriesList:ISubCategory[]=[];
-  subCategory:ISubCategory={name:"",nameAr:"",categoryId:-1,description:"",descriptionAr:"",image:""}
+  subCategory:ISubCategory={name:"",arabicName:"",categoryId:-1,description:"",arabicDescription:"",image:""}
   errorMessage:string="";
   subCategoryName:string="asd";
   catID:number=-1;
@@ -38,10 +38,10 @@ export class DeleteSubCategoryComponent implements OnInit {
     return parameter;
   }
    getSelectedSubCategory(){
-    this.subCatService.getSubCategoryById(this.catID).subscribe(
+    this.subCatService.getById(this.catID).subscribe(
       (data)=>{
-        this.subCategory = data;
-        this.subCategoryName = this.textDirection=='rtl'?data.nameAr:data.name;
+        this.subCategory = data.data;
+        this.subCategoryName = this.textDirection=='rtl'?this.subCategory.arabicName:this.subCategory.name;
       },
       (error)=>this.errorMessage = error
     )
@@ -49,7 +49,7 @@ export class DeleteSubCategoryComponent implements OnInit {
   confirmDeleteSubCategory(){
     let deleteSuccessMessage = this.textDirection=="ltr"?"Deleted Done Successfully !":"تمت عملية الحذف بنجاج";
     let deleteFailerMessage = this.textDirection=="ltr"?"Can not Delete Sub Category !":"لم تتم عملية الحذف ";
-    this.subCatService.deteleSubCategory(this.catID).subscribe(
+    this.subCatService.delete(this.catID).subscribe(
      (res)=>{
       if(res){
         this.sharedservice.showSnackBar(deleteSuccessMessage,4000,'successSnackBar');

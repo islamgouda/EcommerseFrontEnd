@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ICategory, I_Category } from 'src/helpers/interfaces/icategory';
+import { ICategory } from 'src/helpers/interfaces/icategory';
 import { CategoryService } from 'src/helpers/services/category.service';
 import { SharedService } from 'src/helpers/services/shared.service';
 
@@ -12,7 +12,7 @@ import { SharedService } from 'src/helpers/services/shared.service';
 })
 export class AddCategoryComponent implements OnInit {
   textDirection:string;
-  categoryModel:I_Category={name:"",name_Ar:"",description:"",description_Ar:""};
+  categoryModel:ICategory={name:"",name_Ar:"",description:"",description_Ar:""};
   updateIdCategory:number=-1;
   constructor(private location:Location,private sharedService:SharedService,private categoryService:CategoryService,
     private router:Router,private activatedRoute:ActivatedRoute) {
@@ -20,7 +20,6 @@ export class AddCategoryComponent implements OnInit {
    }
   ngOnInit(): void {
    this.updateIdCategory = this.getUrlParameter("id");
-   console.log("____________________________________"+this.updateIdCategory);
    if(this.updateIdCategory>0){
     this.bindingUpdateDataToModel();
    }
@@ -36,21 +35,23 @@ export class AddCategoryComponent implements OnInit {
   }
   AddCategory(){
     let language=localStorage.getItem("lang");
-    let successMessage =''
-    this.categoryService.addNewCategory(this.categoryModel).subscribe(
+    let successMessage ='';
+    this.categoryService.add(this.categoryModel).subscribe(
       (data)=>{
-        successMessage = language=="en"?`Category ${data.name} Added Successfully!`:
-        `تم إضافة صنف ${data.name_Ar} بنجاح !`;
+        successMessage = language=="en"?`Category Added Successfully!`:
+        `تم إضافة صنف بنجاح !`;
         this.sharedService.showSnackBar(successMessage,3000,'successSnackBar');
         this.router.navigate(["/admin/adminLayout/showCategories"]);
       },
       (error)=>{
+        if(error=="")
+        error = "Category doesn't saved !"
         this.sharedService.showSnackBar(error,3000,'dangerSnackBar');
       }
     );
   }
   saveUpdatedCategory(){
-    this.categoryService.updateCategory(this.updateIdCategory,this.categoryModel).
+    this.categoryService.update(this.updateIdCategory,this.categoryModel).
     subscribe(
       (data)=>{
         let successMessage="";
@@ -58,21 +59,26 @@ export class AddCategoryComponent implements OnInit {
         successMessage = language=="en"?`Category Updated Successfully!`:
         `تم تعديل الصنف بنجاح !`;
         this.sharedService.showSnackBar(successMessage,3000,'successSnackBar');
-        this.router.navigate(["/admin/adminLayout/showCategories"]);
       },
       (error)=>{
         this.sharedService.showSnackBar(error,3000,'dangerSnackBar');
       }
     );
   }
+  
   bindingUpdateDataToModel(){
     if(this.updateIdCategory!=-1){
-      this.categoryService.getCategoryById(this.updateIdCategory).subscribe(
+      console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++");
+      this.categoryService.getById(this.updateIdCategory).subscribe(
         (data)=>{
-          this.categoryModel!.name = data.name;
-          this.categoryModel!.name_Ar = data.nameAr;
-          this.categoryModel!.description = data.description;
-          this.categoryModel!.description_Ar = data.descriptionAr;
+          this.categoryModel = <ICategory>data;
+          console.log("--------------------------------------------------------------");
+          console.log(data.data);
+          console.log("--------------------------------------------------------------");
+          this.categoryModel.name = data.data.name;
+          this.categoryModel.name_Ar = data.data.name_Ar;
+          this.categoryModel.description =  data.data.description;
+          this.categoryModel.description_Ar =  data.data.description_Ar;
         }
       );
     }
@@ -84,6 +90,7 @@ export class AddCategoryComponent implements OnInit {
     }else{
       this.saveUpdatedCategory();
     }
+    this.back();
   }
   back(){
     this.location.back();

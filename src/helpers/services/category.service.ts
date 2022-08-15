@@ -2,70 +2,53 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParamsOptions } from '@
 import { Injectable } from '@angular/core';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ICategory, I_Category } from '../interfaces/icategory';
+import { ICategory, ICategoryResponse } from '../interfaces/icategory';
+
 import { GenericApiHandlerService } from './generic-api-handler.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
- //local
- categoryUrl:string = "http://localhost:3000/categories";
+  endPoint:string = environment.apiURL;
+  constructor(private http:HttpClient, private genericApiHandlerService:GenericApiHandlerService) {}
 
-  categoryEndPoint:string = environment.apiURL;
-  constructor(private http:HttpClient, private genericApiHandlerService:GenericApiHandlerService) 
-  {
 
+  
+  add(model:ICategory):Observable<ICategoryResponse>{
+    let url="http://localhost:5092/api/Category/AddnewCategory";
+    return this.http.post<ICategoryResponse>(url,model).pipe(
+      retry(3),
+      );
   }
-
-  addNewCategory(categoryModel:I_Category):Observable<I_Category>{
-    
-    return this.http.post<I_Category>(this.categoryEndPoint+"/Category/AddnewCategory",JSON.stringify(categoryModel)).
-    pipe(catchError(error=>this.genericApiHandlerService.handleError(error)));
+  update(id:number,model:ICategory){
+    let url="http://localhost:5092/api/Category/updateCategory?Id="+id;
+    return this.http.put(url,model).pipe(
+      retry(3),
+      );
   }
   
-  updateCategory(id:number,model:I_Category){
-    //add API To Update
-    return this.http.put(`${this.categoryEndPoint+""}/${id}`,model).
-    pipe(catchError((error)=>this.genericApiHandlerService.handleError(error)))
+  delete(id:number){
+    let url="http://localhost:5092/api/Category/DeleteCategory?Id="+id;
+    return this.http.delete(url).pipe(
+      retry(3)
+      );
+
   }
-  
-  getCategories():Observable<I_Category[]>{
-    console.log(this.categoryEndPoint+"$$$$$$$$$$$$$$$$$$$$");
-    return this.http.get<I_Category[]>(this.categoryEndPoint+"/api/Category/GetallCategories").
-    pipe(retry(3),catchError((error)=>this.genericApiHandlerService.handleError(error)));
-  }
+  getAll():Observable<ICategoryResponse>{
+    let url="http://localhost:5092/api/Category/GetallCategories";
+    return this.http.get<ICategoryResponse>(url).pipe(
+      retry(3),
+      );
 
-
-
-
-
-
-
-// ===========================================================================
-// ===========================================================================
-// ----------------------local URL -------------------------------------------
-// ===========================================================================
-// ===========================================================================
-
-
-
-
-
-
-
-  getAllCategories():Observable<ICategory[]>{
-    return this.http.get<ICategory[]>(this.categoryUrl).
-    pipe(retry(3),catchError((error)=>this.genericApiHandlerService.handleError(error)));
   }
 
-  deleteCategory(id:any):Observable<boolean>{
-    return this.http.delete<boolean>(this.categoryUrl+"/"+id).
-    pipe(catchError((error)=>this.genericApiHandlerService.handleError(error)));
+  getById(id:number):Observable<ICategoryResponse>{
+    let url="http://localhost:5092/api/Category/GetCategoryById?Id="+id;
+    return this.http.get<ICategoryResponse>(url).pipe(
+      retry(3),
+      );
   }
-  getCategoryById(id:number):Observable<ICategory>{
-    return this.http.get<ICategory>(this.categoryUrl+"/"+id)
-    .    pipe(retry(3),catchError((error)=>this.genericApiHandlerService.handleError(error)));
-  }  
-  
+
+   
 }

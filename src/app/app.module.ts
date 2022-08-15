@@ -13,7 +13,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { FooterModule } from 'src/footer/footer.module';
-import { AdminModule } from 'src/admin/admin.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddCategoryComponent } from 'src/admin/add-category/add-category.component';
 import { ShowCategoriesComponent } from 'src/admin/show-categories/show-categories.component';
@@ -21,7 +20,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddProductComponent } from 'src/admin/add-product/add-product.component';
-import { ShowDiscountsComponent } from 'src/admin/show-discounts/show-discounts.component';
 import { ShowProductsComponent } from 'src/admin/show-products/show-products.component';
 import { UProductsComponent } from './uproducts/uproducts.component';
 import { UProductDetailsComponent } from './uproduct-details/uproduct-details.component';
@@ -43,6 +41,12 @@ import { ProductsByProductNameComponent } from './home/products-by-product-name/
 import { ProductsByPriceComponent } from './home/products-by-price/products-by-price.component';
 import { HighLightBorderDirective } from 'src/helpers/customeDirective/high-light-border.directive';
 import { BeaShipperComponent } from './bea-shipper/bea-shipper.component';
+
+import { AdminModule } from 'src/admin/admin.module';
+import { PartnerModule } from 'src/partner/partner.module';
+import { PartnerLayoutComponent } from 'src/partner/partner-layout/partner-layout.component';
+import { UserModule } from 'src/user/user.module';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -77,16 +81,22 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductsByPartnerComponent,
     ProductsByProductNameComponent,
     ProductsByPriceComponent,
-    BeaShipperComponent
+
+    BeaShipperComponent,
+    ProductsByPriceComponent
+
+    
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    UserModule,
+    AdminModule,
+    PartnerModule,
     NavbarModule,
     HttpClientModule,
     FooterModule,
-    AdminModule,
     FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,

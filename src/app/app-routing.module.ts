@@ -43,6 +43,8 @@ const routes: Routes = [
   {path:"navbar",loadChildren:()=>import("../navbar/navbar.module").then(x=>x.NavbarModule)},
   {path:"footer",loadChildren:()=>import("../footer/footer.module").then(x=>x.FooterModule)},
   {path:'admin',loadChildren:()=>import("../admin/admin.module").then(m=>m.AdminModule)},
+  {path:'partner',loadChildren:()=>import("../partner/partner.module").then(m=>m.PartnerModule)},
+  {path:'user',loadChildren:()=>import("../user/user.module").then(m=>m.UserModule)},
   {path:"RegisterUser",component:RegisterUserComponent,pathMatch:"full"},
   {path:"LoginUser",component:LoginUserComponent,pathMatch:"full"},
   {path:"RegisterAdmin",
