@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ICategory } from 'src/helpers/interfaces/icategory';
 import { IProduct } from 'src/helpers/interfaces/iproduct';
 import { ISubCategory } from 'src/helpers/interfaces/isub-category';
+
 import { CategoryService } from 'src/helpers/services/category.service';
 import { ProductService } from 'src/helpers/services/product.service';
 import { SharedService } from 'src/helpers/services/shared.service';
@@ -14,20 +15,22 @@ import { SubCategoryService } from 'src/helpers/services/sub-category.service';
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.scss']
 })
-export class AddProductComponent implements OnInit,AfterViewInit {
-
+export class AddProductComponent implements OnInit {
   textDirection:string;
   language:string;
   updateProductWithId:number=-1;
-  productModel:IProduct={name:"",description:"",nameAr:"",descriptionAr:"",CategoryID:-1,discountID:null,quantity:"",isAvailable:true,partnerID:null,price:"",subCategoryID:-1,images:[]};
-  // allProducts:IProduct[]=[];
-  // allCategories:ICategory[]=[];
+  productModel:IProduct={name:"",Description:"",Name_Ar:"",Description_Ar:"",CategoryID:-1,Quantity:null,IsAvailable:true,Price:null,subcategoryID:-1,images:[]};
   allSubCategories:ISubCategory[]=[];
-  relatedSubCategories:ISubCategory[]=[];
   allCategories:ICategory[]=[];
+
+  relatedSubCategories:ISubCategory[]=[];
+  noSubCatRelatedToThisCategory:string="";
+  isSubCatSelectOptionHidden:boolean=true;
   ProductId:number=-1;
   errorMessage:string="";
   // goToAddCategoriesFirst:string=""
+    // allProducts:IProduct[]=[];
+   
   goToAddSubCategoriesFirst:string=""
   constructor(private location:Location,private activatedRoute:ActivatedRoute,
     private sharedService:SharedService, private router:Router,
@@ -42,26 +45,43 @@ export class AddProductComponent implements OnInit,AfterViewInit {
   }
 
   ngOnInit(): void {
-    // this.getAllCategories();
     // this.getAllProducts();
     this.getAllSubCategories();
     this.getAllCategories();
     this.ProductId  = this.getUrlParameter("id");
     // this.getSelectedProduct();
   }
-  ngAfterViewInit(): void {
+
+  getAllCategories(){
+    this.categoryService.getAll().subscribe(
+      (data)=>{
+        console.log(data);
+        this.allCategories = <ICategory[]>data;
+      },
+      (error)=>{
+        this.sharedService.showSnackBar(error,4000,'dangerSnackBar');
+      }
+    )
   }
   getAllSubCategories(){
-    this.subCategoryService.getAllSubCategories().subscribe(
-      data=>this.allSubCategories = data,
-    );
+    this.subCategoryService.getAll().subscribe(
+      (data)=>{
+        console.log(data);
+        this.allSubCategories = <ISubCategory[]>data.data;
+      },
+      (error)=>{
+        this.sharedService.showSnackBar(error,4000,'dangerSnackBar');
+      }
+    )
   }
-  noSubCatRelatedToThisCategory:string="";
-  isSubCatSelectOptionHidden:boolean=true;
+
   onChangeCategory(){
-     this.subCategoryService.getAllSubCategories().subscribe(
+     this.subCategoryService.getAll().subscribe(
       data=>{
-        this.relatedSubCategories = data.filter(c=>c.categoryId==this.productModel.CategoryID);
+        // this.relatedSubCategories = data.data.filter((c:ISubCategory)=>c.categoryId==this.productModel.CategoryID);
+        let allsubcats = <ISubCategory[]>data.data;
+        console.log(" 1- "+allsubcats);
+        this.relatedSubCategories = allsubcats.filter(x=>x.categoryId==this.productModel.CategoryID);
         if(this.relatedSubCategories.length==0){
           this.noSubCatRelatedToThisCategory = "No Sub Categories Related To this Category !";
           this.sharedService.showSnackBar(this.noSubCatRelatedToThisCategory,4000,'warningSnackBar');
@@ -71,11 +91,7 @@ export class AddProductComponent implements OnInit,AfterViewInit {
       }
      );
   }
-  getAllCategories(){
-    this.categoryService.getAllCategories().subscribe(
-      data=>this.allCategories = data,
-    );
-  }
+ 
   // getAllProducts(){
   //   this.productService.getAllProducts().subscribe(
   //     data=>this.allProducts = data,

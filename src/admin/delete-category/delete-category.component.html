@@ -1,4 +1,3 @@
-<p>delete-category works!</p>
 <div class="row">
     <div class="col-3"></div>
     <div [hidden]="errorMessage.length<=0" class="col-6">
@@ -13,23 +12,23 @@
     <div class="col-12 col-md-10">
         <div class="col-12">
             <div class="alert alert-danger text-center">
-                <strong>{{'category.areYouSureToDeleteSubCategory'|translate}} - {{subCategoryName}}</strong>
+                <strong>{{'category.areYouSureToDeleteCategory'|translate}} - {{CategoryName}}</strong>
               </div>
         </div>
         <div class="row mb-4">
             <div class="col-6">
                 <div class="card border-secondary minHeight">
-                    <div class="card-header">{{category.name}}</div>
+                    <div class="card-header">{{categoryModel.name}}</div>
                     <div class="card-body text-secondary">
-                        <p class="card-text">{{category.description}}</p>
+                        <p class="card-text">{{categoryModel.description}}</p>
                     </div>
                 </div>
             </div>
             <div class="col-6 rtl">
                 <div class="card border-secondary minHeight">
-                    <div class="card-header">{{category.nameAr}}</div>
+                    <div class="card-header">{{categoryModel.name_Ar}}</div>
                     <div class="card-body text-secondary">
-                        <p class="card-text">{{category.descriptionAr}}</p>
+                        <p class="card-text">{{categoryModel.description_Ar}}</p>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ICategory } from 'src/helpers/interfaces/icategory';
 import { ISubCategory } from 'src/helpers/interfaces/isub-category';
+
 import { CategoryService } from 'src/helpers/services/category.service';
 import { SharedService } from 'src/helpers/services/shared.service';
 import { SubCategoryService } from 'src/helpers/services/sub-category.service';
@@ -15,20 +16,7 @@ export class ShowSubCategoriesComponent implements OnInit {
   textDirection;
   subCategoriesList:ISubCategory[]=[];
   errorMessage:string="";
-  subCategoryName:string="";
-  categoriesList:ICategory[]=[];
-
-
-
-  
-  categoryId:any;
-  isShownSuccessAlert:boolean=false;
-  isShownErrorAlert:boolean=false;
-
-  getAllCategoryState:string="";
-  deleteState:string=""
-  isDeleted:boolean=false;
-
+ 
   constructor(private sharedService:SharedService,private categoryService:CategoryService,private subCatService:SubCategoryService) 
   {
     this.textDirection = this.sharedService.textDirection;
@@ -39,29 +27,20 @@ export class ShowSubCategoriesComponent implements OnInit {
   }
 
   getAllSubCategories(){
-    this.subCatService.getAllSubCategories().subscribe(
+    this.subCatService.getAll().subscribe(
       (data)=>{
-        this.subCategoriesList=data;
+        this.subCategoriesList=data.data;
       },
       (error)=>{
         this.errorMessage = error;
       }
     )
   }
-  
-
-  getItemNameInSelectedLang(id:any){
-    this.subCategoryName = (localStorage.getItem('lang')=="ar"?this.subCategoriesList.
-    find(x=>x.id==id)?.nameAr:this.subCategoriesList.find(x=>x.id==id)?.name)||"";
-    this.categoryId = id;
-  }
-
-  getAllCategories(){
-    this.categoryService.getAllCategories().subscribe(
-      (data)=>{
-        console.log(data);
-        this.categoriesList = data;
-      },
-    )
+ 
+  getImageName(img:string){
+    let url =  "http://localhost:5092/Images/SubCategory/"+img;
+    url=url.replace(" ","%20");
+    console.log(url);
+    return url;
   }
 }

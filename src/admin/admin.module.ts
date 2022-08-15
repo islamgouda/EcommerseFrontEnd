@@ -13,7 +13,6 @@ import { FormsModule } from '@angular/forms';
 import { ShowSubCategoriesComponent } from './show-sub-categories/show-sub-categories.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { DeleteSubCategoryComponent } from './delete-sub-category/delete-sub-category.component';
-import { DeleteCategoryComponent } from './delete-category/delete-category.component';
 import { AdminLandingPageComponent } from './admin-landing-page/admin-landing-page.component';
 import { DeletePartnerComponent } from './delete-partner/delete-partner.component';
 import { AddPartnerComponent } from './add-partner/add-partner.component';
@@ -22,6 +21,7 @@ import { DeleteDiscountComponent } from './delete-discount/delete-discount.compo
 import { ShowDiscountsComponent } from './show-discounts/show-discounts.component';
 import { DeleteProductComponent } from './delete-product/delete-product.component';
 import { AssignDisountToProductComponent } from './assign-disount-to-product/assign-disount-to-product.component';
+import { DeleteCategoryComponent } from './delete-category/delete-category.component';
 
 //adding to execute localization
 export function HttpLoaderFactory(http: HttpClient) {
@@ -35,9 +35,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddSubCategoryComponent,
     ShowSubCategoriesComponent,
     AddSubCategoryComponent,
-    DeleteSubCategoryComponent,
-    DeleteSubCategoryComponent,
     DeleteCategoryComponent,
+    DeleteSubCategoryComponent,
+    DeleteSubCategoryComponent,
     AdminLandingPageComponent,
     DeletePartnerComponent,
     AddPartnerComponent,
