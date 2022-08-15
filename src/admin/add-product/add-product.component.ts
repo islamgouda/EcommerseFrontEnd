@@ -66,22 +66,30 @@ export class AddProductComponent implements OnInit {
   getAllSubCategories(){
     this.subCategoryService.getAll().subscribe(
       (data)=>{
-        console.log(data);
-        this.allSubCategories = <ISubCategory[]>data.data;
+        console.log(<ISubCategory[]>data.data);
+        this.allSubCategories = data.data;
       },
       (error)=>{
         this.sharedService.showSnackBar(error,4000,'dangerSnackBar');
       }
     )
   }
+  file:[]=[];
+  formData:FormData=new FormData();
+  onfileChange(event:any){
+    this.file = event.target.files;
+    for (let i = 0; i < this.file.length; i++) {
+      this.formData.append("image"+i,this.file[i]);
+    }
+  }
+
 
   onChangeCategory(){
-     this.subCategoryService.getAll().subscribe(
+     this.subCategoryService.getByCategoryId(this.productModel.CategoryID).subscribe(
       data=>{
-        // this.relatedSubCategories = data.data.filter((c:ISubCategory)=>c.categoryId==this.productModel.CategoryID);
-        let allsubcats = <ISubCategory[]>data.data;
+        let allsubcats = data.data as ISubCategory[];
         console.log(" 1- "+allsubcats);
-        this.relatedSubCategories = allsubcats.filter(x=>x.categoryId==this.productModel.CategoryID);
+        this.relatedSubCategories = allsubcats;
         if(this.relatedSubCategories.length==0){
           this.noSubCatRelatedToThisCategory = "No Sub Categories Related To this Category !";
           this.sharedService.showSnackBar(this.noSubCatRelatedToThisCategory,4000,'warningSnackBar');
@@ -92,13 +100,16 @@ export class AddProductComponent implements OnInit {
      );
   }
  
-  // getAllProducts(){
-  //   this.productService.getAllProducts().subscribe(
-  //     data=>this.allProducts = data,
-  //   );
-  // }
-
   addNewProduct(){
+    this.formData.append("price",this.productModel.Price!.toString());
+    this.formData.append("",this.productModel.CategoryID.toString());
+    this.formData.append("",this.productModel.Description);
+    this.formData.append("",this.productModel.Description_Ar);
+    this.formData.append("",this.productModel.name);
+    this.formData.append("",this.productModel.Name_Ar);
+    this.formData.append("",this.productModel.Quantity!.toString());
+    
+    this.formData.append("",this.productModel.Name_Ar);
     this.productService.addNewProduct(this.productModel).subscribe(
       (data)=>{
         let language=localStorage.getItem("lang");
@@ -106,7 +117,7 @@ export class AddProductComponent implements OnInit {
         successMessage = language=="en"?`Product Added Successfully!`:
         `تم إضافة منتج جديد بنجاح !`;
         this.sharedService.showSnackBar(successMessage,3000,'successSnackBar');
-        this.router.navigate(["/admin/adminLayout/showProducts"]);
+        this.back();
       },
       (error)=>{
         this.sharedService.showSnackBar(error,3000,'dangerSnackBar');
@@ -159,16 +170,5 @@ export class AddProductComponent implements OnInit {
    }
 
 
-   ///////////////////////////////////////////////////////////////////////
-   images=[];
-   selectedImages=[];
-   onImagesSelected(event:any){
-    this.selectedImages = event.target.files;
-    console.log(event.target.files.length);
-  }   
-  onImagesUpload(){
-    let formData = new FormData();
-    for (let index = 0; index < this.selectedImages.length; index++) {      
-    }
-  }
+   
 }

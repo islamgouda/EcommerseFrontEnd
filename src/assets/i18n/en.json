@@ -157,6 +157,7 @@
     },
     "discount":{
         "allDiscounts":"All Sub Discounts",
+        "confirmDelete":"Confirm Delete",
         "discount":"Discount",
         "showAlldiscounts":"Show All Discounts",
         "addNewdiscount":"Add New Discount",
