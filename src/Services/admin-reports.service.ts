@@ -26,5 +26,17 @@ export class AdminReportsService {
   {
    return this.http.post('http://localhost:5092/api/Admin/CreatePartner',requestId);
   }
+  AddshipperbyRequest(requestId:number):Observable<any>
+  {
+   return this.http.post('http://localhost:5092/api/Admin/CreateShiperFromRequests',requestId);
+  }
+  ShowAllShippers():Observable<any>
+{
+ return this.http.get('http://localhost:5092/api/Shipper',{responseType:'json'});
+}  
+GetAllShipperRequests():Observable<any>
+{
+ return this.http.get('http://localhost:5092/api/Shipper/ShowAllRequests',{responseType:'json'});
+} 
 
 }

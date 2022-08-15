@@ -9,7 +9,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { LanguageInterceptor } from 'src/helpers/interceptors/language.interceptor';
 import { AddDiscountComponent } from './add-discount/add-discount.component';
 import { AddSubCategoryComponent } from './add-sub-category/add-sub-category.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShowSubCategoriesComponent } from './show-sub-categories/show-sub-categories.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { DeleteSubCategoryComponent } from './delete-sub-category/delete-sub-category.component';
@@ -22,6 +22,10 @@ import { DeleteDiscountComponent } from './delete-discount/delete-discount.compo
 import { ShowDiscountsComponent } from './show-discounts/show-discounts.component';
 import { DeleteProductComponent } from './delete-product/delete-product.component';
 import { AssignDisountToProductComponent } from './assign-disount-to-product/assign-disount-to-product.component';
+import { AddShipperComponent } from './add-shipper/add-shipper.component';
+import { ShowShipperComponent } from './show-shipper/show-shipper.component';
+import { AddRoleToUserComponent } from './add-role-to-user/add-role-to-user.component';
+import { RemoveRolefromUserComponent } from './remove-rolefrom-user/remove-rolefrom-user.component';
 
 //adding to execute localization
 export function HttpLoaderFactory(http: HttpClient) {
@@ -48,11 +52,16 @@ export function HttpLoaderFactory(http: HttpClient) {
     ShowDiscountsComponent,
     DeleteProductComponent,
     AssignDisountToProductComponent,
+    AddShipperComponent,
+    ShowShipperComponent,
+    AddRoleToUserComponent,
+    RemoveRolefromUserComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     //adding to execute localization
     TranslateModule.forRoot({
       loader: {
