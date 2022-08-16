@@ -17,11 +17,32 @@ export class ProductService {
    }
 
 
-   add(model:IProduct):Observable<IProductResponse>{
+   add(model:any){
     let url = "http://localhost:5092/api/Product";
-    return this.httpClient.post<IProductResponse>(url,model).pipe(
-      retry(3),
-    );
+    const request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+      if (request.readyState == XMLHttpRequest.DONE) {
+          alert(request.responseText);
+      }
+  }
+    let token = localStorage.getItem("token");
+    request.setRequestHeader("UserId",token!);
+    request.open("post", url);
+    request.send(model);
+    // // request.readyState
+    // console.log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
+    // console.log("onerror"+request.onerror);
+    // console.log("HEADERS_RECEIVED"+request.HEADERS_RECEIVED);
+    // console.log("onload"+request.onload);
+    // console.log("ontimeout"+request.ontimeout);
+    // console.log("onreadystatechange"+request.onreadystatechange);
+    // console.log("readyState"+request.readyState);
+    // console.log("done"+request.DONE);
+    // console.log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
+    return request.DONE;
+    // return this.httpClient.post<IProductResponse>(url,model).pipe(
+    //   retry(3),
+    // );
    }
 
    update(id:number,model:IProduct):Observable<IProductResponse>{

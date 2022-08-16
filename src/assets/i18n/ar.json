@@ -136,7 +136,8 @@
         "category":"الصنف",
         "subCategory":"الصنف الفرعى",
         "back":"العودة",
-        "confirmDelete":"تاكيد الحذف"
+        "confirmDelete":"تاكيد الحذف",
+        "isProductAvailable":"هل المنتج متوفر"
     },
     "admin":{
         "dashboard":"لوحة التــحكــم المشرف"
