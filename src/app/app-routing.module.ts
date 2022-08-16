@@ -5,6 +5,7 @@ import { LoginUserComponent } from './Authentication/login-user/login-user.compo
 import { RegisterAdminComponent } from './Authentication/register-admin/register-admin.component';
 import { RegisterUserComponent } from './Authentication/register-user/register-user.component';
 import { BeaPartnerComponent } from './bea-partner/bea-partner.component';
+import { BeaShipperComponent } from './bea-shipper/bea-shipper.component';
 import { CartComponent } from './cart/cart.component';
 import { CustomLayoutComponent } from './custom-layout/custom-layout.component';
 import { DefaultLayoutComponent } from './default-layout/default-layout.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
 
  {path:"userdash",component:UserDashboardComponent}, //userdashboardto requests
   {path:"bePartner",component:BeaPartnerComponent},
+  {path:"beShipper",component:BeaShipperComponent},
   {path:"",redirectTo: '/home', pathMatch: 'full'}, //deafualt page
   {path:'home',component:HomeComponent,children:[
     {path:"",component:AllProductsComponent},
@@ -41,6 +43,8 @@ const routes: Routes = [
   {path:"navbar",loadChildren:()=>import("../navbar/navbar.module").then(x=>x.NavbarModule)},
   {path:"footer",loadChildren:()=>import("../footer/footer.module").then(x=>x.FooterModule)},
   {path:'admin',loadChildren:()=>import("../admin/admin.module").then(m=>m.AdminModule)},
+  {path:'partner',loadChildren:()=>import("../partner/partner.module").then(m=>m.PartnerModule)},
+  {path:'user',loadChildren:()=>import("../user/user.module").then(m=>m.UserModule)},
   {path:"RegisterUser",component:RegisterUserComponent,pathMatch:"full"},
   {path:"LoginUser",component:LoginUserComponent,pathMatch:"full"},
   {path:"RegisterAdmin",

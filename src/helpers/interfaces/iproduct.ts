@@ -1,15 +1,20 @@
 export interface IProduct {
     id?:number;
     name:string;
-    nameAr:string;
-    description:string;
-    descriptionAr:string;
-    price:number|string;
-    isAvailable:boolean;
-    quantity?:number|string;
-    discountID?:number|null;
-    partnerID:number|null;
-    CategoryID:number|null;
-    subCategoryID:number;
-    images:any;
+    Name_Ar:string;
+    Description :string;
+    Description_Ar:string;
+    Price :number|null;
+    IsAvailable:boolean;
+    Quantity?:number|null;
+    discountID?:number;
+    partnerID?:number;
+    CategoryID :number;
+    subcategoryID :number;
+    images?:string[];
+}
+export interface IProductResponse{
+    success: boolean;
+    message:string;
+    data?:any;
 }

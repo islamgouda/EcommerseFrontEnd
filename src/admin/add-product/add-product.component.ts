@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ICategory } from 'src/helpers/interfaces/icategory';
 import { IProduct } from 'src/helpers/interfaces/iproduct';
 import { ISubCategory } from 'src/helpers/interfaces/isub-category';
+
 import { CategoryService } from 'src/helpers/services/category.service';
 import { ProductService } from 'src/helpers/services/product.service';
 import { SharedService } from 'src/helpers/services/shared.service';
@@ -14,20 +15,22 @@ import { SubCategoryService } from 'src/helpers/services/sub-category.service';
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.scss']
 })
-export class AddProductComponent implements OnInit,AfterViewInit {
-
+export class AddProductComponent implements OnInit {
   textDirection:string;
   language:string;
   updateProductWithId:number=-1;
-  productModel:IProduct={name:"",description:"",nameAr:"",descriptionAr:"",CategoryID:-1,discountID:null,quantity:"",isAvailable:true,partnerID:null,price:"",subCategoryID:-1,images:[]};
-  // allProducts:IProduct[]=[];
-  // allCategories:ICategory[]=[];
+  productModel:IProduct={name:"",Description:"",Name_Ar:"",Description_Ar:"",CategoryID:-1,Quantity:null,IsAvailable:true,Price:null,subcategoryID:-1,images:[]};
   allSubCategories:ISubCategory[]=[];
-  relatedSubCategories:ISubCategory[]=[];
   allCategories:ICategory[]=[];
+
+  relatedSubCategories:ISubCategory[]=[];
+  noSubCatRelatedToThisCategory:string="";
+  isSubCatSelectOptionHidden:boolean=true;
   ProductId:number=-1;
   errorMessage:string="";
   // goToAddCategoriesFirst:string=""
+    // allProducts:IProduct[]=[];
+   
   goToAddSubCategoriesFirst:string=""
   constructor(private location:Location,private activatedRoute:ActivatedRoute,
     private sharedService:SharedService, private router:Router,
@@ -42,26 +45,51 @@ export class AddProductComponent implements OnInit,AfterViewInit {
   }
 
   ngOnInit(): void {
-    // this.getAllCategories();
     // this.getAllProducts();
     this.getAllSubCategories();
     this.getAllCategories();
     this.ProductId  = this.getUrlParameter("id");
     // this.getSelectedProduct();
   }
-  ngAfterViewInit(): void {
+
+  getAllCategories(){
+    this.categoryService.getAll().subscribe(
+      (data)=>{
+        console.log(data);
+        this.allCategories = <ICategory[]>data;
+      },
+      (error)=>{
+        this.sharedService.showSnackBar(error,4000,'dangerSnackBar');
+      }
+    )
   }
   getAllSubCategories(){
-    this.subCategoryService.getAllSubCategories().subscribe(
-      data=>this.allSubCategories = data,
-    );
+    this.subCategoryService.getAll().subscribe(
+      (data)=>{
+        console.log(<ISubCategory[]>data.data);
+        this.allSubCategories = data.data;
+      },
+      (error)=>{
+        this.sharedService.showSnackBar(error,4000,'dangerSnackBar');
+      }
+    )
   }
-  noSubCatRelatedToThisCategory:string="";
-  isSubCatSelectOptionHidden:boolean=true;
+  file:[]=[];
+  formData:FormData=new FormData();
+  onfileChange(event:any){
+    this.file = event.target.files;
+    for (let i = 0; i < this.file.length; i++) {
+      this.formData.append("image"+i,this.file[i]);
+    }
+  }
+
+
   onChangeCategory(){
-     this.subCategoryService.getAllSubCategories().subscribe(
+     this.subCategoryService.getByCategoryId(this.productModel.CategoryID).subscribe(
       data=>{
-        this.relatedSubCategories = data.filter(c=>c.categoryId==this.productModel.CategoryID);
+        let allsubcats = data.data as ISubCategory[];
+        console.log(" 1- "+allsubcats);
+        this.relatedSubCategories = allsubcats;
         if(this.relatedSubCategories.length==0){
           this.noSubCatRelatedToThisCategory = "No Sub Categories Related To this Category !";
           this.sharedService.showSnackBar(this.noSubCatRelatedToThisCategory,4000,'warningSnackBar');
@@ -71,18 +99,17 @@ export class AddProductComponent implements OnInit,AfterViewInit {
       }
      );
   }
-  getAllCategories(){
-    this.categoryService.getAllCategories().subscribe(
-      data=>this.allCategories = data,
-    );
-  }
-  // getAllProducts(){
-  //   this.productService.getAllProducts().subscribe(
-  //     data=>this.allProducts = data,
-  //   );
-  // }
-
+ 
   addNewProduct(){
+    this.formData.append("price",this.productModel.Price!.toString());
+    this.formData.append("",this.productModel.CategoryID.toString());
+    this.formData.append("",this.productModel.Description);
+    this.formData.append("",this.productModel.Description_Ar);
+    this.formData.append("",this.productModel.name);
+    this.formData.append("",this.productModel.Name_Ar);
+    this.formData.append("",this.productModel.Quantity!.toString());
+    
+    this.formData.append("",this.productModel.Name_Ar);
     this.productService.addNewProduct(this.productModel).subscribe(
       (data)=>{
         let language=localStorage.getItem("lang");
@@ -90,7 +117,7 @@ export class AddProductComponent implements OnInit,AfterViewInit {
         successMessage = language=="en"?`Product Added Successfully!`:
         `تم إضافة منتج جديد بنجاح !`;
         this.sharedService.showSnackBar(successMessage,3000,'successSnackBar');
-        this.router.navigate(["/admin/adminLayout/showProducts"]);
+        this.back();
       },
       (error)=>{
         this.sharedService.showSnackBar(error,3000,'dangerSnackBar');
@@ -143,16 +170,5 @@ export class AddProductComponent implements OnInit,AfterViewInit {
    }
 
 
-   ///////////////////////////////////////////////////////////////////////
-   images=[];
-   selectedImages=[];
-   onImagesSelected(event:any){
-    this.selectedImages = event.target.files;
-    console.log(event.target.files.length);
-  }   
-  onImagesUpload(){
-    let formData = new FormData();
-    for (let index = 0; index < this.selectedImages.length; index++) {      
-    }
-  }
+   
 }

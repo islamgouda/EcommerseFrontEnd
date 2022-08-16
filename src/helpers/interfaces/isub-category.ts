@@ -1,19 +1,16 @@
+
 export interface ISubCategory {
     id?:number;
     name:string;
-    nameAr:string;
-    description:string;
-    descriptionAr:string;
-    image:string;
-    categoryId:number;
-}
-
-export interface I_SubCategory {
-    id?:number;
-    Name:string;
     arabicName:string;
-    Description:string;
+    description:string;
     arabicDescription:string;
-    CategoryId:any;
-    image:any;
+    categoryId:any;
+    categoryName?:string;
+    image?:any;
+}
+export interface ISubCategoryResponse{
+    success: boolean;
+    message: string;
+    data?:any;
 }

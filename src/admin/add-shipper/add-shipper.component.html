@@ -1,0 +1,22 @@
+<div class="container mt-3">
+    <h2>Requests Table</h2>
+    <p>The .table-bordered class adds borders on all sides of the table and the cells:</p>            
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Request Id</th>
+          <th>Name</th>
+          <th>officePhone</th>
+          <th>Add</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of AllRequests">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.officePhone}}</td>
+          <button type="button" (click)="AddShipper(item.id)" class="btn btn-warning">Add</button>
+        </tr>
+      </tbody>
+    </table>
+  </div>

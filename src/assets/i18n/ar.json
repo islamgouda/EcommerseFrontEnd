@@ -10,7 +10,8 @@
         "products": "المنتجات",
         "categories": "الأصناف",
         "contactUs":"تواصل معنا",
-        "admin":"لــوحة التــحكــم"
+        "admin":"لــوحة التــحكــم المشرف",
+        "partner":"لــوحة التــحكــم البائع"
     },
     "footer": {
         "suscribNow":"متابعة الآن",
@@ -35,6 +36,7 @@
         "categories":"الأصناف",
         "showAllCategories":"عرض كل الأصناف",
         "addNewCategory":"اضافة صنف جديد",
+        "areYouSureToDeleteCategory":"هل تريد حذف هذا الصنف :",
         "updateCategory":"تعديل صنف",
         "categoryNameInen":"الاسم بالانجليزى",
         "categoryNameInar":"الاسم بالعربى",
@@ -137,17 +139,26 @@
         "confirmDelete":"تاكيد الحذف"
     },
     "admin":{
-        "dashboard":"لوحة التــحكــم"
+        "dashboard":"لوحة التــحكــم المشرف"
     },
     "partner":{
+        "dashboard":"لوحة تــحكــم البائع",
+        "ok":"حسنا",
         "partners":"البائعين",
         "showAllPartners":"عرض كل البائعين",
         "addNewPartner":"اضافة بائع جديد"
     },
+    "user":{
+        "userPannel":"لوحة المستخدم",
+        "dashboard":"لوحة التــحكــم المستخدم",
+        "anyThning":"اكتب اى لنك"
+    }
+    ,
     "discount":{
         "allDiscounts":"الخصومــات",
         "discount":"الخصم",
         "showAlldiscounts":"عرض جميع الخصومات",
+        "confirmDelete":"تاكيد الحذف",
         "addNewdiscount":"انشاء خصم",
         "updateDiscount":"تحديث خصم",
         "discountNameInen":"اسم الخصم بالانجليزىة",

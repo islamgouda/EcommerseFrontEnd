@@ -21,13 +21,13 @@
             <div class="col-12 col-md-12">
                 <div class="card text-center">
                     <div class="card-header text-white" [style.backgroundColor]="activeStatuscolor">
-                        {{activeStatusTransform(discountModel.isActive)}}
+                        {{activeStatusTransform(discountModel.active)}}
                     </div>
                     <div class="card-body">
                         <h5 class="card-title" *ngIf="isEnglishLang">{{discountModel.name}}</h5>
-                        <h5 class="card-title" *ngIf="!isEnglishLang">{{discountModel.nameAr}}</h5>
+                        <h5 class="card-title" *ngIf="!isEnglishLang">{{discountModel.name_Ar}}</h5>
                         <p class="card-text" *ngIf="isEnglishLang">{{discountModel.description}}</p>
-                        <p class="card-text" *ngIf="!isEnglishLang">{{discountModel.descriptionAr}}</p>
+                        <p class="card-text" *ngIf="!isEnglishLang">{{discountModel.description_Ar}}</p>
                     </div>
                     <div class="card-footer text-muted">
                         <div class="row">
@@ -35,7 +35,7 @@
                                 {{discountModel.startTime}}
                             </div>
                             <div class="col-2 fs-3 text-dark">
-                                {{discountModel.discountPercent|percent}}
+                                {{discountModel.descount_Persent|percent}}
                             </div>
                             <div class="col-5">
                                 {{discountModel.endTime}}
@@ -46,7 +46,7 @@
                 <div class="row mt-3">
                     <div class="col-12 col-md-0"></div>
                     <div class="col-12 col-md-5">
-                        <a (click)="confirmDeleteDiscount()" class="btn form-control btn-outline-danger">{{'discount.delete'|translate}}</a>
+                        <a (click)="confirmDeleteDiscount()" class="btn form-control btn-outline-danger">{{'discount.confirmDelete'|translate}}</a>
                     </div>
                     <div class="col-12 col-md-2"></div>
                     <div class="col-12 col-md-5">

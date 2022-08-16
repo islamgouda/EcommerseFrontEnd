@@ -1,0 +1,45 @@
+<p>role to user </p>
+<form class="mx-1 mx-md-4" [formGroup]="Assignform" (ngSubmit)="assign()" >
+  
+                   
+  
+    <div class="d-flex flex-row align-items-center mb-4">
+      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+      <div class="form-outline flex-fill mb-0">
+        <input type="email"  name="email" formControlName="email" class="form-control" [class.is-invalid]="Assignform.get('email')?.invalid&&Assignform.get('email')?.touched" >
+        <label class="form-label" for="form3Example3c">User Email</label>
+        <div *ngIf="Assignform.get('email')?.errors &&Assignform.get('email')?.touched" >
+          <small class="text-danger" *ngIf="Assignform.get('email')?.errors?.['required']" >Email Is Required</small>
+        </div>
+      </div>
+
+    </div>
+    <div class="d-flex flex-row align-items-center mb-4">
+        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+        <div class="form-outline flex-fill mb-0">
+        <select class="form-control" formControlName="roleName" name="roleName" formControlName="roleName">
+            <option value="none" selected disabled hidden>Select a Role</option>
+            <option value="Admin">Admin</option>
+            <option value="SubAdmin">SubAdmin</option>
+            <option value="Shiper">Shiper</option>
+            <option value="Partener">Partener</option>
+        </select>
+        </div>
+    </div>
+    
+  
+
+    <!-- <div class="d-flex flex-row align-items-center mb-4">
+      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+      <div class="form-outline flex-fill mb-0">
+        <input type="rolename" id="form3Example4c"name="rolename" class="form-control" />
+        <label class="form-label" for="form3Example4c">Role Name</label>
+      </div>
+    </div> -->
+    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+    <button  type="submit" [disabled]="Assignform.invalid" class="btn btn-warning btn-lg">Assign</button>
+    </div>
+    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+    <small  class="text-info">{{ResponseMessage.message}}</small>
+  </div>
+  </form>

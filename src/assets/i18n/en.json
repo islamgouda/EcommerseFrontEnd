@@ -9,7 +9,8 @@
     "products":"Products",
     "categories":"Categories",
     "contactUs":"Contact Us",
-    "admin":"Admin Pannel"
+    "admin":"Admin Pannel",
+    "partner":"Partner Pannel"
     },
     "footer":{
         "suscribNow":"Suscrib Now",
@@ -35,6 +36,7 @@
         "showAllCategories":"Show All Categories",
         "addNewCategory":"Add New Category",
         "updateCategory":"Update Category",
+        "areYouSureToDeleteCategory":"Are You Sure You Want To Delete Category : ",
         "categoryNameInen":"Category Name In English",
         "categoryNameInar":"Category Name In Arabic",
         "categoryDescriptionInen":"Category Description In English",
@@ -143,11 +145,19 @@
     },
     "partner":{
         "partners":"Partners",
+        "ok":"OK",
+        "dashboard":"Partner Dashboard",
         "showAllPartners":"Show All Partners",
         "addNewPartner":"Add New Partner"
     },
+    "user":{
+        "userPannel":"User Pannel",
+        "dashboard":"User Dashboard",
+        "anyThning":"Any Link"
+    },
     "discount":{
         "allDiscounts":"All Sub Discounts",
+        "confirmDelete":"Confirm Delete",
         "discount":"Discount",
         "showAlldiscounts":"Show All Discounts",
         "addNewdiscount":"Add New Discount",

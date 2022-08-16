@@ -1,11 +1,16 @@
 export interface IDiscount {
     id?:number;
     name:string;
-    nameAr:string;
+    name_Ar:string;
     description:string;
-    descriptionAr:string;
-    discountPercent:any;
-    isActive:boolean;
+    description_Ar:string;
+    descount_Persent:any;
+    active:boolean;
     startTime:Date;
     endTime:Date;
+}
+export interface IDiscountResponse{
+    succcess :boolean;
+    data?:IDiscount|IDiscount[]|string;
+    message:string;
 }

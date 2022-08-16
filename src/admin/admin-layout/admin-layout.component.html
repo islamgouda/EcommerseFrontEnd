@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="row mt-4">
+    <div class="row mt-4" [class]="textDirection">
     <div class="col-12 col-md-3 ">
             <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#category" aria-expanded="false" aria-controls="collapseExample">
                  {{'category.categories'|translate}}
@@ -40,6 +40,20 @@
             <div  id="partners" class="mt-2 collapse">
                 <a routerLink="/admin/adminLayout/showAllPartners" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'partner.showAllPartners'|translate}}</a>
                 <a routerLink="/admin/adminLayout/addNewPartner" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'partner.addNewPartner'|translate}}</a>
+            </div>
+            <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#Shippers" aria-expanded="false" aria-controls="collapseExample">
+                {{'Shipper'|translate}}
+            </button>
+            <div  id="Shippers" class="mt-2 collapse">
+                <a routerLink="/admin/adminLayout/showallshippers" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'AllShippers'|translate}}</a>
+                <a routerLink="/admin/adminLayout/addshipper" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'addNewShipper'|translate}}</a>
+            </div>
+            <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#Roles" aria-expanded="false" aria-controls="collapseExample">
+                {{'Roles'|translate}}
+            </button>
+            <div  id="Roles" class="mt-2 collapse">
+                <a routerLink="/admin/adminLayout/AddToRole" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'AddToRole'|translate}}</a>
+                <a routerLink="/admin/adminLayout/RemoveFromRole" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'RemoveFromRole'|translate}}</a>
             </div>
 
     </div>

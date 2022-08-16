@@ -41,10 +41,12 @@ export class NavbarComponent implements OnInit {
 
     localStorage.removeItem('token');
     localStorage.removeItem('expiration');
-    this.router.navigate(['']).then(()=>{
-      window.location.reload();
+    this.router.navigate(['LoginUser']);//Edit By Ataa
+    
+    //.then(()=>{
+      //window.location.reload();
 
-     })
+     //})
 
 
   }
