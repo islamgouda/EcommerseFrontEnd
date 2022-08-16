@@ -16,7 +16,7 @@
                       <label class="form-label" for="form3Example1c">Your First Name</label>
                       <input type="text" id="form3Example1c" [class.is-invalid]="registrationForm.get('firstName')?.invalid&&registrationForm.
                         get('firstName')?.touched" [(ngModel)]="userregister.firstName" formControlName="firstName"
-                        class="form-control" />
+                        class="form-control" placeholder=" Enter your First Name" />
 
                       <div *ngIf="registrationForm.
                         get('firstName')?.invalid&&registrationForm.get('firstName')?.touched">
@@ -37,7 +37,7 @@
                       <label class="form-label" for="form3Example1c">Your Last Name</label>
                       <input type="text" id="form3Example1c" [class.is-invalid]="registrationForm.get('lastName')?.invalid&&registrationForm.
                         get('lastName')?.touched" [(ngModel)]="userregister.lastName" formControlName="lastName"
-                        class="form-control" />
+                        class="form-control" placeholder=" Enter your Last Name" />
 
                       <div *ngIf="registrationForm.
                         get('lastName')?.invalid&&registrationForm.get('lastName')?.touched">
@@ -61,7 +61,7 @@
                       <label class="form-label" for="form3Example1c">Your User Name</label>
                       <input type="text" id="form3Example1c" [class.is-invalid]="registrationForm.get('username')?.invalid&&registrationForm.
                         get('username')?.touched" [(ngModel)]="userregister.username" formControlName="username"
-                        class="form-control" />
+                        class="form-control"  placeholder="Enter UserName"/>
 
                       <div *ngIf="registrationForm.
                         get('username')?.invalid&&registrationForm.get('username')?.touched">
@@ -181,7 +181,7 @@
                       <label class="form-label" for="form3Example1c">Your Phone Number</label>
                       <input type="tel" id="form3Example1c" [class.is-invalid]="registrationForm.get('phone')?.invalid&&registrationForm.
                         get('phone')?.touched" [(ngModel)]="userregister.phone" formControlName="phone"
-                        class="form-control" />
+                        class="form-control" placeholder="Enter your Phone" />
 
                       <div *ngIf="registrationForm.
                         get('phone')?.invalid&&registrationForm.get('phone')?.touched">
