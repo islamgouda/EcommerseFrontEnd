@@ -92,7 +92,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     UserModule,
-    AdminModule,
     PartnerModule,
     NavbarModule,
     HttpClientModule,

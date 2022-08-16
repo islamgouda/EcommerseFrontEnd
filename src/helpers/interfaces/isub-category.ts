@@ -7,7 +7,7 @@ export interface ISubCategory {
     arabicDescription:string;
     categoryId:any;
     categoryName?:string;
-    image?:string;
+    image?:any;
 }
 export interface ISubCategoryResponse{
     success: boolean;
