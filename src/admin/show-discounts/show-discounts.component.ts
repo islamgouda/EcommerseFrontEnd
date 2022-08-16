@@ -56,7 +56,8 @@ export class ShowDiscountsComponent implements OnInit {
   getAlldiscounts(){
     this.discountService.getAllDiscounts().subscribe(
       (data)=>{
-        this.discountsList=data;
+        this.discountsList=data.data as IDiscount[];
+        console.log(this.discountsList)
       },
       (error)=>{
         this.errorMessage = error;

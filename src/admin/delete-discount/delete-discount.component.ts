@@ -13,7 +13,7 @@ import { SharedService } from 'src/helpers/services/shared.service';
 export class DeleteDiscountComponent implements OnInit {
 
   textDirection:string="";
-  discountModel:IDiscount={name:"",description:"",nameAr:"",descriptionAr:"",discountPercent:"",endTime:new Date(),startTime:new Date,isActive:false};
+  discountModel:IDiscount={name:"",description:"",name_Ar:"",description_Ar:"",descount_Persent:"",endTime:new Date(),startTime:new Date,active:false};
   errorMessage:string="";
   discountName:string="";
   discountID:number=-1;
@@ -43,8 +43,8 @@ export class DeleteDiscountComponent implements OnInit {
    getSelectedDiscount(){
     this.discountService.getDiscountById(this.discountID).subscribe(
       (data)=>{
-        this.discountModel = data;
-        this.discountName = this.textDirection=='rtl'?data.nameAr:data.name;
+        this.discountModel = data.data as IDiscount;
+        this.discountName = this.textDirection=='rtl'?this.discountModel.name_Ar:this.discountModel.name;
       },
       (error)=>this.errorMessage = error
     )
@@ -54,13 +54,14 @@ export class DeleteDiscountComponent implements OnInit {
     let deleteFailerMessage = this.textDirection=="ltr"?"Can not Delete Sub Category !":"لم تتم عملية الحذف ";
     this.discountService.deteleDiscount(this.discountID).subscribe(
      (res)=>{
-      if(res){
-        this.sharedservice.showSnackBar(deleteSuccessMessage,4000,'successSnackBar');
-      }else{
-        this.sharedservice.showSnackBar(deleteSuccessMessage,4000,'dangerSnackBar');
-      }
+      this.sharedservice.showSnackBar(deleteSuccessMessage,4000,'successSnackBar');
+      // if(res.succcess){
+      //   this.sharedservice.showSnackBar(deleteSuccessMessage,4000,'successSnackBar');
+      // }else{
+      //   this.sharedservice.showSnackBar(deleteSuccessMessage +" - "+res.message,4000,'dangerSnackBar');
+      // }
      },
-     (error)=>this.sharedservice.showSnackBar(error,4000,'dangerSnackBar')
+     (error)=>this.sharedservice.showSnackBar(deleteFailerMessage+" - "+error+" - the discount foreign Key in Product !",4000,'dangerSnackBar')
     )
     this.location.back();
   }

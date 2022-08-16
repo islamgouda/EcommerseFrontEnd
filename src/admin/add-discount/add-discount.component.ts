@@ -15,7 +15,7 @@ export class AddDiscountComponent implements OnInit {
   textDirection:string;
   language:string;
   // updateDiscountWithId:number = -1;
-  discountModel:IDiscount={name:"",description:"",nameAr:"",descriptionAr:"",discountPercent:"",endTime:new Date(),startTime:new Date,isActive:false};
+  discountModel:IDiscount={name:"",description:"",name_Ar:"",description_Ar:"",descount_Persent:"",endTime:new Date(),startTime:new Date,active:false};
   discountID:number=-1;
   errorMessage:string="";
   constructor(private location:Location,private activatedRoute:ActivatedRoute,private sharedService:SharedService, private router:Router,private discountService:DiscountService) { 
@@ -80,13 +80,13 @@ export class AddDiscountComponent implements OnInit {
     return parameter;
   }
    getSelectedDiscount(){
-    this.discountService.getDiscountById(this.discountID).subscribe(
-      (data)=>{
-        this.discountModel = data;
-        //this.subCategoryName = this.textDirection=='rtl'?data.nameAr:data.name;
-      },
-      (error)=>this.errorMessage = error
-    )
+    // this.discountService.getDiscountById(this.discountID).subscribe(
+    //   (data.data)=>{
+    //     this.discountModel = data;
+    //     //this.subCategoryName = this.textDirection=='rtl'?data.nameAr:data.name;
+    //   },
+    //   (error)=>this.errorMessage = error
+    // )
    }
 
 
