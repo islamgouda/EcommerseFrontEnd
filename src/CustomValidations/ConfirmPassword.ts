@@ -9,8 +9,7 @@ export function ConfirmPasswordValidator(control: AbstractControl)
     }
    
  
- return password && confirmPassword 
- && password.value !== confirmPassword.value
+ return password && confirmPassword && password.value !== confirmPassword.value
  ? { 'misMatch': true }
  : null;
  }

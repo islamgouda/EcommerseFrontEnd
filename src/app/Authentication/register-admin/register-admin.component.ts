@@ -12,40 +12,13 @@ import { UserRegister } from 'src/helpers/interfaces/UserRegister';
   styleUrls: ['./register-admin.component.scss']
 })
 export class RegisterAdminComponent implements OnInit {
- //New Update By Ataa
-
-
-
-//handle Gender
-handleMaleChange(evt:any) {
-  var target = evt.target;
-  if (target.checked) {
-    this.userregister.gender = "Male";
-  } 
-}
-
-handleFemaleChange(evt:any) {
-  var target = evt.target;
-  if (target.checked) {
-    this.userregister.gender = "Female";
-  }
-}
-
-
-
-
-
-
+ 
   url:string='http://localhost:5092/api/Authentication/Register';
   loginUrl:string='http://localhost:5092/api/Authentication/login';
 
-  userregister:UserRegister={username:"",email:"",password:"",confirmPassword:"",
-  firstName:"",lastName:"",phone:"",gender:"Male",birthDate:new Date()};
-
+  userregister:UserRegister={username:"",email:"",password:"",confirmPassword:""};
   responseData:any;
   userlogin:UserLogin={email:"",password:""};
-
-
 
   constructor(private http:HttpClient,
 
@@ -53,21 +26,11 @@ handleFemaleChange(evt:any) {
 
     registrationForm = this.fb.group(
       {
-        username:['',[Validators.required]],
+        username:['',[Validators.required,Validators.pattern('[a-zA-Z]+')]],
      email:['',[Validators.required,Validators.
       pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
        password:['',Validators.required],
-     confirmPassword:['',Validators.required],
-    
-    //New Added
-     firstName:['',[Validators.required]],
-     lastName:['',[Validators.required]],
-     gender:['',[Validators.required]],
-     phone:['',[Validators.required]],
-     birthDate:['',[Validators.required]],
-
-    },
-    
+     confirmPassword:['',Validators.required] },
       
       {validator:[ConfirmPasswordValidator]}
       
@@ -102,7 +65,7 @@ handleFemaleChange(evt:any) {
     this.http.post<UserRegister>(this.url,this.userregister)
     .subscribe(()=>{
       this.login();
-      this.router.navigate(['home']);
+      this.router.navigate(['discounts']);
     },
     (error)=>console.log(error)
     );
