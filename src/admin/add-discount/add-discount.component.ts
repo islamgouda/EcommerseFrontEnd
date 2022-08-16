@@ -49,6 +49,9 @@ export class AddDiscountComponent implements OnInit {
     let updatedFailure = this.textDirection=='rtl'?"! لم يتم تعديل الخصم":"Dicount does not Updated  !";
     this.discountService.updateDiscount(this.discountID,this.discountModel).subscribe(
       (res)=>{
+        console.log(res.message)
+        console.log(res.succcess)
+        console.log(res.data)
         if(res){
           this.sharedService.showSnackBar(updatedSuccessfully,4000,'successSnackBar');
         }else{

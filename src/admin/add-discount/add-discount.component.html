@@ -7,92 +7,93 @@
 </div> -->
 <!-- <div class="row" [hidden]="allCategories.length<=0"> -->
     <!-- {{discountModel|json}} -->
-<!-- <div class="row">
-    <div class="col-12 col-md-2"></div>
-    <div class="col-12 col-md-8" [class]="textDirection">
-        <h3 [hidden]="discountID>0" class="shadow bg-light text-dark text-center fs-4 p-2 rounded-pill">{{'discount.addNewdiscount'|translate}}</h3>
-        <h3 [hidden]="discountID<=0" class="shadow bg-light text-dark text-center fs-4 p-2 rounded-pill">{{'discount.updateDiscount'|translate}}</h3>
-        <form #discountForm="ngForm" (ngSubmit)="saveDiscount()">
-            <div class="form-group mt-5">
-                <label for="name" class="mb-1">{{'discount.discountNameInen'|translate}}</label>
-                <input type="text" pattern="[a-zA-Z 0-9]{2,100}" #name="ngModel" required [class.validInput]="name.valid" [class.invalidInput]="name.invalid && name.touched"  id="name" name="name" [(ngModel)]="discountModel.name" class="form-control">
-                <div class="text-danger" *ngIf="name.invalid && name.touched">
-                    <small class="text-danger" *ngIf="name.errors!['required']">{{'discount.nameRequiredError'|translate}}</small>
-                    <small class="text-danger" *ngIf="name.errors!['pattern']">{{'discount.namepatternErrorEn'|translate}}</small>
+    <div class="row">
+        <div class="col-12 col-md-2"></div>
+        <div class="col-12 col-md-8" [class]="textDirection">
+            <h3 [hidden]="discountID>0" class="shadow bg-light text-dark text-center fs-4 p-2 rounded-pill">{{'discount.addNewdiscount'|translate}}</h3>
+            <h3 [hidden]="discountID<=0" class="shadow bg-light text-dark text-center fs-4 p-2 rounded-pill">{{'discount.updateDiscount'|translate}}</h3>
+            <form #discountForm="ngForm" (ngSubmit)="saveDiscount()">
+                <div class="form-group mt-5">
+                    <label for="name" class="mb-1">{{'discount.discountNameInen'|translate}}</label>
+                    <input type="text" pattern="[a-zA-Z 0-9]{2,100}" #name="ngModel" required [class.validInput]="name.valid" [class.invalidInput]="name.invalid && name.touched"  id="name" name="name" [(ngModel)]="discountModel.name" class="form-control">
+                    <div class="text-danger" *ngIf="name.invalid && name.touched">
+                        <small class="text-danger" *ngIf="name.errors!['required']">{{'discount.nameRequiredError'|translate}}</small>
+                        <small class="text-danger" *ngIf="name.errors!['pattern']">{{'discount.namepatternErrorEn'|translate}}</small>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group mt-2">
-                <label for="nameAr" class="mb-1">{{'discount.discountNameInar'|translate}}</label>
-                <input type="text" pattern="[أ-ي 0-9]{2,100}" #nameAr="ngModel" required [class.validInput]="nameAr.valid" [class.invalidInput]="nameAr.invalid && nameAr.touched"  id="nameAr" name="nameAr" [(ngModel)]="discountModel.nameAr" class="form-control">
-                <div class="text-danger" *ngIf="nameAr.invalid && nameAr.touched">
-                    <small class="text-danger" *ngIf="nameAr.errors!['required']">{{'discount.nameRequiredError'|translate}}</small>
-                    <small class="text-danger" *ngIf="nameAr.errors!['pattern']">{{'discount.namepatternErrorAr'|translate}}</small>
+                <div class="form-group mt-2">
+                    <label for="name_Ar" class="mb-1">{{'discount.discountNameInar'|translate}}</label>
+                    <input type="text" pattern="[أ-ي 0-9]{2,100}" #name_Ar="ngModel" required [class.validInput]="name_Ar.valid" [class.invalidInput]="name_Ar.invalid && name_Ar.touched"  id="name_Ar" name="name_Ar" [(ngModel)]="discountModel.name_Ar" class="form-control">
+                    <div class="text-danger" *ngIf="name_Ar.invalid && name_Ar.touched">
+                        <small class="text-danger" *ngIf="name_Ar.errors!['required']">{{'discount.nameRequiredError'|translate}}</small>
+                        <small class="text-danger" *ngIf="name_Ar.errors!['pattern']">{{'discount.namepatternErrorAr'|translate}}</small>
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group mt-2">
-                <label for="descriptionEn" class="mb-1">{{'discount.discountDescriptionInen'|translate}}</label>
-                <input type="text" pattern="[a-zA-Z 0-9]{10,100}" #descriptionEn="ngModel" required [class.validInput]="descriptionEn.valid" [class.invalidInput]="descriptionEn.invalid && descriptionEn.touched"  id="descriptionEn" name="descriptionEn" [(ngModel)]="discountModel.description" class="form-control">
-                <div class="text-danger" *ngIf="descriptionEn.invalid && descriptionEn.touched">
-                    <small class="text-danger" *ngIf="descriptionEn.errors!['required']">{{'discount.descriptionRequiredError'|translate}}</small>
-                    <small class="text-danger" *ngIf="descriptionEn.errors!['pattern']">{{'discount.descriptionpatternErrorEn'|translate}}</small>
+    
+                <div class="form-group mt-2">
+                    <label for="descriptionEn" class="mb-1">{{'discount.discountDescriptionInen'|translate}}</label>
+                    <input type="text" pattern="[a-zA-Z 0-9]{10,100}" #descriptionEn="ngModel" required [class.validInput]="descriptionEn.valid" [class.invalidInput]="descriptionEn.invalid && descriptionEn.touched"  id="descriptionEn" name="descriptionEn" [(ngModel)]="discountModel.description" class="form-control">
+                    <div class="text-danger" *ngIf="descriptionEn.invalid && descriptionEn.touched">
+                        <small class="text-danger" *ngIf="descriptionEn.errors!['required']">{{'discount.descriptionRequiredError'|translate}}</small>
+                        <small class="text-danger" *ngIf="descriptionEn.errors!['pattern']">{{'discount.descriptionpatternErrorEn'|translate}}</small>
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group mt-2">
-                <label for="descriptionAr" class="mb-1">{{'discount.discountDescriptionInar'|translate}}</label>
-                <input type="text" pattern="[أ-ي 0-9]{10,100}" #descriptionAr="ngModel" required [class.validInput]="descriptionAr.valid" [class.invalidInput]="descriptionAr.invalid && descriptionAr.touched"  id="descriptionAr" name="descriptionAr" [(ngModel)]="discountModel.descriptionAr" class="form-control">
-                <div class="text-danger" *ngIf="descriptionAr.invalid && descriptionAr.touched">
-                    <small class="text-danger" *ngIf="descriptionAr.errors!['required']">{{'discount.descriptionRequiredError'|translate}}</small>
-                    <small class="text-danger" *ngIf="descriptionAr.errors!['pattern']">{{'discount.descriptionpatternErrorAr'|translate}}</small>
+    
+                <div class="form-group mt-2">
+                    <label for="descriptionAr" class="mb-1">{{'discount.discountDescriptionInar'|translate}}</label>
+                    <input type="text" pattern="[أ-ي 0-9]{10,100}" #description_Ar="ngModel" required [class.validInput]="description_Ar.valid" [class.invalidInput]="description_Ar.invalid && description_Ar.touched"  id="descriptionAr" name="description_Ar" [(ngModel)]="discountModel.description_Ar" class="form-control">
+                    <div class="text-danger" *ngIf="description_Ar.invalid && description_Ar.touched">
+                        <small class="text-danger" *ngIf="description_Ar.errors!['required']">{{'discount.descriptionRequiredError'|translate}}</small>
+                        <small class="text-danger" *ngIf="description_Ar.errors!['pattern']">{{'discount.descriptionpatternErrorAr'|translate}}</small>
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group mt-2">
-                <label for="discountPercent" class="mb-1">{{'discount.discountPercent'|translate}}</label>
-                <input type="text" pattern="[0-9.]{1,7}" #discountPercent="ngModel" required [class.validInput]="discountPercent.valid" [class.invalidInput]="discountPercent.invalid && discountPercent.touched"  id="discountPercent" name="discountPercent" [(ngModel)]="discountModel.discountPercent" class="form-control">
-                <div class="text-danger" *ngIf="discountPercent.invalid && discountPercent.touched">
-                    <small class="text-danger" *ngIf="discountPercent.errors!['required']">{{'discount.discountPercentRequiredError'|translate}}</small>
-                    <small class="text-danger" *ngIf="discountPercent.errors!['pattern']">{{'discount.discountPercentpatternError'|translate}}</small>
+    
+                <div class="form-group mt-2">
+                    <label for="descount_Persent" class="mb-1">{{'discount.descount_Persent'|translate}}</label>
+                    <input type="text" pattern="[0-9.]{1,7}" #descount_Persent="ngModel" required [class.validInput]="descount_Persent.valid" [class.invalidInput]="descount_Persent.invalid && descount_Persent.touched"  id="descount_Persent" name="descount_Persent" [(ngModel)]="discountModel.descount_Persent" class="form-control">
+                    <div class="text-danger" *ngIf="descount_Persent.invalid && descount_Persent.touched">
+                        <small class="text-danger" *ngIf="descount_Persent.errors!['required']">{{'discount.discountPercentRequiredError'|translate}}</small>
+                        <small class="text-danger" *ngIf="descount_Persent.errors!['pattern']">{{'discount.discountPercentpatternError'|translate}}</small>
+                    </div>
                 </div>
-            </div>
-
-
-            <div class="form-group mt-2">
-                <label for="startTime" class="mb-1">{{'discount.startTime'|translate}}</label>
-                <input type="date" pattern="[0-9-/]{8,10}"  #startTime="ngModel" required [class.validInput]="startTime.valid" [class.invalidInput]="startTime.invalid && startTime.touched"  id="startTime" name="startTime" [(ngModel)]="discountModel.startTime" class="form-control">
-                <div class="text-danger" *ngIf="startTime.invalid && startTime.touched">
-                    <small class="text-danger" *ngIf="startTime.errors!['required']">{{'discount.startTimeRequiredError'|translate}}</small>
-                    <small class="text-danger" *ngIf="startTime.errors!['pattern']">{{'discount.startTimePatternError'|translate}}</small>
+    
+    
+                <div class="form-group mt-2">
+                    <label for="startTime" class="mb-1">{{'discount.startTime'|translate}}</label>
+                    <input type="date" pattern="[0-9-/]{8,10}"  #startTime="ngModel" required [class.validInput]="startTime.valid" [class.invalidInput]="startTime.invalid && startTime.touched"  id="startTime" name="startTime" [(ngModel)]="discountModel.startTime" class="form-control">
+                    <div class="text-danger" *ngIf="startTime.invalid && startTime.touched">
+                        <small class="text-danger" *ngIf="startTime.errors!['required']">{{'discount.startTimeRequiredError'|translate}}</small>
+                        <small class="text-danger" *ngIf="startTime.errors!['pattern']">{{'discount.startTimePatternError'|translate}}</small>
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group mt-2">
-                <label for="endTime" class="mb-1">{{'discount.endTime'|translate}}</label>
-                <input type="date" pattern="[0-9-/]{8,10}"  #endTime="ngModel" required [class.validInput]="endTime.valid" [class.invalidInput]="endTime.invalid && endTime.touched"  id="endTime" name="endTime" [(ngModel)]="discountModel.endTime" class="form-control">
-                <div class="text-danger" *ngIf="endTime.invalid && endTime.touched">
-                    <small class="text-danger" *ngIf="endTime.errors!['required']">{{'discount.endTimeRequiredError'|translate}}</small>
-                    <small class="text-danger" *ngIf="endTime.errors!['pattern']">{{'discount.endTimePatternError'|translate}}</small>
+    
+                <div class="form-group mt-2">
+                    <label for="endTime" class="mb-1">{{'discount.endTime'|translate}}</label>
+                    <input type="date" pattern="[0-9-/]{8,10}"  #endTime="ngModel" required [class.validInput]="endTime.valid" [class.invalidInput]="endTime.invalid && endTime.touched"  id="endTime" name="endTime" [(ngModel)]="discountModel.endTime" class="form-control">
+                    <div class="text-danger" *ngIf="endTime.invalid && endTime.touched">
+                        <small class="text-danger" *ngIf="endTime.errors!['required']">{{'discount.endTimeRequiredError'|translate}}</small>
+                        <small class="text-danger" *ngIf="endTime.errors!['pattern']">{{'discount.endTimePatternError'|translate}}</small>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-1"></div>
-                <div class="col-12 col-md-10 shadow mt-2 pb-2 bg-light">
-                    <div class="form-check mt-4 ">
-                        <input class="form-check-input cursor-pointer"  type="checkbox" value="" #isActive="ngModel" name="isActive" [(ngModel)]="discountModel.isActive"  id="isActive" >
-                        <label class="form-check-label cursor-pointer"  for="isActive">
-                            {{'discount.isActive'|translate}}
-                        </label>
-                    </div> 
+                <div class="row">
+                    <div class="col-12 col-md-1"></div>
+                    <div class="col-12 col-md-10 shadow mt-2 pb-2 bg-light">
+                        <div class="form-check mt-4 ">
+                            <input class="form-check-input cursor-pointer"  type="checkbox" value="" #isActive="ngModel" name="active" [(ngModel)]="discountModel.active"  id="active" >
+                            <label class="form-check-label cursor-pointer"  for="isActive">
+                                {{'discount.isActive'|translate}}
+                            </label>
+                        </div> 
+                    </div>
+                    <div class="col-12 col-md-1"></div>
                 </div>
-                <div class="col-12 col-md-1"></div>
-            </div>
-
-
-            <input type="submit" value="{{'discount.save'|translate}}" [disabled]="discountForm.invalid" class="mt-4 form-control btn btn-outline-success"/>
-        </form>
-        <button (click)="back()" class="mt-4 form-control btn btn-outline-warning mt-3">{{'discount.cancel'|translate}}</button>
+    
+    
+                <input type="submit" value="{{'discount.save'|translate}}" [disabled]="discountForm.invalid" class="mt-4 form-control btn btn-outline-success"/>
+            </form>
+            <button (click)="back()" class="mt-4 form-control btn btn-outline-warning mt-3">{{'discount.cancel'|translate}}</button>
+        </div>
+        <div class="col-12 col-md-2"></div>
     </div>
-    <div class="col-12 col-md-2"></div>
-</div>
- -->
+    
+    
