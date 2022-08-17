@@ -156,16 +156,16 @@ export class AddProductComponent implements OnInit {
   updateProduct(){
     let updatedSuccessfully = this.textDirection=='rtl'?"تم تعديل المنتج بنجاح":"Product Updated Suuccessfully !";
     let updatedFailure = this.textDirection=='rtl'?"! لم يتم تعديل المنتج":"Product does not Updated  !";
-    this.productService.updateProduct(this.ProductId,this.productModel).subscribe(
-      (res)=>{
-        if(res){
-          this.sharedService.showSnackBar(updatedSuccessfully,4000,'successSnackBar');
-        }else{
-          this.sharedService.showSnackBar(updatedFailure,4000,'warningSnackBar');
-        }
-      },
-      (error)=>this.sharedService.showSnackBar(error,4000,'dangerSnackBar')
-    );
+    // this.productService.updateProduct(this.ProductId,this.productModel).subscribe(
+    //   (res)=>{
+    //     if(res){
+    //       this.sharedService.showSnackBar(updatedSuccessfully,4000,'successSnackBar');
+    //     }else{
+    //       this.sharedService.showSnackBar(updatedFailure,4000,'warningSnackBar');
+    //     }
+    //   },
+    //   (error)=>this.sharedService.showSnackBar(error,4000,'dangerSnackBar')
+    // );
   }
   saveProduct(){
     if(this.ProductId<=0){
@@ -189,13 +189,13 @@ export class AddProductComponent implements OnInit {
     return parameter;
   }
    getSelectedProduct(){
-    this.productService.getProductById(this.ProductId).subscribe(
-      (data)=>{
-        this.productModel = data;
-        //this.subCategoryName = this.textDirection=='rtl'?data.nameAr:data.name;
-      },
-      (error)=>this.errorMessage = error
-    )
+    // this.productService.getProductById(this.ProductId).subscribe(
+    //   (data)=>{
+    //     this.productModel = data;
+    //     //this.subCategoryName = this.textDirection=='rtl'?data.nameAr:data.name;
+    //   },
+    //   (error)=>this.errorMessage = error
+    // )
    }
 
 

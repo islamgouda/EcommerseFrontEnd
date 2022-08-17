@@ -1,3 +1,17 @@
+<h4 [hidden]="categoriesList.length<=0"  class="shadow bg-light text-dark text-center p-2 fs-4 rounded-pill">{{'category.categories'|translate}}</h4>
+
+<div class="row pt-5 mb-5">
+    <div class="col-12 col-md-2"></div>
+    <div class="col-12 col-md-3">
+        <b class="lead">Select category</b>
+    </div>
+    <div class="col-12 col-md-5">
+        <select name="categories" [(ngModel)]="selectedCategoreID" (change)="changeCategory()" class="form-control" >
+            <option  value="{{category.id}}" *ngFor="let category of categoriesList">{{category.name}}</option>
+        </select>
+    </div>
+    <div class="col-12 col-md-2"></div>
+</div>
 <div class="row">
     <div class="col-12">
         <div [hidden]="categoriesList.length>0" class="alert alert-danger text-center">
@@ -12,9 +26,44 @@
           </div>
     </div>
 </div>
-<h4 [hidden]="categoriesList.length<=0"  class="shadow bg-light text-dark text-center p-2 fs-4 rounded-pill">{{'category.categories'|translate}}</h4>
 
 <div class="row">
+    <div class="col-12" >
+        <div class="row mb-4">
+            <div class="col-6">
+                <div class="card border-secondary minHeight">
+                    <div class="card-header">{{categoryModel.name}}</div>
+                    <div class="card-body text-secondary">
+                        <p class="card-text">{{categoryModel.description}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 rtl">
+                <div class="card border-secondary minHeight">
+                    <div class="card-header">{{categoryModel.name_Ar}}</div>
+                    <div class="card-body text-secondary">
+                        <p class="card-text">{{categoryModel.description_Ar}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-1"></div>
+                <div class="col-12 col-md-4">
+                    <button routerLink="/admin/adminLayout/addCategory/{{categoryModel.id}}" routerLinkActive="router-link-active"  class="btn btn-outline-success form-control mt-3 mb-2">{{'category.update'|translate}}</button>
+                </div>
+                <div class="col-12 col-md-2 card mt-3 mb-1 pt-2 shadow text-center fs-4"></div>
+                <div class="col-12 col-md-4">
+                    <button type="button" routerLink="/admin/adminLayout/deleteCategory/{{selectedCategoreID}}"   class="btn btn-outline-danger form-control mt-3 mb-2">{{'category.delete'|translate}}</button>
+                </div>
+                <div class="col-12 col-md-1 "></div>
+            </div>
+            
+            <hr class="mt-4">
+        </div>
+    </div>
+</div>
+
+<!-- <div class="row">
     <div class="col-12" *ngFor="let category of categoriesList;index as i">
         <div class="row mb-4">
             <div class="col-6">
@@ -48,4 +97,4 @@
             <hr class="mt-4">
         </div>
     </div>
-</div>
+</div> -->
