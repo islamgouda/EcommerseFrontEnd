@@ -18,12 +18,12 @@
                     <a class="nav-link">{{'navbar.contactUs'|translate}}</a>
                 </li>
                 <li class="nav-item">
-                    <a routerLink="admin/adminLayout" routerLinkActive="active" class="nav-link">{{'navbar.admin'|translate}}</a>
+                    <a routerLink="admin/adminLayout" routerLinkActive="active"  *ngIf="IsAdmin" class="nav-link">{{'navbar.admin'|translate}}</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="IsPartner">
                     <a routerLink="partner/partnerLayout" routerLinkActive="active" class="nav-link">{{'navbar.partner'|translate}}</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="!IsLoggedIn">
                     <a routerLink="user/userLayout" routerLinkActive="active" class="nav-link" >{{'user.userPannel'|translate}}</a>
                 </li>
             </ul>
@@ -31,23 +31,23 @@
                 <input class="form-control me-2" [style.direction]="textDirection" (focus)="goSearchProduct()" type="search" placeholder="{{'navbar.searchPlaceholder'|translate}}" aria-label="Search">
                 <div style="margin-left: 20px;">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item nav-width">
+                        <li class="nav-item nav-width" *ngIf="IsLoggedIn">
                             <a class="nav-link active" aria-current="page"  routerLink="LoginUser" routerLinkActive="active"  >{{'navbar.login'|translate}}</a>
                         </li>
-                        <li class="nav-item nav-width">
+                        <li class="nav-item nav-width" *ngIf="IsLoggedIn">
                             <a class="nav-link active" aria-current="page"  routerLink="RegisterUser" routerLinkActive="active" >{{'navbar.register'|translate}}</a>
                         </li>
-                        <li class="nav-item nav-width">
-                            <a class="nav-link active" aria-current="page"  routerLink="RegisterAdmin" routerLinkActive="active" >{{'navbar.registerAdmin'|translate}}</a>
+                        <li class="nav-item nav-width" *ngIf="IsAdmin">
+                            <a class="nav-link active" aria-current="page"  routerLink="RegisterAdmin"  routerLinkActive="active" >{{'navbar.registerAdmin'|translate}}</a>
                         </li>
                         <li class="nav-item nav-width">
 <!-- <<<<<<< HEAD -->
-                            <a class="nav-link active" aria-current="page">UserName</a>
+                            <a class="nav-link active" aria-current="page">Welcome</a>
 <!-- ======= -->
-                            <a class="nav-link active" aria-current="page" routerLink="userdash" routerLinkActive="active">Welcome {{username}}</a>
+                            <a class="nav-link active" aria-current="page" routerLink="userdash" routerLinkActive="active">{{username}}</a>
 <!-- >>>>>>> 0875c4a8d76cef9945096a54293d0014aa9309f5 -->
                         </li>
-                        <li class="nav-item nav-width">
+                        <li class="nav-item nav-width" *ngIf="!IsLoggedIn">
                             <!-- <a class="nav-link active" aria-current="page" onclick="logout()">{{'navbar.signout'|translate}}</a> -->
                             <button class="btn btn-link nav-link active text-danger" (click)="logout()">Logout</button>
 

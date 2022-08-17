@@ -52,13 +52,13 @@ closeAlert(){
   this.alert=false;
 }
 //////////////Amr method to get userdata
-  // getme() {
-  //   this.lservice.getMe().subscribe((name) => {
-  //     this.UserName=name.userName;
-  //     this.UserId=name.userId;
-  //     this.Role=name.roles;
-  //     console.log(this.Role.includes('Admin')); //false or true
-  //     console.log(this.lservice.Role); //user
-  //   });
-  // }
+   getme() {
+     this.lservice.getMe().subscribe((name) => {
+       this.UserName=name.userName;
+       this.UserId=name.userId;
+       this.Role=name.roles;
+       console.log(this.Role.includes('Admin')); //false or true
+       console.log(name); //user
+     });
+ }
 }

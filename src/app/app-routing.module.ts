@@ -22,7 +22,10 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 
 const routes: Routes = [
 
- {path:"userdash",component:UserDashboardComponent}, //userdashboardto requests
+ {path:"userdash",component:UserDashboardComponent,
+ canActivate:[HasRoleGuard],
+ data:{role:'User'}, 
+}, //userdashboardto requests
   {path:"bePartner",component:BeaPartnerComponent},
   {path:"beShipper",component:BeaShipperComponent},
   {path:"",redirectTo: '/home', pathMatch: 'full'}, //deafualt page
@@ -42,9 +45,18 @@ const routes: Routes = [
   {path:'customLayout',component:CustomLayoutComponent},
   {path:"navbar",loadChildren:()=>import("../navbar/navbar.module").then(x=>x.NavbarModule)},
   {path:"footer",loadChildren:()=>import("../footer/footer.module").then(x=>x.FooterModule)},
-  {path:'admin',loadChildren:()=>import("../admin/admin.module").then(m=>m.AdminModule)},
-  {path:'partner',loadChildren:()=>import("../partner/partner.module").then(m=>m.PartnerModule)},
-  {path:'user',loadChildren:()=>import("../user/user.module").then(m=>m.UserModule)},
+  {path:'admin',loadChildren:()=>import("../admin/admin.module").then(m=>m.AdminModule),
+  canActivate:[HasRoleGuard],
+  data:{role:'Admin'},
+},
+  {path:'partner',loadChildren:()=>import("../partner/partner.module").then(m=>m.PartnerModule),
+  canActivate:[HasRoleGuard],
+  data:{role:'Partener'},
+},
+  {path:'user',loadChildren:()=>import("../user/user.module").then(m=>m.UserModule),
+  canActivate:[HasRoleGuard],
+  data:{role:'User'},
+},
   {path:"RegisterUser",component:RegisterUserComponent,pathMatch:"full"},
   {path:"LoginUser",component:LoginUserComponent,pathMatch:"full"},
   {path:"RegisterAdmin",
