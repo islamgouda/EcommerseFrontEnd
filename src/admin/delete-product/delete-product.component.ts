@@ -42,28 +42,28 @@ export class DeleteProductComponent implements OnInit {
     return parameter;
   }
    getSelectedProduct(){
-    this.productService.getProductInDetailsById(this.productID).subscribe(
-      (data)=>{
-        this.productModel = data;
-        this.productName = this.textDirection=='rtl'?data.nameAr:data.name;
-      },
-      (error)=>this.errorMessage = error
-    )
+    // this.productService.getProductInDetailsById(this.productID).subscribe(
+    //   (data)=>{
+    //     this.productModel = data;
+    //     this.productName = this.textDirection=='rtl'?data.nameAr:data.name;
+    //   },
+    //   (error)=>this.errorMessage = error
+    // )
    }
   confirmDeleteProduct(){
     let deleteSuccessMessage = this.textDirection=="ltr"?"Deleted Done Successfully !":"تمت عملية الحذف بنجاج";
     let deleteFailerMessage = this.textDirection=="ltr"?"Can not Delete Sub Category !":"لم تتم عملية الحذف ";
-    this.productService.deleteProduct(this.productID).subscribe(
-     (res)=>{
-      if(res){
-        this.sharedservice.showSnackBar(deleteSuccessMessage,4000,'successSnackBar');
-      }else{
-        this.sharedservice.showSnackBar(deleteSuccessMessage,4000,'dangerSnackBar');
-      }
-     },
-     (error)=>this.sharedservice.showSnackBar(error,4000,'dangerSnackBar')
-    )
-    this.location.back();
+    // this.productService.deleteProduct(this.productID).subscribe(
+    //  (res)=>{
+    //   if(res){
+    //     this.sharedservice.showSnackBar(deleteSuccessMessage,4000,'successSnackBar');
+    //   }else{
+    //     this.sharedservice.showSnackBar(deleteSuccessMessage,4000,'dangerSnackBar');
+    //   }
+    //  },
+    //  (error)=>this.sharedservice.showSnackBar(error,4000,'dangerSnackBar')
+    // )
+    // this.location.back();
   }
 //   activeStatusTransform(isActive:boolean){
 //     if(isActive){

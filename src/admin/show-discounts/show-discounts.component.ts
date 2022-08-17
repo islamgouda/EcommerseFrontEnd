@@ -34,6 +34,9 @@ export class ShowDiscountsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAlldiscounts();
+    console.log("===============discount list=======================")
+    console.log(this.discountsList);
+    console.log("======================================")
   }
   activeState:string="";
   activeStatusTransform(isActive:boolean){
@@ -57,6 +60,9 @@ export class ShowDiscountsComponent implements OnInit {
     this.discountService.getAllDiscounts().subscribe(
       (data)=>{
         this.discountsList=data.data as IDiscount[];
+
+        console.log(data.succcess);
+
         console.log(this.discountsList)
       },
       (error)=>{

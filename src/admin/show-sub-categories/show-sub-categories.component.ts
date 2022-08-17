@@ -15,6 +15,10 @@ export class ShowSubCategoriesComponent implements OnInit {
 
   textDirection;
   subCategoriesList:ISubCategory[]=[];
+  categoriesList:ICategory[]=[];
+  subCategoryModel:ISubCategory={arabicName:"",arabicDescription:"",description:"",name:"",categoryName:"",image:"",categoryId:-1}
+  selectedCategoryId:number=-1;
+  selectedSubCategoryId:number=-1;
   errorMessage:string="";
  
   constructor(private sharedService:SharedService,private categoryService:CategoryService,private subCatService:SubCategoryService) 
@@ -24,6 +28,16 @@ export class ShowSubCategoriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllSubCategories();
+    this.getAllCategories();
+  }
+  changeCategory(){
+    this.selectedSubCategoryId=-1;
+    this.getRelatedSubCategory();
+    console.log("sub category list : "+this.subCategoriesList);
+  }
+  changeSubCategory(){
+    
+    this.getSelectedSubCategoryById();
   }
 
   getAllSubCategories(){
@@ -43,4 +57,31 @@ export class ShowSubCategoriesComponent implements OnInit {
     console.log(url);
     return url;
   }
+  getAllCategories(){
+    this.categoryService.getAll().subscribe(
+      data=>{
+        console.log("data - - -  -- "+data.data);
+        this.categoriesList = data as ICategory[];
+      }
+    );
+  }
+  getRelatedSubCategory(){
+    this.subCategoriesList=[];
+    this.subCatService.getByCategoryId(this.selectedCategoryId).subscribe(
+      data=>{
+        this.subCategoriesList=data.data as ISubCategory[];
+        console.log("+++++++++++++++++sub cat list++++++++++++++++++++++++++++++")
+        console.log(this.subCategoriesList)
+      }
+    );
+  }
+  getSelectedSubCategoryById(){
+    this.subCatService.getById(this.selectedSubCategoryId).subscribe(
+      data=>{
+        this.subCategoryModel = data.data as ISubCategory;
+      }
+    )
+  }
+  
+
 }

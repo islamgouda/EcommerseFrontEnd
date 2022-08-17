@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserLogin } from 'src/helpers/interfaces/UserLogin';
 import { UserModel } from 'src/helpers/interfaces/UserModel';
@@ -20,7 +21,21 @@ export class LoginUserComponent implements OnInit {
 
   // constructor(private http:HttpClient,private router:Router) { }
 
-  constructor(private http:HttpClient,private router:Router,private lservice:LoginServiceService) { }
+  constructor(private http:HttpClient,private router:Router
+        ,private lservice:LoginServiceService
+                ,private fb:FormBuilder) { }
+
+//new update by ataa
+
+  loginForm = this.fb.group(
+    {
+      email:['',[Validators.required,Validators.
+      pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
+      password:['',Validators.required],
+
+   }
+
+  );
 
   alert:boolean=false;
   ngOnInit(): void {

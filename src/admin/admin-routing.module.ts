@@ -23,7 +23,8 @@ import { ShowProductsComponent } from './show-products/show-products.component';
 import { ShowShipperComponent } from './show-shipper/show-shipper.component';
 import { ShowSubCategoriesComponent } from './show-sub-categories/show-sub-categories.component';
 
-const routes: Routes = [
+const routes: Routes = [ {path:'deleteDiscount/:id',component:DeleteDiscountComponent},
+  {path:'updateDiscount/:id',component:AddDiscountComponent},
   {path:'adminLayout',component:AdminLayoutComponent,children:[
         {path:'',component:AdminLandingPageComponent},
         {path:'addNewDiscount',component:AddDiscountComponent},
@@ -48,8 +49,8 @@ const routes: Routes = [
 
         {path:'addDiscount',component:AddDiscountComponent},
         {path:'showAllDiscounts',component:ShowDiscountsComponent},
-        {path:'updateDiscount/:id',component:AddDiscountComponent},
-        {path:'deleteDiscount/:id',component:DeleteDiscountComponent},
+        
+       
         {path:'assignDisountToProduct',component:AssignDisountToProductComponent},
 
         {path:'showallshippers',component:ShowShipperComponent},
