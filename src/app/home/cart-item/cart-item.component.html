@@ -25,19 +25,38 @@
                 <p class="text-muted">{{item.discription}}</p>
             </div>
             <div class="col-12 col-md-2">
-            <input type="number" class="form-control mt-4 text-center" min="1" max={{item.quantityAvailable}} value={{item.quantityOrdered}} >
+            <input disabled type="number" class="form-control mt-4 text-center" min="1" max={{item.quantityAvailable}} value={{item.quantityOrdered}} >
             </div>
             <div class="col-12 col-md-3">
-                <div class="text-center mt-4 pt-2 lead text-success">${{item.price|discount:item.descount_Persent}}</div>
+                <div class="text-center mt-4 pt-2 lead text-success">${{item.price*item.quantityOrdered|discount:item.descount_Persent}}</div>
             </div>
             <div class="col-12 col-md-2 pt-4 mt-2 text-left">
                 <a (click)="deleteItemFromCart(item.productId)" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
             </div>
         </div>
+        <div class="row ltr mt-3 mb-3">
+          <div class="col-12 col-md-2"></div>
+          <div class="col-12 col-md-5 fs-3 ">Total</div>
+          <div class="col-12 col-md-3">
+            <b class="lead fs-3">{{getTotal()|currency}}</b>
+          </div>
+          <div class="col-12 col-md-2"></div>
+        </div>
         
-        <div class="card" *ngIf="cartItemsList.length>0">
-          <div class="card-body p-4">
-            <button type="button" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="card" *ngIf="cartItemsList.length>0">
+              <div class="card-body p-4">
+                <button routerLink="/home/checkOut" type="button" class="btn btn-warning form-control btn-block btn-lg">Proceed to Pay</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="card">
+              <div class="card-body p-4">
+                <button (click)="back()" type="button" class="btn btn-warning form-control btn-block btn-lg">Back</button>
+              </div>
+            </div>
           </div>
         </div>
 

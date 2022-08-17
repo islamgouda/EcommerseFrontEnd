@@ -45,7 +45,14 @@ export class ProductsByCategoryComponent implements OnInit {
   getDiscount(price:number,discount:number){
     return price*discount;
   }
-
+  
+  // getProductsByCategory(){
+  //   this.productService.getProductsByCategoryId(this.categoryId).subscribe(
+  //     data=>{
+  //       // this.productList=data
+  //     }
+  //   );
+  // }
   getproductsByCategoriesBySelectUser(){
     this.productList=[];
      this.getallProducts();

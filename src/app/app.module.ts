@@ -52,6 +52,7 @@ import { AddUserAddressComponent } from '../partner/add-user-address/add-user-ad
 import { DiscountPipe } from 'src/helpers/pipes/discount.pipe';
 import { AddToCartComponent } from './home/add-to-cart/add-to-cart.component';
 import { CartItemComponent } from './home/cart-item/cart-item.component';
+import { ProceedToPayComponent } from './home/proceed-to-pay/proceed-to-pay.component';
 
 
 
@@ -99,6 +100,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     DiscountPipe,
     AddToCartComponent,
     CartItemComponent,
+    ProceedToPayComponent,
 
 
   ],
