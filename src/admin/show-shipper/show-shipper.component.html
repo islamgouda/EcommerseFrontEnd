@@ -4,7 +4,7 @@
       background: #aaa;
     }
     </style>
-<p>Our Shippers</p>
+<!-- <p>Our Shippers</p>
 <div class="container mt-5">
     <div class="row" >
         <div class="col-sm-4"*ngFor="let Shipper of  responsedata.data">
@@ -16,4 +16,23 @@
         <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
         </div>
     </div>
-</div>    
+</div>    -->
+<article class="leaderboard">
+    <header>
+      <h1 class="leaderboard__title"><span class="leaderboard__title--top">Our Shippers</span><span class="leaderboard__title--bottom">List</span></h1>
+    </header>
+    <main class="leaderboard__profiles">
+        <article class="leaderboard__profile">
+          <span class="leaderboard__name">Shipper ID</span>  
+          <span class="leaderboard__name">Shipper Name</span>
+          <span class="leaderboard__value">officePhone<span></span></span>
+        </article>
+      </main>
+    <main class="leaderboard__profiles">
+      <article class="leaderboard__profile" *ngFor="let Shipper of  responsedata.data">
+        <span class="leaderboard__name">{{Shipper.id}}</span>
+        <span class="leaderboard__name">{{Shipper.name}}</span>
+        <span class="leaderboard__value">{{Shipper.officePhone}}<span>B</span></span>
+      </article>
+    </main>
+

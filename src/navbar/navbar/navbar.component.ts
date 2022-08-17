@@ -16,6 +16,9 @@ export class NavbarComponent implements OnInit {
   username:string=" ";
   lang:any; 
   textDirection:string;
+  IsAdmin:boolean=false;
+  IsPartner:boolean=false;
+  IsLoggedIn:boolean=true;
   constructor(private translateservice:TranslateService,private router:Router,private sharedService:SharedService,private loginService:LoginServiceService) 
    {
     this.translateservice.setDefaultLang("en");
@@ -23,7 +26,14 @@ export class NavbarComponent implements OnInit {
     this.textDirection = this.sharedService.textDirection
      this.loginService.getMe().subscribe((name) => {
         this.username=name.userName;
+        localStorage.setItem('Roles',name.roles);
+        console.log(name.roles);
+        console.log(name.roles.includes('Admin'));
+        this.IsAdmin=name.roles.includes('Admin');
+        this.IsPartner=name.roles.includes('Partener');
+        console.log(this.IsPartner);
    });
+   this.IsLoggedIn=localStorage.getItem('token')==null;
   }
 
   ngOnInit(): void {
@@ -40,6 +50,7 @@ export class NavbarComponent implements OnInit {
   logout(){
 
     localStorage.removeItem('token');
+    localStorage.removeItem('Roles');
     localStorage.removeItem('expiration');
     this.router.navigate(['LoginUser']);//Edit By Ataa
     
@@ -47,8 +58,8 @@ export class NavbarComponent implements OnInit {
       //window.location.reload();
 
      //})
-
-
+ 
+   
   }
 
 

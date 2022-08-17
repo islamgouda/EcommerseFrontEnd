@@ -1,4 +1,4 @@
-<style>
+<!-- <style>
     .fakeimg {
       height: 200px;
       background: #aaa;
@@ -17,4 +17,24 @@
         <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
         </div>
     </div>
-</div>    
+</div>     -->
+<article class="leaderboard">
+    <header>
+      <h1 class="leaderboard__title"><span class="leaderboard__title--top">Our Partners</span><span class="leaderboard__title--bottom">List</span></h1>
+    </header>
+    <main class="leaderboard__profiles">
+        <article class="leaderboard__profile">
+          <span class="leaderboard__name"> ID</span> 
+          <span class="leaderboard__name"> ownername</span> 
+          <span class="leaderboard__name"> Name</span>
+          <span class="leaderboard__name"> numberOfBranches</span>
+        </article>
+      </main>
+    <main class="leaderboard__profiles">
+      <article class="leaderboard__profile" *ngFor="let Partner of  responsedata.data">
+        <span class="leaderboard__name">{{Partner.id}}</span>
+        <span class="leaderboard__name">{{Partner.ownername}}</span>
+        <span class="leaderboard__name">{{Partner.name}}</span>
+        <span class="leaderboard__name">{{Partner.numberOfBranches}}</span>
+      </article>
+    </main>
