@@ -46,6 +46,9 @@ import { AdminModule } from 'src/admin/admin.module';
 import { PartnerModule } from 'src/partner/partner.module';
 import { PartnerLayoutComponent } from 'src/partner/partner-layout/partner-layout.component';
 import { UserModule } from 'src/user/user.module';
+import { DiscountPipe } from 'src/helpers/pipes/discount.pipe';
+import { AddToCartComponent } from './home/add-to-cart/add-to-cart.component';
+import { CartItemComponent } from './home/cart-item/cart-item.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -83,9 +86,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductsByPriceComponent,
 
     BeaShipperComponent,
-    ProductsByPriceComponent
-
-    
+    ProductsByPriceComponent,
+    DiscountPipe,
+    AddToCartComponent,
+    CartItemComponent,
 
   ],
   imports: [
@@ -114,6 +118,7 @@ export function HttpLoaderFactory(http: HttpClient) {
    
   ],
   providers: [
+   
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LanguageInterceptor,

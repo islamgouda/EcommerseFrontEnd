@@ -1,0 +1,46 @@
+
+<section class="w-100 px-3 py-5" style="background-color: #eee; border-radius: .5rem .5rem 0 0;">
+    <div class="row d-flex justify-content-center">
+      <div class="col-xl-11">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h1 class="fw-normal mb-0 text-black text-muted">Shopping Cart</h1>
+          <div>
+            <!-- <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p> -->
+          </div>
+        </div>
+        <div class="card" *ngIf="cartItemsList.length<=0">
+            <div class="card-body p-4">
+                <h2 class="text-muted text-center">No Items In Cart</h2>
+              <button type="button" routerLink="/home/AllProducts" class="btn btn-warning btn-block btn-lg">Back To Shopping</button>
+            </div>
+          </div>
+
+        <div class="row mb-3 bg-white p-2 br-10" *ngFor="let item of cartItemsList">
+            <div class="col-12 col-md-2">
+                <img src="{{item.image}}" class="br-5" height="90px" width="100%">
+            </div>
+            <div class="col-12 col-md-3  ">
+                <b class="mb-2 lead">{{item.name}}</b>
+                <p class="text-muted">{{item.discription}}</p>
+            </div>
+            <div class="col-12 col-md-2">
+            <input type="number" class="form-control mt-4 text-center" min="1" max={{item.quantityAvailable}} value={{item.quantityOrdered}} >
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="text-center mt-4 pt-2 lead text-success">${{item.price|discount:item.descount_Persent}}</div>
+            </div>
+            <div class="col-12 col-md-2 pt-4 mt-2 text-left">
+                <a (click)="deleteItemFromCart(item.productId)" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+            </div>
+        </div>
+        
+        <div class="card" *ngIf="cartItemsList.length>0">
+          <div class="card-body p-4">
+            <button type="button" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>

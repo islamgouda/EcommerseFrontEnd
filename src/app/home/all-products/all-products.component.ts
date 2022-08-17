@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IDisplayProducts } from 'src/helpers/interfaces/idisplay-products';
+import { IProduct, IProductt, IShowProduct } from 'src/helpers/interfaces/iproduct';
 import { ProductService } from 'src/helpers/services/product.service';
 
 @Component({
@@ -9,20 +10,23 @@ import { ProductService } from 'src/helpers/services/product.service';
 })
 export class AllProductsComponent implements OnInit {
 
-  products:IDisplayProducts[]=[];
-  haveDiscount:boolean=true;
-  discount:string=this.haveDiscount?"Have Discount":"Have No Discount";
+  productList:IShowProduct[]=[];
+  
   constructor(private productService:ProductService) { }
-
+  
   ngOnInit(): void {
-    this.allProducts();
+    this.getallProducts();
+    
   }
-  allProducts(){
-    this.productService.getAllProducts().subscribe(
+  getallProducts(){
+    this.productService.getProducts().subscribe(
       data=>{
-        this.products = data;
+        this.productList = data.data as IShowProduct[];
+        console.log(this.productList);
       }
-    )
+    );
   }
-
+  getDiscount(price:number,discount:number){
+    return price*discount;
+  }
 }
