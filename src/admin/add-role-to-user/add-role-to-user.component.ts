@@ -32,10 +32,12 @@ export class AddRoleToUserComponent implements OnInit {
   assign()
   {
     let body={email:this.Assignform.get('email')?.value,rolename:this.Assignform.get('roleName')?.value}
+    console.log(body);
     this.http.post('http://localhost:5092/api/Admin/AddRoleToUser',body).subscribe(
       (data)=>{
-      this.ResponseMessage=data;
-      console.log(this.ResponseMessage.message);
+        console.log(data);
+        this.ResponseMessage=data;
+      
       }
     )
   }

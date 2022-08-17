@@ -1,8 +1,7 @@
-<p>add-partner works!</p>
+
 
 <div class="container mt-3">
-    <h2>Requests Table</h2>
-    <p>The .table-bordered class adds borders on all sides of the table and the cells:</p>            
+    <h2>Requests Table</h2>          
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -10,6 +9,7 @@
           <th>Company Name</th>
           <th>UserName</th>
           <th>Number of Branches</th>
+          <th>Add</th>
         </tr>
       </thead>
       <tbody>
@@ -18,13 +18,10 @@
           <td>{{item.name}}</td>
           <td>{{item.identity.userName}}</td>
           <td>{{item.numberOfBranches}}</td>
+          <td><button (click)="SelectPartnerRequest(item.requestId)" class="btn btn-primary">Add</button></td>
         </tr>
       </tbody>
     </table>
-    <form>
-        <input class="form-control"    [(ngModel)]="requestId" type="number" placeholder="Enter Request ID" name="requestId" />
-        <button class="form-control"   class="btn btn-warning" (click)="SelectPartnerRequest()">Ok</button>
-      </form>
   </div>
   
   
