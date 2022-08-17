@@ -92,6 +92,19 @@
                     </div>
             </div>
 
+            <div class="row">
+                <div class="col-12 col-md-1"></div>
+                <div class="col-12 col-md-10 shadow mt-2 pb-2 bg-light">
+                    <div class="form-check mt-4 ">
+                        <input class="form-check-input cursor-pointer"  type="checkbox" value="" #isActive="ngModel" name="isActive" [(ngModel)]="productModel.IsAvailable"  id="isActive" >
+                        <label class="form-check-label cursor-pointer"  for="isActive">
+                            {{'product.isProductAvailable'|translate}}
+                        </label>
+                    </div> 
+                </div>
+                <div class="col-12 col-md-1"></div>
+            </div>
+
 
             <div class="form-group mt-2">
                 <label for="image" class="mb-1">{{'product.productImage'|translate}}</label>

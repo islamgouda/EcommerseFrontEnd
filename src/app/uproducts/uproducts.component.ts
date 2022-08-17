@@ -22,14 +22,14 @@ export class UProductsComponent implements OnInit {
     this.getAllProducts();
   }
   getAllProducts(){
-    this.productService.getAllProducts().subscribe(
-      (data)=>{
-        this.productsList=data;
-      },
-      (error)=>{
-        this.errorMessage = error;
-      }
-    )
+    // this.productService.getAllProducts().subscribe(
+    //   (data)=>{
+    //     this.productsList=data;
+    //   },
+    //   (error)=>{
+    //     this.errorMessage = error;
+    //   }
+    // )
   }
   back(){ 
     this.location.back();
