@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-12 col-md-2"></div>
+    <div class="col-12 col-md-8" >
+        <h3  class="shadow bg-light text-dark text-center fs-4 p-2 rounded-pill">{{'AddUserAddress'|translate}}</h3>
+
+    <form [formGroup]="AdduserAddress" class="form-control" (ngSubmit)="AddNewUserAddress()">
+
+        <div class="form-group">
+            <label>addressLine1</label>
+            <input type="text" [class.is-invalid]="AdduserAddress.get('addressLine1')?.invalid&&AdduserAddress.get('addressLine1')?.touched" formControlName="addressLine1" class="form-control">
+            <div *ngIf="AdduserAddress.get('addressLine1')?.errors&&AdduserAddress.get('addressLine1')?.touched">
+                <small *ngIf= "AdduserAddress.get('addressLine1')?.errors?.['Required']">Required</small>
+                <small *ngIf= "AdduserAddress.get('addressLine1')?.errors?.['maxlength']" class="text-danger">must less than 10 letters</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>addressLine2</label>
+            <input type="text" [class.is-invalid]="AdduserAddress.get('addressLine2')?.invalid&&AdduserAddress.get('addressLine2')?.touched" formControlName="addressLine2" class="form-control">
+            <div *ngIf="AdduserAddress.get('addressLine2')?.errors&&AdduserAddress.get('addressLine2')?.touched">
+                <small *ngIf= "AdduserAddress.get('addressLine2')?.errors?.['Required']">Required</small>
+                <small *ngIf= "AdduserAddress.get('addressLine2')?.errors?.['maxlength']" class="text-danger">must less than 10 letters</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>city</label>
+            <input type="text" [class.is-invalid]="AdduserAddress.get('city')?.invalid&&AdduserAddress.get('city')?.touched" formControlName="city" class="form-control">
+            <div *ngIf="AdduserAddress.get('city')?.errors&&AdduserAddress.get('city')?.touched">
+                <small *ngIf= "AdduserAddress.get('city')?.errors?.['Required']">Required</small>
+                <small *ngIf= "AdduserAddress.get('city')?.errors?.['maxlength']" class="text-danger">must less than 10 letters</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>postalCode</label>
+            <input type="text" [class.is-invalid]="AdduserAddress.get('postalCode')?.invalid&&AdduserAddress.get('postalCode')?.touched" formControlName="postalCode" class="form-control">
+            <div *ngIf="AdduserAddress.get('postalCode')?.errors&&AdduserAddress.get('postalCode')?.touched" class="">
+                <small *ngIf= "AdduserAddress.get('postalCode')?.errors?.['Required']">Required</small>
+                <small *ngIf= "AdduserAddress.get('postalCode')?.errors?.['maxlength']" class="text-danger">must less than 10 letters</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>country</label>
+            <input type="text" [class.is-invalid]="AdduserAddress.get('country')?.invalid&&AdduserAddress.get('country')?.touched" formControlName="country" class="form-control">
+            <div *ngIf="AdduserAddress.get('country')?.errors&&AdduserAddress.get('country')?.touched">
+                <small *ngIf= "AdduserAddress.get('country')?.errors?.['Required']">Required</small>
+                <small *ngIf= "AdduserAddress.get('country')?.errors?.['maxlength']" class="text-danger">must less than 10 letters</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>telephone</label>
+            <input type="text" [class.is-invalid]="AdduserAddress.get('telephone')?.invalid&&AdduserAddress.get('telephone')?.touched" formControlName="telephone" class="form-control">
+            <div *ngIf="AdduserAddress.get('telephone')?.errors&&AdduserAddress.get('telephone')?.touched">
+                <small *ngIf= "AdduserAddress.get('telephone')?.errors?.['Required']">Required</small>
+                <small *ngIf= "AdduserAddress.get('telephone')?.errors?.['maxlength']" class="text-danger">must less than 10 letters</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>mobile</label>
+            <input type="text" [class.is-invalid]="AdduserAddress.get('mobile')?.invalid&&AdduserAddress.get('mobile')?.touched" formControlName="mobile" class="form-control">
+            <div *ngIf="AdduserAddress.get('mobile')?.errors&&AdduserAddress.get('mobile')?.touched">
+                <small *ngIf= "AdduserAddress.get('mobile')?.errors?.['Required']">Required</small>
+                <small *ngIf= "AdduserAddress.get('mobile')?.errors?.['maxlength']" class="text-danger">must be 11 letters</small>
+                <small *ngIf= "AdduserAddress.get('mobile')?.errors?.['minlength']" class="text-danger">must be 11 letters</small>
+            </div>
+        </div>
+        <button type="submit" [disabled]="AdduserAddress.invalid" >AddUserAddress </button>
+    </form>
+<button (click)="back()" class="mt-4 form-control btn btn-outline-warning mt-3">{{'cancel'|translate}}</button>
+        </div>
+        <div class="col-12 col-md-2"></div>
+    </div>
+    

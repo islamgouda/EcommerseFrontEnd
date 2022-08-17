@@ -14,7 +14,7 @@ export interface IProduct {
     images?:string[];
 }
 export interface IProductResponse{
-    success: boolean;
+    succcess: boolean;
     message:string;
     data?:any;
 }

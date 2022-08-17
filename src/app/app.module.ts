@@ -46,6 +46,7 @@ import { AdminModule } from 'src/admin/admin.module';
 import { PartnerModule } from 'src/partner/partner.module';
 import { PartnerLayoutComponent } from 'src/partner/partner-layout/partner-layout.component';
 import { UserModule } from 'src/user/user.module';
+import { AddUserAddressComponent } from '../partner/add-user-address/add-user-address.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -83,7 +84,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductsByPriceComponent,
 
     BeaShipperComponent,
-    ProductsByPriceComponent
+    ProductsByPriceComponent,
+    AddUserAddressComponent
 
     
 

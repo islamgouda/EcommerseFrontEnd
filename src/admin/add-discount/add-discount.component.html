@@ -12,6 +12,7 @@
         <div class="col-12 col-md-8" [class]="textDirection">
             <h3 [hidden]="discountID>0" class="shadow bg-light text-dark text-center fs-4 p-2 rounded-pill">{{'discount.addNewdiscount'|translate}}</h3>
             <h3 [hidden]="discountID<=0" class="shadow bg-light text-dark text-center fs-4 p-2 rounded-pill">{{'discount.updateDiscount'|translate}}</h3>
+            
             <form #discountForm="ngForm" (ngSubmit)="saveDiscount()">
                 <div class="form-group mt-5">
                     <label for="name" class="mb-1">{{'discount.discountNameInen'|translate}}</label>
