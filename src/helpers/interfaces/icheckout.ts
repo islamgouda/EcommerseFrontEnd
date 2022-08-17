@@ -1,4 +1,4 @@
-export interface ICheckout {
+export interface IShipper {
     id?:Number;
     name:string;
     arabicName:any;
@@ -8,8 +8,8 @@ export interface ICheckout {
     shippingDetails:any;
     identity:any;
 }
-export interface ICheckoutResponse {
+export interface IShipperResponse {
     success:boolean;
     message:string
-    data:ICheckout[]
+    data:IShipper[]
 }
