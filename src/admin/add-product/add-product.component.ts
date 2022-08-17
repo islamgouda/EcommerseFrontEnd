@@ -1,4 +1,5 @@
 import { Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICategory } from 'src/helpers/interfaces/icategory';
@@ -19,7 +20,7 @@ export class AddProductComponent implements OnInit {
   textDirection:string;
   language:string;
   updateProductWithId:number=-1;
-  productModel:IProduct={name:"",Description:"",Name_Ar:"",Description_Ar:"",CategoryID:-1,Quantity:null,IsAvailable:true,Price:null,subcategoryID:-1,images:[]};
+  productModel:IProduct={name:"",Description:"",Name_Ar:"",Description_Ar:"",CategoryID:-1,Quantity:0,IsAvailable:true,Price:null,subcategoryID:-1,images:[]};
   allSubCategories:ISubCategory[]=[];
   allCategories:ICategory[]=[];
 
@@ -28,11 +29,12 @@ export class AddProductComponent implements OnInit {
   isSubCatSelectOptionHidden:boolean=true;
   ProductId:number=-1;
   errorMessage:string="";
+  productID:any;
   // goToAddCategoriesFirst:string=""
     // allProducts:IProduct[]=[];
    
   goToAddSubCategoriesFirst:string=""
-  constructor(private location:Location,private activatedRoute:ActivatedRoute,
+  constructor(private http:HttpClient,private location:Location,private activatedRoute:ActivatedRoute,
     private sharedService:SharedService, private router:Router,
     private productService:ProductService,
     private categoryService:CategoryService,private catService:CategoryService,private subCategoryService:SubCategoryService) { 
@@ -50,6 +52,50 @@ export class AddProductComponent implements OnInit {
     this.getAllCategories();
     this.ProductId  = this.getUrlParameter("id");
     // this.getSelectedProduct();
+  }
+  AddProductLast(){
+    event?.preventDefault();
+    this.formData.append("Name",this.productModel.name);
+    this.formData.append("Name_Ar",this.productModel.Name_Ar);
+    this.formData.append("Description",this.productModel.Description);
+    this.formData.append("Description_Ar",this.productModel.Description_Ar);
+    this.formData.append("CategoryID",this.productModel.CategoryID.toString());
+    this.formData.append("subcategoryID",this.productModel.subcategoryID.toString());
+    this.formData.append("Price",this.productModel.Price!.toString());
+    this.formData.append("Quantity",this.productModel.Quantity!.toString());
+    this.formData.append("IsAvailable","true");
+    
+    const request = new XMLHttpRequest();
+       let selfdata;
+       let mythis = this;
+       request.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200) {
+           console.log(this.responseText);
+           selfdata = JSON.parse(this.responseText);
+           console.log(selfdata.succcess);
+           console.log(selfdata.message);
+           console.log(selfdata.data);
+           mythis.productID = selfdata.data;
+           setTimeout(
+            () =>{
+              if(mythis.productID > 0){
+                  mythis.http.get(
+                  "http://localhost:5092/api/Product/AssignPartner/"+mythis.productID,
+                  mythis.productID).subscribe((data:any)=>{
+                  console.log(data);
+                  console.log(true);
+                  alert(data.message);
+                  location.reload();
+                  //this.mysrc = data.data[0].images[0];
+                })
+              }
+            }, 1000
+          );
+        }
+      };
+        request.open("POST", "http://localhost:5092/api/Product");
+        request.send(this.formData);
+
   }
 
   getAllCategories(){

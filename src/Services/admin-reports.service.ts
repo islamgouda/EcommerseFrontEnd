@@ -38,5 +38,9 @@ GetAllShipperRequests():Observable<any>
 {
  return this.http.get('http://localhost:5092/api/Shipper/ShowAllRequests',{responseType:'json'});
 } 
+Addrole(formdata:FormData):Observable<any>
+{
+  return this.http.post('http://localhost:5092/api/Admin/AddRoleToUser',formdata);
+}
 
 }

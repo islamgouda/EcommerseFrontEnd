@@ -24,6 +24,7 @@ export class AddPartnerComponent implements OnInit {
   errorMessage:string="";
   goToAddCategoriesFirst:string="";
   requestId:number=0;
+  responseMessage={Status:'',Message:''}
  
 
   constructor(private adminreports:AdminReportsService,private location:Location,private activatedRoute:ActivatedRoute,private sharedService:SharedService, private router:Router,private partnerService:PartnerService) { 
@@ -48,11 +49,12 @@ export class AddPartnerComponent implements OnInit {
     // this.partnerID  = this.getUrlParameter("id");
     // this.getSelectedPartner();
   }
-  SelectPartnerRequest()
+  SelectPartnerRequest(requestId:any)
   {
-    this.adminreports.AddPartnersRequest(this.requestId).subscribe(
+    this.adminreports.AddPartnersRequest(requestId).subscribe(
       data=>{
-        console.log(data);
+        this.responseMessage=data;
+        location.reload();
       }
     )
   }
