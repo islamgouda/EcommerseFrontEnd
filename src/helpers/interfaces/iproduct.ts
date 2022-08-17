@@ -15,7 +15,7 @@ export interface IProduct {
 }
 
 export interface IProductResponse{
-    success: boolean;
+    succcess: boolean;
     message:string;
     data?:any;
 }
