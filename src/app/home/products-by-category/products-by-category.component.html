@@ -5,8 +5,8 @@
             <div class="lead pt-2"><b>Select Category</b></div>
         </div>
         <div class="col-12 col-md-5">
-            <select class="form-control" [(ngModel)]="categoryName"  (change)="getproductsByCategoriesBySelectUser()" name="categories">
-                <option  value="{{item.name}}"  #catID  *ngFor="let item of categoriesList" >{{item.name}}</option>
+            <select class="form-control" [(ngModel)]="categoryId"  (change)="getproductsByCategoriesBySelectUser()" name="categories">
+                <option  value="{{item.id}}"  *ngFor="let item of categoriesList" >{{item.name}}</option>
             </select>
         </div>
         <div class="col-12 col-md-2"></div>

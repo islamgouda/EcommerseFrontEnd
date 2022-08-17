@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { IShowCartItemProduct, IShowProduct } from 'src/helpers/interfaces/iproduct';
 import { CartItemsService } from 'src/helpers/services/cart-items.service';
@@ -11,7 +12,7 @@ import { SharedService } from 'src/helpers/services/shared.service';
 export class CartItemComponent implements OnInit {
 
   cartItemsList:IShowCartItemProduct[]=[];
-  constructor(private cartItemService:CartItemsService,private shared:SharedService) { }
+  constructor(private location:Location,private cartItemService:CartItemsService,private shared:SharedService) { }
 
   ngOnInit(): void {
     this.getAllCartItems();
@@ -24,6 +25,15 @@ export class CartItemComponent implements OnInit {
       }
     );
   }
+  getTotal(){
+    let total = 0;
+    let discount=1;
+    for (let i = 0; i < this.cartItemsList.length; i++) {
+      discount = this.cartItemsList[i].price - (this.cartItemsList[i].price*this.cartItemsList[i].descount_Persent);
+      total+=discount*this.cartItemsList[i].quantityOrdered;
+    }
+    return total;
+  }
   deleteItemFromCart(id:number){
     this.cartItemService.deleteFromCart(id).subscribe(
       data=>{
@@ -31,5 +41,8 @@ export class CartItemComponent implements OnInit {
         this.getAllCartItems();
       }
     );
+  }
+  back(){
+    this.location.back();
   }
 }

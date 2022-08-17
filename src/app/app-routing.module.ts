@@ -13,6 +13,7 @@ import { AddToCartComponent } from './home/add-to-cart/add-to-cart.component';
 import { AllProductsComponent } from './home/all-products/all-products.component';
 import { CartItemComponent } from './home/cart-item/cart-item.component';
 import { HomeComponent } from './home/home.component';
+import { ProceedToPayComponent } from './home/proceed-to-pay/proceed-to-pay.component';
 import { ProductsByCategoryComponent } from './home/products-by-category/products-by-category.component';
 import { ProductsByPartnerComponent } from './home/products-by-partner/products-by-partner.component';
 import { ProductsByPriceComponent } from './home/products-by-price/products-by-price.component';
@@ -38,6 +39,7 @@ const routes: Routes = [
     {path:'productsByPrice',component:ProductsByPriceComponent},
     {path:'addToCart/:id',component:AddToCartComponent},
     {path:'cartItems',component:CartItemComponent},
+    {path:'checkOut',component:ProceedToPayComponent},
   ]},
 
   {path:'products',component:UProductsComponent},
