@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HasRoleGuard } from 'src/has-role.guard';
+import { AddUserAddressComponent } from 'src/partner/add-user-address/add-user-address.component';
 import { LoginUserComponent } from './Authentication/login-user/login-user.component';
 import { RegisterAdminComponent } from './Authentication/register-admin/register-admin.component';
 import { RegisterUserComponent } from './Authentication/register-user/register-user.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
     {path:'addToCart/:id',component:AddToCartComponent},
     {path:'cartItems',component:CartItemComponent},
     {path:'checkOut',component:ProceedToPayComponent},
+    {path:'addAddress',component:AddUserAddressComponent},
   ]},
 
   {path:'products',component:UProductsComponent},
