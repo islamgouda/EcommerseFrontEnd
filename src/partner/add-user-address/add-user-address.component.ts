@@ -43,6 +43,7 @@ export class AddUserAddressComponent implements OnInit {
     },(error)=>{
       this.sharedService.showSnackBar(error,3000,'dangerSnackBar');
     });
+    this.back();
   }
 
   ngOnInit(): void {

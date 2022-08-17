@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, retry } from 'rxjs';
-import { IShipperResponse } from '../interfaces/icheckout';
+import { IAddressResponse, IShipperResponse } from '../interfaces/icheckout';
 import { GenericApiHandlerService } from './generic-api-handler.service';
 
 @Injectable({
@@ -17,5 +17,12 @@ export class CheckOutService {
       catchError(error=>this.genericService.handleError(error))
     );
   }  
+  getallUserAddresses():Observable<IAddressResponse>{
+    let url = "http://localhost:5092/api/UserAddress/GetUserAdress";
+    return this.http.get<IAddressResponse>(url).pipe(
+      retry(3),
+      catchError(error=>this.genericService.handleError(error))
+    );
+  }
 
 }
