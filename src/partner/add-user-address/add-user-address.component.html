@@ -62,7 +62,7 @@
                 <small *ngIf= "AdduserAddress.get('mobile')?.errors?.['minlength']" class="text-danger">must be 11 letters</small>
             </div>
         </div>
-        <button type="submit" [disabled]="AdduserAddress.invalid" >AddUserAddress </button>
+        <button type="submit" [disabled]="AdduserAddress.invalid"class="mt-4 form-control btn btn-outline-success" >AddUserAddress </button>
     </form>
 <button (click)="back()" class="mt-4 form-control btn btn-outline-warning mt-3">{{'cancel'|translate}}</button>
         </div>
