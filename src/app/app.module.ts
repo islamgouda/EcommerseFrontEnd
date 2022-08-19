@@ -93,7 +93,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BeaShipperComponent,
     ProductsByPriceComponent,
 
-    AddUserAddressComponent
+    AddUserAddressComponent,
 
     
 

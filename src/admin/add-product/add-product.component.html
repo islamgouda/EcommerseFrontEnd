@@ -11,7 +11,7 @@
     <div class="col-12 col-md-8" [class]="textDirection">
         <h3 [hidden]="ProductId>0" class="shadow bg-light text-dark text-center fs-4 p-2 rounded-pill">{{'product.addNewproduct'|translate}}</h3>
         <h3 [hidden]="ProductId<=0" class="shadow bg-light text-dark text-center fs-4 p-2 rounded-pill">{{'product.updateproduct'|translate}}</h3>
-        <form #productForm="ngForm" (change)="onfileChange($event)" (ngSubmit)="AddProductLast()" enctype="multipart/form-data">
+        <form #productForm="ngForm" (change)="onfileChange($event)" (ngSubmit)="sendData()" enctype="multipart/form-data">
             <div class="form-group mt-5">
                 <label for="name" class="mb-1">{{'product.productNameInen'|translate}}</label>
                 <input type="text" pattern="[a-zA-Z 0-9]{2,100}" #name="ngModel" required [class.validInput]="name.valid" [class.invalidInput]="name.invalid && name.touched"  id="name" name="name" [(ngModel)]="productModel.name" class="form-control">
