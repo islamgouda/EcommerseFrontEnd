@@ -41,11 +41,8 @@
                             <a class="nav-link active" aria-current="page"  routerLink="RegisterAdmin"  routerLinkActive="active" >{{'navbar.registerAdmin'|translate}}</a>
                         </li>
                         <li class="nav-item nav-width">
-<!-- <<<<<<< HEAD -->
-                            <a class="nav-link active" aria-current="page">Welcome</a>
-<!-- ======= -->
+
                             <a class="nav-link active" aria-current="page" routerLink="userdash" routerLinkActive="active">{{username}}</a>
-<!-- >>>>>>> 0875c4a8d76cef9945096a54293d0014aa9309f5 -->
                         </li>
                         <li class="nav-item nav-width" *ngIf="!IsLoggedIn">
                             <!-- <a class="nav-link active" aria-current="page" onclick="logout()">{{'navbar.signout'|translate}}</a> -->
@@ -77,12 +74,13 @@
             </div>
         </div>
         <div class="col-12 col-md-2">
-            <div class="row">
-                <div class="col-12 col-md-6 cart-wish-container"><i class="fa-solid fa-heart cart-wish-icon"></i> 12</div>
-                
+            <div class="row mt-1" *ngIf="!IsLoggedIn">
+                <!-- <div class="col-12 col-md-6 cart-wish-container"><i class="fa-solid fa-heart cart-wish-icon"></i> 12</div> -->
+                <div class="col-12 col-md-3"></div>
                 <div class="col-12 col-md-6 cart-wish-container">
-                    <a routerLink="/home/cartItems" class="text-decoration-none text-dark"><i class="fa-solid fa-cart-shopping cart-wish-icon"></i>10</a>
+                    <a routerLink="/home/cartItems" class="text-decoration-none text-dark"><i class="fa-solid fa-cart-shopping cart-wish-icon"></i>{{cartItemsCount}}</a>
                 </div>
+                <div class="col-12 col-md-3"></div>
             </div>
         </div>
     </div>

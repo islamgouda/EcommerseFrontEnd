@@ -7,6 +7,7 @@
     </div>
     <div class="col-12 col-md-5">
         <select name="categories" [(ngModel)]="selectedCategoreID" (change)="changeCategory()" class="form-control" >
+            <option [selected]="selectedCategoreID==-1" value="-1">Select Category</option>
             <option  value="{{category.id}}" *ngFor="let category of categoriesList">{{category.name}}</option>
         </select>
     </div>
@@ -26,8 +27,8 @@
           </div>
     </div>
 </div>
-
-<div class="row">
+<hr class="mb-3">
+<div class="row" *ngIf="selectedCategoreID!=-1">
     <div class="col-12" >
         <div class="row mb-4">
             <div class="col-6">

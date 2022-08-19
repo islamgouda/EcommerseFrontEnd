@@ -11,14 +11,15 @@ import { ProductService } from 'src/helpers/services/product.service';
 })
 export class ProductsByCategoryComponent implements OnInit {
 
-  productList:IShowProduct[]=[];
-  categoryId:number=-1;
+  productList:any[]=[];
+  categoryId:number;
   categoryName:string="";
   categoriesList:ICategory[]=[];
-  constructor(private categoryService:CategoryService,private productService:ProductService) { }
+  constructor(private categoryService:CategoryService,private productService:ProductService) {
+    this.categoryId = -1;
+   }
   
   ngOnInit(): void {
-    this.getallProducts();
     this.getAllCategories();
   }
   serverErrorMessage:string="";
@@ -26,41 +27,27 @@ export class ProductsByCategoryComponent implements OnInit {
     this.categoryService.getAll().subscribe(
       (data)=>{
         console.log("Data"+data);
-        this.categoriesList = <ICategory[]>data;
+        this.categoriesList = <ICategory[]> data;
       },
       (error)=>{
         this.serverErrorMessage ="Errors In Retrieving Data !"+error;
       }
     )
   }
-  getallProducts(){
-    this.productService.getProducts().subscribe(
+  
+  getproductsByCategoryId(){
+    this.productList=[];
+    this.productService.getProductsByCategoryId(this.categoryId).subscribe(
       data=>{
-        this.productList = data.data as IShowProduct[];
-        
+        console.log("----------data---------------");
+        console.log(data);
+        this.productList = data.data as any[];
+        console.log("----------cat List---------------");
         console.log(this.productList);
       }
     );
+    
   }
-  getDiscount(price:number,discount:number){
-    return price*discount;
-  }
-  
-  // getProductsByCategory(){
-  //   this.productService.getProductsByCategoryId(this.categoryId).subscribe(
-  //     data=>{
-  //       // this.productList=data
-  //     }
-  //   );
-  // }
-  getproductsByCategoriesBySelectUser(){
-    this.productList=[];
-     this.getallProducts();
-     console.log("--------------- : "+this.categoryName);
-    this.productList = this.productList.filter(x=>x.categoryName == this.categoryName);
-    console.log("product List  : "+this.productList);
-    console.log("cat name : "+this.categoryName);
-    // this.productList = this.productList
-  }
+ 
 
 }

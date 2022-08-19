@@ -50,15 +50,15 @@ export class ProductService {
       retry(3),
     );
    }
-   getProductsByCategoryId(id:number){
+   getProductsByCategoryId(id:number):Observable<IProductResponse>{
     let url = "http://localhost:5092/api/Product/CategoryProducts/"+id;
-    return this.httpClient.get(url).pipe(
+    return this.httpClient.get<IProductResponse>(url).pipe(
       retry(3),
     );
    }
-   getProductsBySubCategoryId(id:number){
+   getProductsBySubCategoryId(id:number):Observable<IProductResponse>{
     let url = "http://localhost:5092/api/Product/SubCategoryProducts/"+id;
-    return this.httpClient.get(url).pipe(
+    return this.httpClient.get<IProductResponse>(url).pipe(
       retry(3),
     );
    }
