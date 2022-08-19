@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICategory } from 'src/helpers/interfaces/icategory';
@@ -53,40 +53,6 @@ export class AddProductComponent implements OnInit {
     this.ProductId  = this.getUrlParameter("id");
     // this.getSelectedProduct();
   }
-  
-  sendData(){
-    event?.preventDefault();
-    this.formData.append("Name",this.productModel.name);
-    this.formData.append("Name_Ar",this.productModel.Name_Ar);
-    this.formData.append("Description",this.productModel.Description);
-    this.formData.append("Description_Ar",this.productModel.Description_Ar);
-    this.formData.append("CategoryID",this.productModel.CategoryID.toString());
-    this.formData.append("subcategoryID",this.productModel.subcategoryID.toString());
-    this.formData.append("Price",this.productModel.Price!.toString());
-    this.formData.append("Quantity",this.productModel.Quantity!.toString());
-    this.formData.append("IsAvailable","true");
-    
-    let headers = new HttpHeaders({
-      'Content-Type': 'multipart/form-data',
-      'Accept': 'application/json'});
-  let options = { headers: headers };
-
-   console.log(this.formData.get("Name"));
-    console.log(this.formData.get("CategoryID"));
-
-
-
-    const request = new XMLHttpRequest();
-     let tok = localStorage.getItem("token");
-     let selfdata;
-     request.onloadend= function(){
-         console.log(this.responseText);
-         selfdata = JSON.parse(this.responseText);
-    };
-      request.open("POST", "http://localhost:5092/api/Product");
-      request.setRequestHeader('Authorization', `Bearer ${tok}` );
-      request.send(this.formData);
-    }
   AddProductLast(){
     event?.preventDefault();
     this.formData.append("Name",this.productModel.name);
@@ -129,6 +95,8 @@ export class AddProductComponent implements OnInit {
       };
         request.open("POST", "http://localhost:5092/api/Product");
         request.send(this.formData);
+        this.sharedService.showSnackBar("product added Successfully, it will Preview later and then approved if matched Policy !",5000,'successSnackBar')
+        this.back();
 
   }
 

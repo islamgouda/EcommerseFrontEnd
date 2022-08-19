@@ -35,3 +35,19 @@ export interface IAddressResponse{
     message: string;
     data: IAddress[]
 }
+
+export interface IBuy{
+        paymentID: number;
+        shipperID: number;
+        addressID: number;
+}
+
+export interface IBuyResponse{
+    success: boolean;
+    message: string;
+  }
+  export interface IPaymentMethodResponse{
+    succcess: boolean;
+    message: string;
+    data?:any;
+  }

@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -23,7 +24,7 @@ export class LoginUserComponent implements OnInit {
 
   constructor(private http:HttpClient,private router:Router
         ,private lservice:LoginServiceService
-                ,private fb:FormBuilder) { }
+                ,private fb:FormBuilder,private location:Location) { }
 
 //new update by ataa
 
@@ -60,8 +61,12 @@ export class LoginUserComponent implements OnInit {
       
     }},
     (error)=>console.log(error)
-    );}
-    
+    );
+    this.back();
+  }
+    back(){
+      this.location.back();
+    }
     //this.user=this.getMe();
 closeAlert(){
   this.alert=false;

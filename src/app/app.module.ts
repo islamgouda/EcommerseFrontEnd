@@ -42,6 +42,7 @@ import { ProductsByPriceComponent } from './home/products-by-price/products-by-p
 import { HighLightBorderDirective } from 'src/helpers/customeDirective/high-light-border.directive';
 import { BeaShipperComponent } from './bea-shipper/bea-shipper.component';
 
+
 import { AdminModule } from 'src/admin/admin.module';
 import { PartnerModule } from 'src/partner/partner.module';
 import { PartnerLayoutComponent } from 'src/partner/partner-layout/partner-layout.component';
@@ -53,6 +54,7 @@ import { DiscountPipe } from 'src/helpers/pipes/discount.pipe';
 import { AddToCartComponent } from './home/add-to-cart/add-to-cart.component';
 import { CartItemComponent } from './home/cart-item/cart-item.component';
 import { ProceedToPayComponent } from './home/proceed-to-pay/proceed-to-pay.component';
+import { AddPaymentMethodComponent } from './home/add-payment-method/add-payment-method.component';
 
 
 
@@ -101,6 +103,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddToCartComponent,
     CartItemComponent,
     ProceedToPayComponent,
+    AddPaymentMethodComponent,
 
 
   ],

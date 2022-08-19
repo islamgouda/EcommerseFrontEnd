@@ -10,6 +10,7 @@ import { BeaShipperComponent } from './bea-shipper/bea-shipper.component';
 import { CartComponent } from './cart/cart.component';
 import { CustomLayoutComponent } from './custom-layout/custom-layout.component';
 import { DefaultLayoutComponent } from './default-layout/default-layout.component';
+import { AddPaymentMethodComponent } from './home/add-payment-method/add-payment-method.component';
 import { AddToCartComponent } from './home/add-to-cart/add-to-cart.component';
 import { AllProductsComponent } from './home/all-products/all-products.component';
 import { CartItemComponent } from './home/cart-item/cart-item.component';
@@ -45,6 +46,7 @@ const routes: Routes = [
     {path:'cartItems',component:CartItemComponent},
     {path:'checkOut',component:ProceedToPayComponent},
     {path:'addAddress',component:AddUserAddressComponent},
+    {path:'addPayemntMethod',component:AddPaymentMethodComponent},
   ]},
 
   {path:'products',component:UProductsComponent},

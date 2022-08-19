@@ -1,0 +1,77 @@
+<div class="row mt-5">
+    <div class="col-12 col-md-2"></div>
+    <div class="col-12 col-md-8" [class]="textDirection">
+        <h3  class="shadow bg-light text-dark text-center fs-4 p-2 rounded-pill">add New Payment Method</h3>
+        
+        <form #PaymentMethodForm="ngForm" (ngSubmit)="addNewPaymentMethod()">
+            <div class="form-group mt-5">
+                <label for="holderName" class="mb-1">holder Name</label>
+                <input type="text" pattern="[a-zA-Z 0-9]{2,100}" #holderName="ngModel" required [class.validInput]="holderName.valid" [class.invalidInput]="holderName.invalid && holderName.touched"  id="holderName" name="holderName" [(ngModel)]="paymentModel.holderName" class="form-control">
+                <div class="text-danger" *ngIf="holderName.invalid && holderName.touched">
+                    <small class="text-danger" *ngIf="holderName.errors!['required']">Holder Name is Required</small>
+                    <small class="text-danger" *ngIf="holderName.errors!['pattern']">Only letters and numbers</small>
+                </div>
+            </div>
+            <div class="form-group mt-2">
+                <label for="cardNumber" class="mb-1">Card Number</label>
+                <input type="text" pattern="[0-9]{16}" #cardNumber="ngModel" required [class.validInput]="cardNumber.valid" [class.invalidInput]="cardNumber.invalid && cardNumber.touched"  id="cardNumber" name="cardNumber" [(ngModel)]="paymentModel.cardNumber" class="form-control">
+                <div class="text-danger" *ngIf="cardNumber.invalid && cardNumber.touched">
+                    <small class="text-danger" *ngIf="cardNumber.errors!['required']">card Number is Required</small>
+                    <small class="text-danger" *ngIf="cardNumber.errors!['pattern']">card Number must be 16 disgits</small>
+                </div>
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="expYear" class="mb-1">expiration Year</label>
+                <input type="text" pattern="[0-9]{4}" #expYear="ngModel" required [class.validInput]="expYear.valid" [class.invalidInput]="expYear.invalid && expYear.touched"  id="expYear" name="expYear" [(ngModel)]="paymentModel.expYear" class="form-control">
+                <div class="text-danger" *ngIf="expYear.invalid && expYear.touched">
+                    <small class="text-danger" *ngIf="expYear.errors!['required']">expiration Year is Required</small>
+                    <small class="text-danger" *ngIf="expYear.errors!['pattern']">expiration Year must be 4 disgits</small>
+                </div>
+            </div>
+
+
+            <div class="form-group mt-2">
+                <label for="expMonth" class="mb-1">expiration Month</label>
+                <input type="text" pattern="[0-9]{1,2}" #expMonth="ngModel" required [class.validInput]="expMonth.valid" [class.invalidInput]="expMonth.invalid && expMonth.touched"  id="expMonth" name="expMonth" [(ngModel)]="paymentModel.expMonth" class="form-control">
+                <div class="text-danger" *ngIf="expMonth.invalid && expMonth.touched">
+                    <small class="text-danger" *ngIf="expMonth.errors!['required']">expiration Month is Required</small>
+                    <small class="text-danger" *ngIf="expMonth.errors!['pattern']">expiration Month must be 1 or 2 disgits</small>
+                </div>
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="cvc" class="mb-1">CVC</label>
+                <input type="text" pattern="[0-9]{3}" #cvc="ngModel" required [class.validInput]="cvc.valid" [class.invalidInput]="cvc.invalid && cvc.touched"  id="cvc" name="cvc" [(ngModel)]="paymentModel.cvc" class="form-control">
+                <div class="text-danger" *ngIf="cvc.invalid && cvc.touched">
+                    <small class="text-danger" *ngIf="cvc.errors!['required']">CVC is Required</small>
+                    <small class="text-danger" *ngIf="cvc.errors!['pattern']">CVC must be 1 or 3 disgits</small>
+                </div>
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="provider" class="mb-1">Provider</label>
+                <input type="text" pattern="[a-zA-Z 0-9]{2,100}" #provider="ngModel" required [class.validInput]="provider.valid" [class.invalidInput]="provider.invalid && provider.touched"  id="provider" name="provider" [(ngModel)]="paymentModel.provider" class="form-control">
+                <div class="text-danger" *ngIf="provider.invalid && provider.touched">
+                    <small class="text-danger" *ngIf="provider.errors!['required']">Provider is Required</small>
+                    <small class="text-danger" *ngIf="provider.errors!['pattern']">Only letters and numbers</small>
+                </div>
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="payementType" class="mb-1">Payement Type</label>
+                <input type="text" pattern="[a-zA-Z 0-9]{2,100}" #payementType="ngModel" required [class.validInput]="payementType.valid" [class.invalidInput]="payementType.invalid && payementType.touched"  id="payementType" name="payementType" [(ngModel)]="paymentModel.payementType" class="form-control">
+                <div class="text-danger" *ngIf="payementType.invalid && payementType.touched">
+                    <small class="text-danger" *ngIf="payementType.errors!['required']">payementType is Required</small>
+                    <small class="text-danger" *ngIf="payementType.errors!['pattern']">Only letters and numbers</small>
+                </div>
+            </div>
+            
+            <input type="submit" value="Save" [disabled]="PaymentMethodForm.invalid" class="mt-4 form-control btn btn-outline-success"/>
+        </form>
+        <button (click)="back()" class="mt-4 form-control btn btn-outline-warning mt-3">Cancel</button>
+    </div>
+    <div class="col-12 col-md-2"></div>
+</div>
+
+

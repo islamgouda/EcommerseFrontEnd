@@ -6,24 +6,58 @@
     <div class="col-12 col-md-2"></div>
 </div>
 <div class="row mt-3">
-    <div class="col-12 col-md-2"></div>
+    <div class="col-12 col-md-1"></div>
     <div class="col-12 col-md-3 lead mt-2">Select Shipper</div>
     <div class="col-12 col-md-5">
-        <select name="address" class="form-control" [(ngModel)]="shipperId">
-            <option value="shipper.id" *ngFor="let shipper of shipperList">{{shipper.name}}</option>
+        <select  name="address" #shipperId="ngModel"  [class.successBorder]="shipperId.value!=-1 && shipperId.touched" [class.dangerBorder]="shipperId.value==-1 && shipperId.touched" class="form-control" [(ngModel)]="payModel.shipperID">
+            <option value="-1" >Select Shipper</option>
+            <option value={{shipper.id}} *ngFor="let shipper of shipperList">{{shipper.name}}</option>
         </select>
+        <div *ngIf="shipperId.value==-1&& shipperId.touched">
+            <small class="text-danger">Select Shipper</small>
+        </div>
     </div>
-    <div class="col-12 col-md-2"></div>
+    <div class="col-12 col-md-3"></div>
 </div>
 <div class="row mt-3">
-    <div class="col-12 col-md-2"></div>
+    <div class="col-12 col-md-1"></div>
     <div class="col-12 col-md-3 lead mt-2">Select Address</div>
     <div class="col-12 col-md-5">
-        <select name="address" class="form-control" [(ngModel)]="addressId">
-            <option value="address.id" *ngFor="let address of addressList">{{address.addressLine1}} - {{address.city}}</option>
+        <select name="address" #addressId="ngModel" [class.successBorder]="addressId.value!=-1 && addressId.touched" [class.dangerBorder]="addressId.value==-1 && addressId.touched" class="form-control" [(ngModel)]="payModel.addressID">
+            <option value="-1">Select Address</option>
+            <option value={{address.id}} *ngFor="let address of addressList">{{address.addressLine1}}  -  {{address.city}}</option>
         </select>
+        <div *ngIf="addressId.value==-1 && addressId.touched">
+            <small class="text-danger">Select Address</small>
+        </div>
     </div>
-    <div class="col-12 col-md-2">
-        <a routerLink="/home/addAddress" style="display: inline-block;" class="text-decoration-none  mt-2">New Address</a>
+    <div class="col-12 col-md-3">
+        <a (click)="goToAddAddress()" style="display: inline-block;"
+            class=" btn btn-outline-info form-control text-decoration-none">New Address</a>
     </div>
+</div>
+<div class="row mt-3">
+    <div class="col-12 col-md-1"></div>
+    <div class="col-12 col-md-3 lead mt-2">Select Payment Method</div>
+    <div class="col-12 col-md-5">
+        <select #paymentId="ngModel" [class.successBorder]="paymentId.value!=-1 && paymentId.touched" [class.dangerBorder]="paymentId.value==-1 && paymentId.touched" name="paymentId" class="form-control" [(ngModel)]="payModel.paymentID">
+            <option value="-1" selected>Select Payment Method</option>
+            <option value={{method.id}} *ngFor="let method of paymentMethodList">{{method.holderName}}  -  {{method.provider}}</option>
+        </select>
+        <div *ngIf="paymentId.value==-1 && paymentId.touched">
+            <small class="text-danger">Select Payment Method</small>
+        </div>
+    </div>
+    <div class="col-12 col-md-3">
+        <a (click)="goToAddPaymentMethod()" style="display: inline-block;"
+            class=" btn btn-outline-info form-control text-decoration-none">New Payment Method</a>
+    </div>
+</div>
+
+<div class="row mt-5 mb-5">
+    <div class="col-12 col-md-4"></div>
+    <div class="col-12 col-md-5">
+        <button (click)="confirmPayment()" [disabled]="shipperId.value==-1 ||paymentId.value==-1 || addressId.value==-1" class="btn btn-outline-success form-control">Confirm Buying Operation</button>
+    </div>
+    <div class="col-12 col-md-3"></div>
 </div>

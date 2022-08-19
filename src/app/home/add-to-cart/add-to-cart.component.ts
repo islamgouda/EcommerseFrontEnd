@@ -53,6 +53,8 @@ name_Ar:"",partenerName:"",price:1,quantity:1,subcategoryName:"",id:1};
         }
       }
     );
+    this.shared.getCartItemsCount();
+    
     this.back();
   }
   back(){
