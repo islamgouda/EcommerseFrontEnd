@@ -56,8 +56,21 @@
 .fw-bold{
     font-weight: bold;
 }
-
+.dangerBorder{
+    border: 1px solid red;
+}
+.successBorder{
+    border: 1px solid green;
+}
+.warningBorder{
+    border: 1px solid orangered;
+}
 
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+// ----------------------start product item ------------------
+
+// ----------------------End product item ------------------

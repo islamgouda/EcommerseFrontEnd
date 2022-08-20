@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { share } from 'rxjs';
 import { IDisplayProducts } from 'src/helpers/interfaces/idisplay-products';
 import { IProduct, IProductt, IShowProduct } from 'src/helpers/interfaces/iproduct';
 import { ProductService } from 'src/helpers/services/product.service';
+import { SharedService } from 'src/helpers/services/shared.service';
 
 @Component({
   selector: 'app-all-products',
@@ -12,11 +14,11 @@ export class AllProductsComponent implements OnInit {
 
   productList:IShowProduct[]=[];
   
-  constructor(private productService:ProductService) { }
+  constructor(private productService:ProductService,private shared:SharedService) { }
   
   ngOnInit(): void {
     this.getallProducts();
-    
+    this.shared.getCartItemsCount();
   }
   getallProducts(){
     this.productService.getProducts().subscribe(

@@ -12,15 +12,20 @@ import { SharedService } from 'src/helpers/services/shared.service';
 export class CartItemComponent implements OnInit {
 
   cartItemsList:IShowCartItemProduct[]=[];
-  constructor(private location:Location,private cartItemService:CartItemsService,private shared:SharedService) { }
+  cartCount:any;
+  constructor(private cartService:CartItemsService,private location:Location,private cartItemService:CartItemsService,private shared:SharedService) {
+   }
 
   ngOnInit(): void {
     this.getAllCartItems();
+    this.cartCount = localStorage.getItem("cart");
   }
+ 
   getAllCartItems(){
     this.cartItemService.getAllCartItems().subscribe(
       data=>{
         this.cartItemsList=data.message as IShowCartItemProduct[];
+        localStorage.setItem("cart",this.cartItemsList.length>0?this.cartItemsList.length.toString():"0");
         console.log(data);
       }
     );
@@ -41,6 +46,7 @@ export class CartItemComponent implements OnInit {
         this.getAllCartItems();
       }
     );
+    this.shared.getCartItemsCount();
   }
   back(){
     this.location.back();

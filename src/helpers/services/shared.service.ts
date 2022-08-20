@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { CartItemsService } from './cart-items.service';
+import { IShowCartItemProduct } from '../interfaces/iproduct';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +14,10 @@ export class SharedService {
    let textDir=localStorage.getItem('lang')=="ar"?"rtl":"ltr";
    return textDir;
   }
-  constructor(private activatedRoute:ActivatedRoute,private snackBar:MatSnackBar,public dialog: MatDialog ) { }
+  constructor(private cartItemService:CartItemsService,public activatedRoute:ActivatedRoute,public snackBar:MatSnackBar,public dialog: MatDialog) 
+  { 
+    
+  }
   showSnackBar(msg:string,durationInMS:number,className:string){
     this.snackBar.open(msg, 'Ok', {
       duration: durationInMS,
@@ -35,6 +41,16 @@ export class SharedService {
       }
     )
     return parameter;
+  }
+  getCartItemsCount(){
+    let cartItemsList;
+    this.cartItemService.getAllCartItems().subscribe(
+      data=>{
+        cartItemsList=data.message as IShowCartItemProduct[];
+        localStorage.setItem("cart",cartItemsList.length>0?cartItemsList.length.toString():"0");
+        console.log(data);
+      }
+    );
   }
 
 }

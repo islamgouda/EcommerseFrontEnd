@@ -18,7 +18,7 @@ export class ShowCategoriesComponent implements OnInit {
   textDirection;
   categoryName:string="";
   categoryId:any;
-  selectedCategoreID:number=1;
+  selectedCategoreID:number=-1;
   categoriesList:ICategory[]=[];
   categoryModel:ICategory = {description:"",description_Ar:"",name:"",name_Ar:"",id:-1};
   getAllCategoryState:string="";
