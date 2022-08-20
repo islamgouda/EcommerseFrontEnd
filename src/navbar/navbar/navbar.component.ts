@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit,AfterViewInit {
   textDirection:string;
   IsAdmin:boolean=false;
   IsPartner:boolean=false;
+  IsUser:boolean=false;
   IsLoggedIn:boolean=true;
   cartItemsCount:any;
   constructor(private cartService:CartItemsService,private translateservice:TranslateService,private router:Router,private sharedService:SharedService,private loginService:LoginServiceService) 
@@ -31,10 +32,11 @@ export class NavbarComponent implements OnInit,AfterViewInit {
         this.username=name.userName;
         localStorage.setItem('Roles',name.roles);
         console.log(name.roles);
-        console.log(name.roles.includes('Admin'));
+       // console.log(name.roles.includes('Admin'));
         this.IsAdmin=name.roles.includes('Admin');
         this.IsPartner=name.roles.includes('Partener');
-        console.log(this.IsPartner);
+        this.IsUser=name.roles.includes('User');
+        console.log(this.IsUser);
    });
    this.IsLoggedIn=localStorage.getItem('token')==null;
   }
@@ -68,14 +70,11 @@ export class NavbarComponent implements OnInit,AfterViewInit {
     localStorage.removeItem('token');
     localStorage.removeItem('Roles');
     localStorage.removeItem('expiration');
-    this.router.navigate(['LoginUser']);//Edit By Ataa
-    location.reload();
-    
-    
-    //.then(()=>{
-      //window.location.reload();
+    this.router.navigate(['LoginUser']).
+    then(()=>{
+      window.location.reload();
 
-     //})
+     })
  
    
   }
