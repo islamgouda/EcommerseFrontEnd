@@ -55,6 +55,7 @@ import { AddToCartComponent } from './home/add-to-cart/add-to-cart.component';
 import { CartItemComponent } from './home/cart-item/cart-item.component';
 import { ProceedToPayComponent } from './home/proceed-to-pay/proceed-to-pay.component';
 import { AddPaymentMethodComponent } from './home/add-payment-method/add-payment-method.component';
+import { ShipperModule } from 'src/shipper/shipper.module';
 
 
 
@@ -111,6 +112,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     UserModule,
+    ShipperModule,
     PartnerModule,
     NavbarModule,
     HttpClientModule,

@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="row pt-4" [class]="textDirection" style="min-height:450px ;" >
+    <div class="col-12 col-md-3 " >
+            <div id="category">
+                <a routerLinkActive="text-danger border border-1 border-danger" class="btn btn-dark form-control mb-1  text-decoration-none">{{'shipper.adminPannel'|translate}}</a>
+                <a routerLink="/shipper/shipperLayout/details" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'shipper.details'|translate}}</a>
+            </div>
+    </div>
+    <div class="col-12 col-md-9 shadow p-3">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+</div>
+
+
+

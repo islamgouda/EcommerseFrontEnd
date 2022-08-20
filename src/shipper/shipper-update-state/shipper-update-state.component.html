@@ -1,0 +1,43 @@
+<h4 class="shadow bg-light text-dark text-center p-2 fs-4 rounded-pill">{{'shipper.updateState'|translate}}</h4>
+<div class="row ltr">
+    <div class="col-12 col-md-1"></div>
+    <div class="col-12 col-md-10 shadow mt-3 mb-3 p-3" >
+        <div class="card float-left">
+            <div class="row p-3">
+              <div class="col-sm-9">
+                <div class="card-block">
+                  <h2 class="card-title bolder lead"><b>Ship Name : </b> {{shippingModel.shipName}}</h2>
+                  <p class="lead"><b>Ship State : </b> {{shippingModel.shippingstate}}</p>
+                  <p class="lead"><b>Address : </b> {{shippingModel.alLaddress}}</p>
+                  <p class="lead"><b>Phone : </b> {{shippingModel.customerPhone}}</p>
+                  
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <img class="d-block w-100 br-10" height="120" src="/assets/images/shipper.jpg" alt="">
+                <a (click)="back()" class="btn btn-outline-primary form-control mt-2 mb-2 btn-sm">{{'shipper.back'|translate}}</a>
+              </div>
+              <div *ngIf="shippingModel.shippingstate!='Delivered';else DeliveredSuccessfully" class="row text-center ">
+                <div class="col-12 mt-2 mb-2">
+                    <h3 class="shadow border border-2 border-mute  text-dark text-center p-2  rounded-pill"><b>{{'shipper.changeState'|translate}}</b></h3>
+                </div>
+                <!-- <div class="col-3"><button [disabled]="pickUp" class="btn btn-outline-danger form-control" (click)="changeState(shippingModel.shippingstate!)">{{'shipper.pickUp'|translate}}</button></div>
+                <div class="col-3"><button [disabled]="onProcess" class="btn btn-outline-warning form-control" (click)="changeState(shippingModel.shippingstate!)">{{'shipper.onProcess'|translate}}</button></div>
+                <div class="col-3"><button [disabled]="onDelivery" class="btn btn-outline-info form-control" (click)="changeState(shippingModel.shippingstate!)">{{'shipper.onDelivery'|translate}}</button></div>
+                <div class="col-3"><button [disabled]="Delivered" class="btn btn-outline-success form-control" (click)="changeState(shippingModel.shippingstate!)">{{'shipper.delivered'|translate}}</button></div> -->
+                <div class="col-12"><button *ngIf="!pickUp" class="btn btn-outline-danger mb-2 form-control" (click)="changeState(shippingModel.shippingstate!)">{{'shipper.pickUp'|translate}}</button></div>
+                <div class="col-12"><button *ngIf="!onProcess" class="btn btn-outline-warning mb-2 form-control" (click)="changeState(shippingModel.shippingstate!)">{{'shipper.onProcess'|translate}}</button></div>
+                <div class="col-12"><button *ngIf="!onDelivery" class="btn btn-outline-info mb-2 form-control" (click)="changeState(shippingModel.shippingstate!)">{{'shipper.onDelivery'|translate}}</button></div>
+                <div class="col-12"><button *ngIf="!Delivered" class="btn btn-outline-success mb-2 form-control" (click)="changeState(shippingModel.shippingstate!)">{{'shipper.delivered'|translate}}</button></div>
+             
+            </div>
+            <ng-template #DeliveredSuccessfully>
+                <div class="alert alert-success text-center fs-3">{{'shipper.delivered'|translate}}</div>
+            </ng-template>
+            </div>
+          </div>
+          
+    </div>
+    
+    <div class="col-12 col-md-1"></div>
+</div>

@@ -10,7 +10,8 @@
     "categories":"Categories",
     "contactUs":"Contact Us",
     "admin":"Admin Pannel",
-    "partner":"Partner Pannel"
+    "partner":"Partner Pannel",
+    "shipper":"Shipper Pannel"
     },
     "footer":{
         "suscribNow":"Suscrib Now",
@@ -141,7 +142,13 @@
         "confirmDelete":"Confirm Delete"
     },
     "admin":{
-        "dashboard":"Admin Dashboard"
+        "dashboard":"Admin Dashboard",
+        "AllShippers":"All Shippers",
+        "addNewShipper":"Add New Shipper",
+        "AddToRole":"Add Role",
+        "RemoveFromRole":"Remove From Role",
+        "Shipper":"Shipper",
+        "Roles":"Roles"
     },
     "partner":{
         "partners":"Partners",
@@ -153,7 +160,10 @@
     "user":{
         "userPannel":"User Pannel",
         "dashboard":"User Dashboard",
-        "anyThning":"Any Link"
+        "userPaymentHistory":"User Payment History",
+        "userOrders":"User Orders",
+        "NoserPaymentHistory":"There is No  Payment History !",
+        "NoserOrders":"There is No Orders !"
     },
     "discount":{
         "allDiscounts":"All Sub Discounts",
@@ -201,5 +211,17 @@
         "productsByPartner":"Products By Partner",
         "productsByProductName":"Products By Product Name",
         "productsByPrice":"Products By Price"
+    },
+    "shipper":{
+        "adminPannel":"Shipper Admn Pannel",
+        "details":"Shipper Details",
+        "updateState":"Update State",
+        "shippings":"All Shippings",
+        "back":"Back",
+        "pickUp":"Pick Up",
+        "onProcess":"On Process",
+        "onDelivery":"On Delivery",
+        "delivered":"Delivered",
+        "changeState":"Change State"
     }
 }

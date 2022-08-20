@@ -86,6 +86,11 @@ export class ProceedToPayComponent implements OnInit {
         successMessage = language=="en"?"Buy Operation Completed Successfully, Track Your Order":
         "تم تأكيد عملية الشراء بنجاح , تابع تحركات طلبك";
         this.sharedService.showSnackBar(successMessage,6000,'successSnackBar');
+        console.log("---------------start Proceed To Pay----------------------------")
+        console.log(data.message);
+        console.log(data.success);
+        console.log(data.data);
+        console.log("---------------End Proceed To Pay----------------------------")
         this.router.navigate(["/home"]);//go home
       }else{
         this.sharedService.showSnackBar(data.message,4000,'dangerSnackBar');

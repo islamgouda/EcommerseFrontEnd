@@ -1,0 +1,32 @@
+<h4  class="shadow bg-light text-dark text-center p-2 mb-4 fs-4 rounded-pill">{{'user.userPaymentHistory'|translate}}</h4>
+
+<div class="row">
+    <div class="col-12">
+        <ng-container *ngFor="let item of historyList; index as i">
+            <!-- collapse -->
+        <button class="mt-3 btn btn-dark form-control mb-1" type="button" data-bs-toggle="" [attr.data-target]="dataTargets[i]" aria-expanded="true" aria-controls="collapseExample">
+            <div class="row">
+                
+                <div class="col-12 col-md-4">Order Total Price : <b class="lead">{{item.totalPrice}}</b></div>
+                <div class="col-12 col-md-5">Order Date : <b class="lead">{{item.createdAt|date}}</b></div>
+                <div class="col-12 col-md-3"><i class="fa-solid fs-3 fa-angles-left"></i></div>
+            </div>
+       </button>
+       <div [id]="IDs[i]" class="">
+        <div class="mt-2 p-4  text-white rounded" style="background-color:gray; color: darkblue;">
+            <div class="row">
+            <div class="col-12 col-md-6 mb-2 mt-1 mt-1 shadow" *ngFor="let product of item.orderItems">
+                <div class="col-12 col-md-4 ">
+                    <img src="{{product.productImage}}" class="br-15" height="100" width="100%">
+                </div>
+                <div class="col-12 col-md-8 pt-1 mt-2 mb-2 text-center">
+                    Product Name : <b class="lead">{{product.productName}}</b>
+                </div>                
+            </div>
+        </div>
+          </div>
+       </div>
+    </ng-container>
+    </div>
+</div>
+<div *ngIf="historyList.length==0" class="col-12 alert alert-danger text-center p-4 bolder lead">{{'user.NoserPaymentHistory'|translate}}</div>

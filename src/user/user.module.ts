@@ -7,6 +7,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LanguageInterceptor } from 'src/helpers/interceptors/language.interceptor';
+import { UserPaymentHistoryComponent } from './user-payment-history/user-payment-history.component';
+import { UserShippingComponent } from './user-shipping/user-shipping.component';
 //adding to execute localization
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -15,7 +17,9 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     UserLayoutComponent,
-    UserLandingPageComponent
+    UserLandingPageComponent,
+    UserPaymentHistoryComponent,
+    UserShippingComponent
   ],
   imports: [
     CommonModule,

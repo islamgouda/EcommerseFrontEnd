@@ -45,6 +45,7 @@ export interface IBuy{
 export interface IBuyResponse{
     success: boolean;
     message: string;
+    data:any;
   }
   export interface IPaymentMethodResponse{
     succcess: boolean;
