@@ -11,6 +11,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { LanguageInterceptor } from 'src/helpers/interceptors/language.interceptor';
 import { FormsModule } from '@angular/forms';
 import { PartnerLandingPageComponent } from './partner-landing-page/partner-landing-page.component';
+import { AllProductsComponent } from './all-products/all-products.component';
+import { PendingProductsComponent } from './pending-products/pending-products.component';
 //adding to execute localization
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -21,7 +23,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     PartnerLayoutComponent,
     PAddProductComponent,
     PAddDiscountComponent,
-    PartnerLandingPageComponent
+    PartnerLandingPageComponent,
+    AllProductsComponent,
+    PendingProductsComponent
   ],
   imports: [
     CommonModule,

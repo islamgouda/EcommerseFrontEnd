@@ -1,28 +1,15 @@
 <div class="container-fluid">
     <div class="row mt-4" [class]="textDirection">
     <div class="col-12 col-md-3 ">
-            <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#category" aria-expanded="false" aria-controls="collapseExample">
-                 {{'category.categories'|translate}}
-            </button>
-            <div id="category" class="collapse">
-                <a routerLink="" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'category.showAllCategories'|translate}}</a>
-                <a routerLink="" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'category.addNewCategory'|translate}}</a>
-            </div>
-
-            <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#subCategory" aria-expanded="false" aria-controls="collapseExample">
-               {{'subCategory.subCategory'|translate}}
-            </button>
-            <div id="subCategory" class="mt-2 collapse">
-                <a routerLink="" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'subCategory.showAllsubCategories'|translate}}</a>
-                <a routerLink="" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'subCategory.addNewsubCategory'|translate}}</a>
-            </div>
+    
 
             <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#Products" aria-expanded="false" aria-controls="collapseExample">
                 {{'product.product'|translate}}
             </button>
             <div  id="Products" class="mt-2 collapse">
-                <a routerLink="" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'product.showAllproducts'|translate}}</a>
-                <a routerLink="" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'product.addNewproduct'|translate}}</a>
+                <a routerLink="AllProducts" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'product.showAllproducts'|translate}}</a>
+                <a routerLink="PendingProducts" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'Pending Products'|translate}}</a>
+                <a routerLink="addProduct" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'product.addNewproduct'|translate}}</a>
             </div> 
             
             <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#discount" aria-expanded="false" aria-controls="collapseExample">
