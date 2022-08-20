@@ -27,54 +27,67 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 
 const routes: Routes = [
 
- {path:"userdash",component:UserDashboardComponent,
- canActivate:[HasRoleGuard],
- data:{role:'User'}, 
-}, //userdashboardto requests
-  {path:"bePartner",component:BeaPartnerComponent},
-  {path:"beShipper",component:BeaShipperComponent},
-  {path:"",redirectTo: '/home', pathMatch: 'full'}, //deafualt page
-  {path:'home',component:HomeComponent,children:[
-    {path:"",component:AllProductsComponent},
-    {path:'AllProducts',component:AllProductsComponent},
-    {path:'productsByCategory',component:ProductsByCategoryComponent},
-    {path:'productsBySubCategory',component:ProductsBySubCategoryComponent},
-    {path:'productsByPartner',component:ProductsByPartnerComponent},
-    {path:'productsByProductName',component:ProductsByProductNameComponent},
-    {path:'productsByPrice',component:ProductsByPriceComponent},
-    {path:'addToCart/:id',component:AddToCartComponent},
-    {path:'cartItems',component:CartItemComponent},
-    {path:'checkOut',component:ProceedToPayComponent},
-    {path:'addAddress',component:AddUserAddressComponent},
-    {path:'addPayemntMethod',component:AddPaymentMethodComponent},
-  ]},
+  {
+    path: "userdash", component: UserDashboardComponent,
+    canActivate: [HasRoleGuard],
+    data: { role: 'User' },
+  }, //userdashboardto requests
+  { path: "bePartner", component: BeaPartnerComponent },
+  { path: "beShipper", component: BeaShipperComponent },
+  { path: "", redirectTo: '/home', pathMatch: 'full' }, //deafualt page
+  {
+    path: 'home', component: HomeComponent, children: [
+      { path: "", component: AllProductsComponent },
+      { path: 'AllProducts', component: AllProductsComponent },
+      { path: 'productsByCategory', component: ProductsByCategoryComponent },
+      { path: 'productsBySubCategory', component: ProductsBySubCategoryComponent },
+      { path: 'productsByPartner', component: ProductsByPartnerComponent },
+      { path: 'productsByProductName', component: ProductsByProductNameComponent },
+      { path: 'productsByPrice', component: ProductsByPriceComponent },
+      { path: 'addToCart/:id', component: AddToCartComponent },
+      { path: 'cartItems', component: CartItemComponent },
+      { path: 'checkOut', component: ProceedToPayComponent },
+      { path: 'addAddress', component: AddUserAddressComponent },
+      { path: 'addPayemntMethod', component: AddPaymentMethodComponent },
+    ]
+  },
 
-  {path:'products',component:UProductsComponent},
-  {path:'cart',component:CartComponent},
-  {path:'defaultLayout',component:DefaultLayoutComponent},
-  {path:'customLayout',component:CustomLayoutComponent},
-  {path:"navbar",loadChildren:()=>import("../navbar/navbar.module").then(x=>x.NavbarModule)},
-  {path:"footer",loadChildren:()=>import("../footer/footer.module").then(x=>x.FooterModule)},
-  {path:'admin',loadChildren:()=>import("../admin/admin.module").then(m=>m.AdminModule),
-  canActivate:[HasRoleGuard],
-  data:{role:'Admin'},
-},
-  {path:'partner',loadChildren:()=>import("../partner/partner.module").then(m=>m.PartnerModule),
-  canActivate:[HasRoleGuard],
-  data:{role:'Partener'},
-},
-  {path:'user',loadChildren:()=>import("../user/user.module").then(m=>m.UserModule),
-  canActivate:[HasRoleGuard],
-  data:{role:'User'},
-},
-  {path:"RegisterUser",component:RegisterUserComponent,pathMatch:"full"},
-  {path:"LoginUser",component:LoginUserComponent,pathMatch:"full"},
-  {path:"RegisterAdmin",
-  component:RegisterAdminComponent,
-  canActivate:[HasRoleGuard],
-  data:{role:'Admin'},
-  pathMatch:"full"},
-  {path:"**",component:PageNotFoundComponent} //wild card
+  { path: 'products', component: UProductsComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'defaultLayout', component: DefaultLayoutComponent },
+  { path: 'customLayout', component: CustomLayoutComponent },
+  { path: "navbar", loadChildren: () => import("../navbar/navbar.module").then(x => x.NavbarModule) },
+  { path: "footer", loadChildren: () => import("../footer/footer.module").then(x => x.FooterModule) },
+  {
+    path: 'admin', loadChildren: () => import("../admin/admin.module").then(m => m.AdminModule),
+    canActivate: [HasRoleGuard],
+    data: { role: 'Admin' },
+  },
+  {
+    path: 'shipper', loadChildren: () => import("../shipper/shipper.module").then(m => m.ShipperModule),
+    // canActivate: [HasRoleGuard],
+    // data: { role: 'Shipper' },
+  },
+  {
+    path: 'partner', loadChildren: () => import("../partner/partner.module").then(m => m.PartnerModule),
+    canActivate: [HasRoleGuard],
+    data: { role: 'Partener' },
+  },
+  {
+    path: 'user', loadChildren: () => import("../user/user.module").then(m => m.UserModule),
+    canActivate: [HasRoleGuard],
+    data: { role: 'User' },
+  },
+  { path: "RegisterUser", component: RegisterUserComponent, pathMatch: "full" },
+  { path: "LoginUser", component: LoginUserComponent, pathMatch: "full" },
+  {
+    path: "RegisterAdmin",
+    component: RegisterAdminComponent,
+    canActivate: [HasRoleGuard],
+    data: { role: 'Admin' },
+    pathMatch: "full"
+  },
+  { path: "**", component: PageNotFoundComponent } //wild card
 ];
 
 @NgModule({

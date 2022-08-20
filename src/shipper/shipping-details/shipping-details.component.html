@@ -1,0 +1,29 @@
+<h4 class="shadow bg-light text-dark text-center p-2 fs-4 rounded-pill">{{'shipper.shippings'|translate}}</h4>
+<div class="row ltr">
+    <div class="col-12 col-md-1"></div>
+    <div class="col-12 col-md-10 shadow mt-3 mb-3 p-3" *ngFor="let item of shippingList" >
+        <div class="card float-left">
+            <div class="row p-3">
+              <div class="col-sm-9">
+                <div class="card-block">
+                  <h2 class="card-title bolder lead"><b>Ship Name : </b> {{item.shipName}}</h2>
+                  <p class="lead"><b>Ship State : </b> {{item.shippingstate}}</p>
+                  <p class="lead"><b>Address : </b> {{item.alLaddress}}</p>
+                  <p class="lead"><b>Phone : </b> {{item.customerPhone}}</p>
+                  
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <img class="d-block w-100 br-10" height="120" src="/assets/images/shipper.jpg" alt="">
+                <a routerLink="/shipper/shipperLayout/updateState/{{item.id}}" class="btn btn-outline-primary form-control mt-2 mb-2 btn-sm">{{'shipper.updateState'|translate}}</a>
+              </div>
+            </div>
+          </div>
+    </div>
+    
+    <div class="col-12 col-md-1"></div>
+</div>
+
+  
+ 
+   

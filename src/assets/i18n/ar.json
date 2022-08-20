@@ -11,7 +11,8 @@
         "categories": "الأصناف",
         "contactUs":"تواصل معنا",
         "admin":"لــوحة التــحكــم المشرف",
-        "partner":"لــوحة التــحكــم البائع"
+        "partner":"لــوحة التــحكــم البائع",
+        "shipper":"لــوحة تــحكــم شركة الشحن"
     },
     "footer": {
         "suscribNow":"متابعة الآن",
@@ -140,7 +141,13 @@
         "isProductAvailable":"هل المنتج متوفر"
     },
     "admin":{
-        "dashboard":"لوحة التــحكــم المشرف"
+        "dashboard":"لوحة التــحكــم المشرف",
+        "AllShippers":"جميع شركات الشحن",
+        "addNewShipper":"اضافة شركة شحن جديدة",
+        "AddToRole":"اضافة وظيفة للمستخدم",
+        "RemoveFromRole":"حذف مستخدم من وظيفة",
+        "Shipper":"شركات الشحن",
+        "Roles":"الوظائف"
     },
     "partner":{
         "dashboard":"لوحة تــحكــم البائع",
@@ -152,7 +159,10 @@
     "user":{
         "userPannel":"لوحة المستخدم",
         "dashboard":"لوحة التــحكــم المستخدم",
-        "anyThning":"اكتب اى لنك"
+        "userPaymentHistory":"مدفوعات المستخدم السابقة",
+        "userOrders":"طلبات المستخدم",
+        "NoserPaymentHistory":"لا يوجد مدفوعات سابقة",
+        "NoserOrders":"لا يوجد طلبات سابقة"
     }
     ,
     "discount":{
@@ -201,6 +211,19 @@
         "productsByPartner":"فلتر النتجات بالبائع",
         "productsByProductName":"فلتر باسم المنتج",
         "productsByPrice":"فلتر بالسعر"
+    },
+    "shipper":{
+        "adminPannel":"لــوحة تــحكــم شركة الشحن",
+        "details":"تفاصيل الشحنة",
+        "updateState":"تحديث الحالة",
+        "shippings":"جمــــــــــيع الشحنـــــــات",
+        "back":"العودة",
+        "pickUp":"استلام شركة الشحن",
+        "onProcess":"جاري التنفيذ",
+        "onDelivery":"جاري التوصيل",
+        "delivered":"تم التوصيل",
+        "changeState":"تغيير الحالة"
     }
+
 
 }

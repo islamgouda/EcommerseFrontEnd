@@ -1,19 +1,11 @@
 <div class="container-fluid">
     <div class="row pt-4" [class]="textDirection" >
     <div class="col-12 col-md-3 " >
-            <!-- <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#category" aria-expanded="false" aria-controls="collapseExample">
-                 {{'category.categories'|translate}}
-            </button> -->
-            <!-- <div id="category" class="collapse"> -->
             <div id="category">
-                <a routerLink="" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'user.anyThning'|translate}}</a>
-                <a routerLink="" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'user.anyThning'|translate}}</a>
-                <a routerLink="" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'user.anyThning'|translate}}</a>
-                <a routerLink="" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'user.anyThning'|translate}}</a>
-            </div>
-
-            
-
+                <a  routerLinkActive="text-danger border border-1 border-danger" class="btn btn-dark form-control mb-1  text-decoration-none">{{'user.dashboard'|translate}}</a>
+                <a routerLink="/user/userLayout/userShipping" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'user.userOrders'|translate}}</a>
+                <a routerLink="/user/userLayout/userPaymentHistory" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'user.userPaymentHistory'|translate}}</a>
+                 </div>
     </div>
     <div class="col-12 col-md-9 shadow p-3">
         <router-outlet></router-outlet>

@@ -1,0 +1,29 @@
+<h4 class="ltr shadow bg-light text-dark text-center p-2 fs-4 rounded-pill">{{'user.userOrders'|translate}}</h4>
+<div class="row" *ngFor="let item of shippingList">
+    <div class="row">
+        <div class="col-12 col-md-3">
+            <div  [class.customShadow]="item.shippingstate!=delivered" style="width:100%;height:250px;background-image: url('/assets/images/processFour.png');"></div>
+            <div class="shadow p-2 br-10 text-center" style="margin:10px 20px;"><b>Delevired</b></div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div [class.customShadow]="item.shippingstate!=onDelivery" style="width:100%;height:250px;background-image: url('/assets/images/processThree.png');"></div>
+            <div class="shadow p-2 br-10 text-center" style="margin:10px 20px;"><b>On-Delivery</b></div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div [class.customShadow]=" item.shippingstate!=onProcess" style="width:100%;height:250px;background-image: url('/assets/images/processTwo.png');"></div>
+            <div class="shadow p-2 br-10 text-center" style="margin:10px 20px;"><b>On-Process</b></div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div [class.customShadow]="item.shippingstate!=pickUp" style="width:100%;height:250px;background-image: url('/assets/images/processOne.png');"></div>
+            <div class="shadow p-2 br-10 text-center" style="margin:10px 20px;"><b>Pick-Up</b></div>
+        </div>
+    </div>
+    <div class="row mt-5 shadow p-3 br-10 "  style="margin: 0px 10px;font-size: 18px;">
+        <div class="col-12 col-md-4 text-center"><b class="lead">Shipper Name : </b>{{item.shipperName}}</div>
+        <div class="col-12 col-md-4 "><b class="lead">Phone : </b>{{item.shipperPhone}}</div>
+        <div class="col-12 col-md-4 "><b class="lead">Address : </b>{{item.alLaddress}}</div>
+    </div>
+    <hr class="mt-4 mb-4">
+</div>
+<div *ngIf="shippingList.length==0" class="col-12 alert alert-danger text-center p-4 bolder lead">{{'user.NoserOrders'|translate}}</div>
+

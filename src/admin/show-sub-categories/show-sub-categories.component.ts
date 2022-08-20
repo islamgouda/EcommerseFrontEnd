@@ -79,6 +79,8 @@ export class ShowSubCategoriesComponent implements OnInit {
     this.subCatService.getById(this.selectedSubCategoryId).subscribe(
       data=>{
         this.subCategoryModel = data.data as ISubCategory;
+        console.log("-----------image------------------------");
+        console.log(this.subCategoryModel.image);
       }
     )
   }
