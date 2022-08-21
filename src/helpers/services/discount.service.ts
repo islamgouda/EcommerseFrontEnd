@@ -8,7 +8,6 @@ import { GenericApiHandlerService } from './generic-api-handler.service';
   providedIn: 'root'
 })
 export class DiscountService {
-
   discountApi:string = "http://localhost:5092/api/Discount?id=";
   constructor(private httpClient:HttpClient,private gerericService:GenericApiHandlerService) {
     
@@ -16,13 +15,13 @@ export class DiscountService {
 
    addNewDiscount(model:IDiscount):Observable<IDiscountResponse>
    {
-    return this.httpClient.post<IDiscountResponse>(this.discountApi,model)
+    return this.httpClient.post<IDiscountResponse>(this.discountApi,model,this.gerericService.httpOptions)
     .pipe(catchError(error=>this.gerericService.handleError(error)));
    }
    getAllDiscounts():Observable<IDiscountResponse>
    {
-    let api = "http://localhost:5092/api/Discount/GetDiscount";
-    return this.httpClient.get<IDiscountResponse>(api)
+    let api = "http://localhost:5092/api/Discount/DiscountsByPartnerId";
+    return this.httpClient.get<IDiscountResponse>(api,this.gerericService.httpOptions);
           
    }
    deteleDiscount(id:number):Observable<IDiscountResponse>
@@ -33,7 +32,7 @@ export class DiscountService {
    getDiscountById(id:number):Observable<IDiscountResponse>{
     let api = "http://localhost:5092/api/Discount/getDiscountByID?Id="+id;
     return this.httpClient.get<IDiscountResponse>(api)
-    .    pipe(retry(3),catchError((error)=>this.gerericService.handleError(error)));
+    .pipe(retry(3),catchError((error)=>this.gerericService.handleError(error)));
   } 
   updateDiscount(id:number,model:IDiscount):Observable<IDiscountResponse>
   {
@@ -41,6 +40,5 @@ export class DiscountService {
     return this.httpClient.put<IDiscountResponse>(`${discountApii}`,model,this.gerericService.httpOptions);
     
   }
-
 
 }

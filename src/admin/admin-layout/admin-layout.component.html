@@ -19,21 +19,20 @@
             </div>
 
             <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#Products" aria-expanded="false" aria-controls="collapseExample">
-                {{'product.product'|translate}}
+                {{'product.products'|translate}}
             </button>
             <div  id="Products" class="mt-2 collapse">
-                <a routerLink="/admin/adminLayout/showProducts" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'product.showAllproducts'|translate}}</a>
-                <a routerLink="/admin/adminLayout/addProduct" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'product.addNewproduct'|translate}}</a>
+                <a routerLink="/admin/adminLayout/showPendingProducts" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'product.pendingProducts'|translate}}</a>
             </div> 
             
-            <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#discount" aria-expanded="false" aria-controls="collapseExample">
+            <!-- <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#discount" aria-expanded="false" aria-controls="collapseExample">
                 {{'discount.allDiscounts'|translate}}
             </button>
             <div  id="discount" class="mt-2 collapse">
                 <a routerLink="/admin/adminLayout/showAllDiscounts" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'discount.allDiscounts'|translate}}</a>
                 <a routerLink="/admin/adminLayout/addDiscount" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'discount.addNewdiscount'|translate}}</a>
                 <a routerLink="/admin/adminLayout/assignDisountToProduct" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'discount.assignDisountToProduct'|translate}}</a>
-            </div>
+            </div> -->
             
             <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#partners" aria-expanded="false" aria-controls="collapseExample">
                 {{'partner.partners'|translate}}
@@ -55,6 +54,12 @@
             <div  id="Roles" class="mt-2 collapse">
                 <a routerLink="/admin/adminLayout/AddToRole" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'admin.AddToRole'|translate}}</a>
                 <a routerLink="/admin/adminLayout/RemoveFromRole" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'admin.RemoveFromRole'|translate}}</a>
+            </div>
+            <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#addAdmin" aria-expanded="false" aria-controls="collapseExample">
+                {{'admin.addAdmin'|translate}}
+            </button>
+            <div  id="addAdmin" class="mt-2 collapse">
+                <a routerLink="/admin/adminLayout/RegisterAdmin" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'admin.registerAdmin'|translate}}</a>
             </div>
 
     </div>

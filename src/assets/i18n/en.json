@@ -94,6 +94,8 @@
     "product":{
         "products":"All Products",
         "product":"Product",
+        "pendingProducts":"Pending Products",
+        "details":"Product Details",
         "showAllproducts":"Show All Products",
         "addNewproduct":"Add New Product",
         "updateproduct":"Update Product",
@@ -148,7 +150,9 @@
         "AddToRole":"Add Role",
         "RemoveFromRole":"Remove From Role",
         "Shipper":"Shipper",
-        "Roles":"Roles"
+        "Roles":"Roles",
+        "addAdmin":"Add New Admin",
+        "registerAdmin":"ٌRegister Admin"
     },
     "partner":{
         "partners":"Partners",

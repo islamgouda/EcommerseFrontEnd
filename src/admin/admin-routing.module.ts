@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RegisterAdminComponent } from 'src/app/Authentication/register-admin/register-admin.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddDiscountComponent } from './add-discount/add-discount.component';
 import { AddPartnerComponent } from './add-partner/add-partner.component';
@@ -19,15 +20,19 @@ import { RemoveRolefromUserComponent } from './remove-rolefrom-user/remove-rolef
 import { ShowCategoriesComponent } from './show-categories/show-categories.component';
 import { ShowDiscountsComponent } from './show-discounts/show-discounts.component';
 import { ShowPartnersComponent } from './show-partners/show-partners.component';
+import { ShowPendingProductsComponent } from './show-pending-products/show-pending-products.component';
+import { ShowProductDetailsComponent } from './show-product-details/show-product-details.component';
 import { ShowProductsComponent } from './show-products/show-products.component';
 import { ShowShipperComponent } from './show-shipper/show-shipper.component';
 import { ShowSubCategoriesComponent } from './show-sub-categories/show-sub-categories.component';
 
-const routes: Routes = [ {path:'deleteDiscount/:id',component:DeleteDiscountComponent},
+const routes: Routes = [ 
+  {path:'deleteDiscount/:id',component:DeleteDiscountComponent},
   {path:'updateDiscount/:id',component:AddDiscountComponent},
   {path:'adminLayout',component:AdminLayoutComponent,children:[
         {path:'',component:AdminLandingPageComponent},
         {path:'addNewDiscount',component:AddDiscountComponent},
+        {path:'RegisterAdmin',component:RegisterAdminComponent},
         { path: 'addCategory', component: AddCategoryComponent },
         { path: 'addCategory/:id', component: AddCategoryComponent },
         { path: 'showCategories', component: ShowCategoriesComponent },
@@ -36,9 +41,7 @@ const routes: Routes = [ {path:'deleteDiscount/:id',component:DeleteDiscountComp
         { path: 'addSubCategory/:id', component: AddSubCategoryComponent },
         { path: 'showSubCategories', component: ShowSubCategoriesComponent },
         { path: 'deleteSubCategories/:id', component: DeleteSubCategoryComponent },
-        {path:'addProduct',component:AddProductComponent},
         {path:'updateProduct/:id',component:AddProductComponent},
-        {path:'showProducts',component:ShowProductsComponent},
         {path:'deleteProduct/:id',component:DeleteProductComponent},
 
         {path:'addNewPartner',component:AddPartnerComponent},
@@ -58,6 +61,10 @@ const routes: Routes = [ {path:'deleteDiscount/:id',component:DeleteDiscountComp
 
         {path:'AddToRole',component:AddRoleToUserComponent},
         {path:'RemoveFromRole',component:RemoveRolefromUserComponent},
+
+        {path:'showPendingProducts',component:ShowPendingProductsComponent},
+        {path:'showProductDetails/:id',component:ShowProductDetailsComponent},
+
 
   ]},
 

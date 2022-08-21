@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ICategory, ICategoryResponse } from '../interfaces/icategory';
+import { INewCategoryWithSubCategoryResponse } from '../interfaces/iproduct';
 
 import { GenericApiHandlerService } from './generic-api-handler.service';
 
@@ -40,7 +41,6 @@ export class CategoryService {
     return this.http.get<ICategoryResponse>(url).pipe(
       retry(3),
       );
-
   }
 
   getById(id:number):Observable<ICategoryResponse>{
@@ -50,5 +50,12 @@ export class CategoryService {
       );
   }
 
+  
+ getAllCategoriesWithSubCategories():Observable<INewCategoryWithSubCategoryResponse>{
+  let url = "http://localhost:5092/api/ProductCategory";
+    return  this.http.get<INewCategoryWithSubCategoryResponse>(url).pipe(
+      retry(3)
+    );
+ }
    
 }

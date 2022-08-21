@@ -14,8 +14,10 @@ export class ShowDiscountsComponent implements OnInit {
   textDirection;
   activeStatuscolor:string="indigo";
   discountsList:IDiscount[]=[];
+  discount:any;
   errorMessage:string="";
   discountName:string="";
+  discountId=-1;
   discountActivestatus:string="";
   isEnglishLang:boolean;
   // categoryId:any;
@@ -81,5 +83,17 @@ export class ShowDiscountsComponent implements OnInit {
   back(){
     this.location.back();
   }
+
+  /*changediscount(){
+    
+    this.getSelectedSubCategoryById();
+  }
+  getSelectedSubCategoryById(){
+    this.discountService.getDiscountById().subscribe(
+      data=>{
+        this.subCategoryModel = data.data as ISubCategory;
+      }
+    )
+  }*/
 
 }

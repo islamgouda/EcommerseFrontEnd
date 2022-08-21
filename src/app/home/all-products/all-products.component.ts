@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { share } from 'rxjs';
-import { IDisplayProducts } from 'src/helpers/interfaces/idisplay-products';
 import { IProduct, IProductt, IShowProduct } from 'src/helpers/interfaces/iproduct';
+import { DiscountPipe } from 'src/helpers/pipes/discount.pipe';
 import { ProductService } from 'src/helpers/services/product.service';
 import { SharedService } from 'src/helpers/services/shared.service';
 
@@ -14,12 +13,14 @@ import { SharedService } from 'src/helpers/services/shared.service';
 export class AllProductsComponent implements OnInit {
 
   productList:IShowProduct[]=[];
+
   
   constructor(private productService:ProductService,private shared:SharedService,private router:Router) { }
   
   ngOnInit(): void {
     this.getallProducts();
     this.shared.getCartItemsCount();
+    
   }
   getallProducts(){
     this.productService.getProducts().subscribe(

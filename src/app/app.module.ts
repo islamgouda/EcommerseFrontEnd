@@ -92,20 +92,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductsByPartnerComponent,
     ProductsByProductNameComponent,
     ProductsByPriceComponent,
-
     BeaShipperComponent,
     ProductsByPriceComponent,
-
     AddUserAddressComponent,
-
-    
-
-    DiscountPipe,
     AddToCartComponent,
     CartItemComponent,
     ProceedToPayComponent,
     AddPaymentMethodComponent,
-
+    DiscountPipe,
 
   ],
   imports: [

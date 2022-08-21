@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { IProductResponse, IShowProduct } from 'src/helpers/interfaces/iproduct';
+import { SharedService } from 'src/helpers/services/shared.service';
 
 @Component({
   selector: 'app-all-products',
@@ -15,11 +16,11 @@ export class AllProductsComponent implements OnInit {
   productList:IShowProduct[]=[];
   subCat: { id: number, name: string }[] = [];
   SubcategoryId:number=0;
-  constructor(private http:HttpClient) { 
+  constructor(private http:HttpClient,public shared:SharedService) { 
     this.categoryId=0;
   }
 
-
+   
   ngOnInit(): void {
     this.GetAllCategorys();
   }

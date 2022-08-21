@@ -48,14 +48,16 @@ name_Ar:"",partenerName:"",price:1,quantity:1,subcategoryName:"",id:1};
       data=>{
         if(data.success){
           this.shared.showSnackBar(data.message,3000,"successSnackBar");
+          window.location.reload();
         }else{
           this.shared.showSnackBar(data.message,3000,"dangerSnackBar");
         }
       }
     );
     this.shared.getCartItemsCount();
-    
+
     this.back();
+
   }
   back(){
    this.location.back();

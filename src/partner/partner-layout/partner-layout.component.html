@@ -2,13 +2,13 @@
     <div class="row mt-4" [class]="textDirection">
     <div class="col-12 col-md-3 ">
     
-
+        <a  class="btn btn-light border border-2 border-dark br-15 form-control mb-1  text-decoration-none">{{'partner.dashboard'|translate}}</a>
             <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#Products" aria-expanded="false" aria-controls="collapseExample">
                 {{'product.product'|translate}}
             </button>
             <div  id="Products" class="mt-2 collapse">
                 <a routerLink="AllProducts" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'product.showAllproducts'|translate}}</a>
-                <a routerLink="PendingProducts" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'Pending Products'|translate}}</a>
+                <a routerLink="PendingProducts" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'product.pendingProducts'|translate}}</a>
                 <a routerLink="addProduct" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'product.addNewproduct'|translate}}</a>
             </div> 
             
@@ -20,12 +20,7 @@
                 <a routerLink="admin/addDiscount" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'discount.addNewdiscount'|translate}}</a>
                 <a routerLink="admin/assignDisountToProduct" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'discount.assignDisountToProduct'|translate}}</a>
             </div>
-            <button class="btn btn-dark form-control mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#userAdress" aria-expanded="false" aria-controls="collapseExample">
-                {{'AddNewUserAddress'|translate}}
-           </button>
-           <div id="userAdress" class="collapse">
-               <a routerLink="AddNewUserAddress" routerLinkActive="text-danger border border-1 border-danger" class="btn btn-outline-dark form-control mb-1  text-decoration-none">{{'AddNewUserAddress'|translate}}</a>               
-           </div>
+            
             
             
 

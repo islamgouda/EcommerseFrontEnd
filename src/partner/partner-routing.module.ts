@@ -8,7 +8,6 @@ import { ShowDiscountsComponent } from 'src/admin/show-discounts/show-discounts.
 import { AddUserAddressComponent } from './add-user-address/add-user-address.component';
 import { AllProductsComponent } from './all-products/all-products.component';
 import { PAddDiscountComponent } from './p-add-discount/p-add-discount.component';
-import { PAddProductComponent } from './p-add-product/p-add-product.component';
 import { PartnerLandingPageComponent } from './partner-landing-page/partner-landing-page.component';
 import { PartnerLayoutComponent } from './partner-layout/partner-layout.component';
 import { PendingProductsComponent } from './pending-products/pending-products.component';
@@ -19,7 +18,6 @@ const routes: Routes = [
     {path:'addProduct',component:AddProductComponent},
     {path:'PendingProducts',component:PendingProductsComponent},
     {path:'AllProducts',component:AllProductsComponent},
-    {path:'addDiscount',component:PAddProductComponent},
     {path:'addDiscount',component:PAddDiscountComponent},
     {path:'AddNewUserAddress',component:AddUserAddressComponent},
     {path:'admin/addDiscount',component:AddDiscountComponent},

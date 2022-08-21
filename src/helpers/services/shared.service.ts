@@ -52,5 +52,8 @@ export class SharedService {
       }
     );
   }
+  calculateDiscount(price:number,discount:number){
+    return price-(price*discount);
+  }
 
 }

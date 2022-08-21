@@ -1,0 +1,38 @@
+<h4 class="shadow bg-light text-dark text-center p-2 fs-4 rounded-pill">{{'product.details'|translate}}</h4>
+<div class="row ltr" style="margin: 10px 30px 10px 30px;">
+    <div class="row bg-dark text-light p-3  " >
+        <div class="col-12 col-md-6">{{productModel.name}}</div>
+        <div class="col-12 col-md-6">{{productModel.name_Ar}}</div>
+    </div>
+    <div class="col-12 col-md-4">
+        <img class="mt-3 br-10 shadow border border-1 border-dark" src="{{productModel.images[counter]}}" width="100%" height="250">
+        <div class="row mt-3">
+            <div class="col-3"><button [disabled]="counter==0" (click)="getPervious()" class="btn btn-outline-dark"><i class="fa-solid fa-circle-arrow-left fs-4 pt-1"></i></button></div>
+            <div class="col-6"></div>
+            <div class="col-3"><button [disabled]="counter==productModel.images.length-1" (click)="getNext()" class="btn btn-outline-dark"><i class="fa-solid fa-circle-arrow-right fs-4 pt-1"></i></button></div>
+        </div>
+    </div>
+    <div class="col-12 col-md-8 mt-4 font-size-18 ">
+        <div class="row mb-2">
+            <div class="col-12 col-md-6"><b class="fw-bold">Price :</b> {{productModel.price|currency}}</div>
+            <div class="col-12 col-md-6"><b class="fw-bold">Discount : </b>{{productModel.discount|percent}}</div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-12 col-md-6"><b class="fw-bold">Category : </b>{{productModel.categoryName}}</div>
+            <div class="col-12 col-md-6"><b class="fw-bold">Sub Category : </b>{{productModel.subcategoryName}}</div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-12 col-md-6"><b class="fw-bold">Is Available : </b>{{productModel.isAvailable==true?"Available":"Not Available"}}</div>
+            <div class="col-12 col-md-6"><b class="fw-bold">Partner Name : </b>{{productModel.partenerName}}</div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-12 col-md-12 mb-2"><b class="fw-bold">Description En : </b>{{productModel.description}}</div>
+            <div class="col-12 col-md-12"><b class="fw-bold">Description Ar : </b>{{productModel.description_Ar}}</div>
+        </div>
+        <div class="row mt-5 mt-5">
+            <div class="col-12 col-md-6"><a (click)="back()" class="btn btn-outline-success form-control">back</a></div>
+            <div class="col-12 col-md-6"><a (click)="signAsApproved()" class="btn btn-outline-warning form-control">Sign As Approved</a></div>
+        </div>
+    </div>
+</div>
+

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PartnerRoutingModule } from './partner-routing.module';
-import { PAddProductComponent } from './p-add-product/p-add-product.component';
 import { PAddDiscountComponent } from './p-add-discount/p-add-discount.component';
 import { PartnerLayoutComponent } from './partner-layout/partner-layout.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -13,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { PartnerLandingPageComponent } from './partner-landing-page/partner-landing-page.component';
 import { AllProductsComponent } from './all-products/all-products.component';
 import { PendingProductsComponent } from './pending-products/pending-products.component';
+import { DiscountPipe } from 'src/helpers/pipes/discount.pipe';
 //adding to execute localization
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -21,11 +21,13 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     PartnerLayoutComponent,
-    PAddProductComponent,
     PAddDiscountComponent,
     PartnerLandingPageComponent,
     AllProductsComponent,
-    PendingProductsComponent
+    PendingProductsComponent,
+ 
+    
+    
   ],
   imports: [
     CommonModule,

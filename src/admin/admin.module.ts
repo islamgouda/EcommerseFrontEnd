@@ -27,6 +27,8 @@ import { ShowShipperComponent } from './show-shipper/show-shipper.component';
 import { AddRoleToUserComponent } from './add-role-to-user/add-role-to-user.component';
 import { RemoveRolefromUserComponent } from './remove-rolefrom-user/remove-rolefrom-user.component';
 import { DeleteCategoryComponent } from './delete-category/delete-category.component';
+import { ShowPendingProductsComponent } from './show-pending-products/show-pending-products.component';
+import { ShowProductDetailsComponent } from './show-product-details/show-product-details.component';
 
 
 
@@ -60,6 +62,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ShowShipperComponent,
     AddRoleToUserComponent,
     RemoveRolefromUserComponent,
+    ShowPendingProductsComponent,
+    ShowProductDetailsComponent,
   ],
   imports: [
     CommonModule,
