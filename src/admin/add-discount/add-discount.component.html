@@ -1,12 +1,3 @@
-<!-- <div class="row">
-    <div class="col-12">
-        <div [hidden]="allCategories.length>0" class="alert alert-warning text-center">
-            <a routerLink="/admin/adminLayout/addCategory"><strong>{{goToAddCategoriesFirst}}</strong></a>
-          </div>
-    </div>
-</div> -->
-<!-- <div class="row" [hidden]="allCategories.length<=0"> -->
-    <!-- {{discountModel|json}} -->
     <div class="row">
         <div class="col-12 col-md-2"></div>
         <div class="col-12 col-md-8" [class]="textDirection">
@@ -51,10 +42,10 @@
     
                 <div class="form-group mt-2">
                     <label for="descount_Persent" class="mb-1">{{'discount.descount_Persent'|translate}}</label>
-                    <input type="text" pattern="[0-9.]{1,7}" #descount_Persent="ngModel" required [class.validInput]="descount_Persent.valid" [class.invalidInput]="descount_Persent.invalid && descount_Persent.touched"  id="descount_Persent" name="descount_Persent" [(ngModel)]="discountModel.descount_Persent" class="form-control">
+                    <input type="text" pattern="^((0\.\d+){1,2})$" #descount_Persent="ngModel" required [class.validInput]="descount_Persent.valid" [class.invalidInput]="descount_Persent.invalid && descount_Persent.touched"  id="descount_Persent" name="descount_Persent" [(ngModel)]="discountModel.descount_Persent" class="form-control">
                     <div class="text-danger" *ngIf="descount_Persent.invalid && descount_Persent.touched">
                         <small class="text-danger" *ngIf="descount_Persent.errors!['required']">{{'discount.discountPercentRequiredError'|translate}}</small>
-                        <small class="text-danger" *ngIf="descount_Persent.errors!['pattern']">{{'discount.discountPercentpatternError'|translate}}</small>
+                        <small class="text-danger" *ngIf="descount_Persent.errors!['pattern']">percent must be decimal like   0.digit</small>
                     </div>
                 </div>
     
@@ -70,10 +61,11 @@
     
                 <div class="form-group mt-2">
                     <label for="endTime" class="mb-1">{{'discount.endTime'|translate}}</label>
-                    <input type="date" pattern="[0-9-/]{8,10}"  #endTime="ngModel" required [class.validInput]="endTime.valid" [class.invalidInput]="endTime.invalid && endTime.touched"  id="endTime" name="endTime" [(ngModel)]="discountModel.endTime" class="form-control">
+                    <input type="date" pattern="[0-9-/]{8,10}" isRangeValid  #endTime="ngModel" required [class.validInput]="endTime.valid" [class.invalidInput]="endTime.invalid && endTime.touched"  id="endTime" name="endTime" [(ngModel)]="discountModel.endTime" class="form-control">
                     <div class="text-danger" *ngIf="endTime.invalid && endTime.touched">
                         <small class="text-danger" *ngIf="endTime.errors!['required']">{{'discount.endTimeRequiredError'|translate}}</small>
                         <small class="text-danger" *ngIf="endTime.errors!['pattern']">{{'discount.endTimePatternError'|translate}}</small>
+                        <small class="text-danger" *ngIf="endTime.errors!['isRangeValid']">must end mor start</small>
                     </div>
                 </div>
                 <div class="row">

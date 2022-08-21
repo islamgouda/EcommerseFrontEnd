@@ -34,7 +34,7 @@ const routes: Routes = [
   }, //userdashboardto requests
   { path: "bePartner", component: BeaPartnerComponent },
   { path: "beShipper", component: BeaShipperComponent },
-  { path: "", redirectTo: '/home', pathMatch: 'full' }, //deafualt page
+  { path: "", component:HomeComponent}, //deafualt page
   {
     path: 'home', component: HomeComponent, children: [
       { path: "", component: AllProductsComponent },

@@ -30,11 +30,11 @@
                 <div class="row">
                     <div class="col-12 col-md-1"></div>
                     <div class="col-12 col-md-4">
-                        <a routerLink="/partner/partnerLayout/deleteDiscount/{{discount.id}}" class="btn form-control btn-outline-danger">{{'discount.delete'|translate}}</a>
+                        <a [class.disabled]="discount.active ?true :false" routerLink="/partner/partnerLayout/deleteDiscount/{{discount.id}}"   class="btn form-control btn-outline-danger">{{'discount.delete'|translate}}</a>
                     </div>
                     <div class="col-12 col-md-2"></div>
                     <div class="col-12 col-md-4">
-                        <a routerLink="/admin/updateDiscount/{{discount.id}}" class="btn form-control btn-outline-success">{{'discount.update'|translate}}</a>
+                        <a routerLink="/partner/partnerLayout/admin/updateDiscount/{{discount.id}}" class="btn form-control btn-outline-success">{{'discount.update'|translate}}</a>
                     </div>
                     <div class="col-12 col-md-1"></div>
                 </div>

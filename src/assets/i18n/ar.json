@@ -92,6 +92,8 @@
     "product":{
         "products":"المنتجات",
         "product":"منتج",
+        "pendingProducts":"المنتجات المعلقة",
+        "details":"تفاصيل المنتج",
         "showAllproducts":"عرض كل المنتجات",
         "addNewproduct":"اضافة منتج جديد",
         "updateproduct":"تحديث منتج",
@@ -147,7 +149,9 @@
         "AddToRole":"اضافة وظيفة للمستخدم",
         "RemoveFromRole":"حذف مستخدم من وظيفة",
         "Shipper":"شركات الشحن",
-        "Roles":"الوظائف"
+        "Roles":"الوظائف",
+        "addAdmin":"اضافة مشرف",
+        "registerAdmin":"ٌتسجيل حساب مشرف"
     },
     "partner":{
         "dashboard":"لوحة تــحكــم البائع",

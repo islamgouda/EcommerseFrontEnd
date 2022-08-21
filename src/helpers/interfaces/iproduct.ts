@@ -79,3 +79,37 @@ export interface IAddToCartResponse{
         success: boolean;
         message:  any;
  }
+ export interface ISignAsApprovedResponse
+ {
+    success: boolean
+    message: string;
+  }
+
+
+
+
+  export interface INewCategoryWithSubCategoryResponse{
+    success: boolean;
+    message: string;
+    data: INewCategoryResponse[];
+  }
+  export interface INewCategoryResponse
+ {
+      id:number
+      name:string;
+      name_Ar:string
+      description:string
+      description_Ar:string
+      subCategories:INewSubCategoryResponse[];
+ }
+ export interface INewSubCategoryResponse
+ {
+     id:number;
+     name:string;
+     description :string;
+     arabicName:string;
+     arabicDescription:string;
+     image:string;
+     categoryName:string;
+     categoryId:number;
+ }

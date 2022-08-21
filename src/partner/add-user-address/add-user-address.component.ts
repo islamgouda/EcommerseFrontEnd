@@ -39,6 +39,7 @@ export class AddUserAddressComponent implements OnInit {
         successMessage = language=="en"?`UserAddress Added Successfully!`:
         `تم إضافة عنوان المستخدم بنجاح !`;
         this.sharedService.showSnackBar(successMessage,3000,'successSnackBar');
+        // window.location.reload();
         //this.router.navigate(["/partner/partnerLayout/showAllDiscounts"]);
     },(error)=>{
       this.sharedService.showSnackBar(error,3000,'dangerSnackBar');

@@ -48,9 +48,8 @@ export class SubCategoryService {
     return this.http.get<ISubCategoryResponse>(url).pipe(
       retry(3),
       );
-
   }
-
+  
   getById(id:number):Observable<ISubCategoryResponse>{
     let url="http://localhost:5092/api/SubCategory/GetsubCategoryByID/"+id;
     return this.http.get<ISubCategoryResponse>(url).pipe(

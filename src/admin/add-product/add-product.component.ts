@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICategory } from 'src/helpers/interfaces/icategory';
-import { IProduct } from 'src/helpers/interfaces/iproduct';
+import { INewCategoryResponse, INewSubCategoryResponse, IProduct } from 'src/helpers/interfaces/iproduct';
 import { ISubCategory } from 'src/helpers/interfaces/isub-category';
 
 import { CategoryService } from 'src/helpers/services/category.service';
@@ -21,9 +21,10 @@ export class AddProductComponent implements OnInit {
   language:string;
   updateProductWithId:number=-1;
   productModel:IProduct={name:"",Description:"",Name_Ar:"",Description_Ar:"",CategoryID:-1,Quantity:0,IsAvailable:true,Price:null,subcategoryID:-1,images:[]};
-  allSubCategories:ISubCategory[]=[];
-  allCategories:ICategory[]=[];
-
+  // allSubCategories:ISubCategory[]=[];
+  // allCategories:ICategory[]=[];
+  allSubCategories:INewSubCategoryResponse[]=[];
+  allCategories:INewCategoryResponse[]=[];
   relatedSubCategories:ISubCategory[]=[];
   noSubCatRelatedToThisCategory:string="";
   isSubCatSelectOptionHidden:boolean=true;
@@ -77,6 +78,11 @@ export class AddProductComponent implements OnInit {
       request.open("POST", "http://localhost:5092/api/Product");
       request.setRequestHeader('Authorization', `Bearer ${tok}` );
       request.send(this.formData);
+      let msg = this.language=="en"?"product added Successfully, it will Preview later and then approved if matched Policy !"
+                                    :"تم اضافة المنتج بنجاح و سيتم الموافقه عليه بعد مراجعته";
+      this.sharedService.showSnackBar(msg,5000,'successSnackBar')
+      this.back();
+      
     }
 
   ngOnInit(): void {
@@ -133,28 +139,31 @@ export class AddProductComponent implements OnInit {
 
   }
 
-  getAllCategories(){
-    this.categoryService.getAll().subscribe(
-      (data)=>{
-        console.log(data);
-        this.allCategories = <ICategory[]>data;
-      },
-      (error)=>{
-        this.sharedService.showSnackBar(error,4000,'dangerSnackBar');
-      }
-    )
-  }
-  // getAllSubCategories(){
-  //   this.subCategoryService.getAll().subscribe(
+ 
+
+  // getAllCategories(){
+  //   this.categoryService.getAll().subscribe(
   //     (data)=>{
-  //       console.log(<ISubCategory[]>data.data);
-  //       this.allSubCategories = data.data;
+  //       console.log(data.data);
+  //       this.allCategories = <ICategory[]>data.data;
   //     },
   //     (error)=>{
   //       this.sharedService.showSnackBar(error,4000,'dangerSnackBar');
   //     }
   //   )
   // }
+  getAllCategories(){
+    this.categoryService.getAllCategoriesWithSubCategories().subscribe(
+      (data)=>{
+        console.log(data.data);
+        this.allCategories = data.data as INewCategoryResponse[];
+      },
+      (error)=>{
+        this.sharedService.showSnackBar(error,4000,'dangerSnackBar');
+      }
+    )
+  }
+ 
   file:[]=[];
   formData:FormData=new FormData();
   onfileChange(event:any){
@@ -165,12 +174,26 @@ export class AddProductComponent implements OnInit {
   }
 
 
+  // onChangeCategory(){
+  //   this.relatedSubCategories =[];
+  //    this.subCategoryService.getByCategoryId(this.productModel.CategoryID).subscribe(
+  //     data=>{
+  //       let allsubcats = data.data as ISubCategory[];
+  //       this.relatedSubCategories = allsubcats;
+  //       if(this.relatedSubCategories.length==0){
+  //         this.noSubCatRelatedToThisCategory = "No Sub Categories Related To this Category !";
+  //         this.sharedService.showSnackBar(this.noSubCatRelatedToThisCategory,4000,'warningSnackBar');
+  //       }else{
+  //         this.isSubCatSelectOptionHidden = false;
+  //       }
+  //     }
+  //    );
+  // }
   onChangeCategory(){
     this.relatedSubCategories =[];
      this.subCategoryService.getByCategoryId(this.productModel.CategoryID).subscribe(
       data=>{
         let allsubcats = data.data as ISubCategory[];
-        console.log(" 1- "+allsubcats);
         this.relatedSubCategories = allsubcats;
         if(this.relatedSubCategories.length==0){
           this.noSubCatRelatedToThisCategory = "No Sub Categories Related To this Category !";
@@ -254,6 +277,7 @@ export class AddProductComponent implements OnInit {
     }else{
         this.updateProduct();
     }
+    
     this.back();
   }
 

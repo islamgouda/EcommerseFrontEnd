@@ -1,4 +1,4 @@
-<!-- <div class="row">
+<div class="row">
     <div class="col-12 col-md-2"></div>
     <div class="col-12 col-md-8 textDirection">
         <form #assignDiscount="ngForm" (ngSubmit)="assignDiscountToProd()">
@@ -6,7 +6,7 @@
                 <label for="CategoryID" class="mb-1">{{'product.selectCategory'|translate}}</label>
                 <select (change)="onChangeCategory()"   #CategoryID="ngModel" required [class.validInput]="CategoryID.value!>0&&CategoryID.touched" [class.invalidInput]="CategoryID.value==-1 && CategoryID.touched"  id="CategoryID" name="CategoryID" [(ngModel)]="model.categoryId" class="form-control">
                     <option value="-1">{{'product.selectCategory'|translate}}</option>
-                    <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+                    <option value="{{category.id}}" *ngFor="let category of categories" >{{category.name}}</option>
                 </select>
                     <div class="text-danger" *ngIf="CategoryID.value<=0 && CategoryID.touched">
                         <small class="text-danger" *ngIf="CategoryID.value<=0">{{'product.selectCategory'|translate}}</small>
@@ -20,7 +20,7 @@
                 <label for="subCategoryID" class="mb-1">{{'product.selectSubCategory'|translate}}</label>
                 <select  (change)="onChangeSubCategory()"  #subCategoryID="ngModel" required [class.validInput]="subCategoryID.value!>0&&subCategoryID.touched" [class.invalidInput]="subCategoryID.value==-1 && subCategoryID.touched"  id="subCategoryID" name="subCategoryID" [(ngModel)]="model.subCategoryId" class="form-control">
                     <option value="-1">{{'product.selectSubCategory'|translate}}</option>
-                    <option *ngFor="let category of subCategories" value="{{category.id}}">{{category.name}}</option>
+                    <option *ngFor="let subcategory of subCategories" value="{{subcategory.id}}">{{subcategory.name}}</option>
                 </select>
                     <div class="text-danger" *ngIf="subCategoryID.value<=0 && subCategoryID.touched">
                         <small class="text-danger" *ngIf="subCategoryID.value<=0">{{'product.selectSubCategory'|translate}}</small>
@@ -32,7 +32,7 @@
                 <label for="productID" class="mb-1">{{'product.selectProduct'|translate}}</label>
                 <select   #productID="ngModel" required [class.validInput]="productID.value!>0&&productID.touched" [class.invalidInput]="productID.value==-1 && productID.touched"  id="productID" name="productID" [(ngModel)]="model.productId" class="form-control">
                     <option value="-1">{{'product.selectSubCategory'|translate}}</option>
-                    <option *ngFor="let product of products" value="{{product.id}}">{{product.name}}</option>
+                    <option *ngFor="let product of products.data" value="{{product.id}}">{{product.name}}</option>
                 </select>
                     <div class="text-danger" *ngIf="productID.value<=0 && productID.touched">
                         <small class="text-danger" *ngIf="productID.value<=0">{{'product.selectProduct'|translate}}</small>
@@ -58,4 +58,4 @@
    
     </div>
     <div class="col-12 col-md-2"></div>
-</div> -->
+</div> 

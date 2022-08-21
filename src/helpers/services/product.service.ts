@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, retry } from 'rxjs';
 import { IDisplayProducts } from '../interfaces/idisplay-products';
-import { IAddToCart, IAddToCartResponse, IProduct, IProductResponse } from '../interfaces/iproduct';
+import { IAddToCart, IAddToCartResponse, IProduct, IProductResponse, ISignAsApprovedResponse } from '../interfaces/iproduct';
 import { GenericApiHandlerService } from './generic-api-handler.service';
 
 @Injectable({
@@ -90,8 +90,27 @@ export class ProductService {
            );
     }
 
+   getAllPendingProducts():Observable<IProductResponse>{
+    let url = "http://localhost:5092/api/Product/UnApprovedProducts";
+    return this.httpClient.get<IProductResponse>(url).
+           pipe(
+          catchError(error=>this.gerericService.handleError(error))
+           );
+   }
    
-
-
+  signAsApproved(id:number):Observable<ISignAsApprovedResponse>{
+    let url = "http://localhost:5092/api/Product/ApproveProduct/"+id;
+    return this.httpClient.get<ISignAsApprovedResponse>(url).
+           pipe(
+          catchError(error=>this.gerericService.handleError(error))
+           );
+  }
+  getAnyProductById(id:Number):Observable<IProductResponse>{
+    let url = "http://localhost:5092/api/Product/GetAnyProduct/"+id;
+    return this.httpClient.get<IProductResponse>(url).
+    pipe(
+      catchError(error=>this.gerericService.handleError(error))
+    );
+  }
   
 }

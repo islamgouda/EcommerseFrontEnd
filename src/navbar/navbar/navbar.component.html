@@ -12,9 +12,9 @@
                     <a routerLink="home" routerLinkActive="active" class="nav-link" aria-current="page">{{'navbar.home' | translate}}</a>
                 </li>
                 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link">{{'navbar.contactUs'|translate}}</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a routerLink="shipper/shipperLayout" routerLinkActive="active"  class="nav-link" >{{'navbar.shipper' | translate}}</a>
                 </li>
@@ -29,7 +29,7 @@
                 </li>
             </ul>
             <div class="d-flex">
-                <input class="form-control me-2" [style.direction]="textDirection" (focus)="goSearchProduct()" type="search" placeholder="{{'navbar.searchPlaceholder'|translate}}" aria-label="Search">
+                <!-- <input class="form-control me-2" [style.direction]="textDirection" (focus)="goSearchProduct()" type="search" placeholder="{{'navbar.searchPlaceholder'|translate}}" aria-label="Search"> -->
                 <div style="margin-left: 20px;">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item nav-width" *ngIf="IsLoggedIn">
@@ -38,9 +38,7 @@
                         <li class="nav-item nav-width" *ngIf="IsLoggedIn">
                             <a class="nav-link active" aria-current="page"  routerLink="RegisterUser" routerLinkActive="active" >{{'navbar.register'|translate}}</a>
                         </li>
-                        <li class="nav-item nav-width" *ngIf="IsAdmin">
-                            <a class="nav-link active" aria-current="page"  routerLink="RegisterAdmin"  routerLinkActive="active" >{{'navbar.registerAdmin'|translate}}</a>
-                        </li>
+                       
                         <li class="nav-item nav-width">
                             <a class="nav-link active" aria-current="page" routerLink="userdash" routerLinkActive="active">{{username}}</a>
                         </li>

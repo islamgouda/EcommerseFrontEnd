@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { IProductResponse, IShowProduct } from 'src/helpers/interfaces/iproduct';
+import { INewCategoryResponse, IProductResponse, IShowProduct } from 'src/helpers/interfaces/iproduct';
+import { CategoryService } from 'src/helpers/services/category.service';
+import { SharedService } from 'src/helpers/services/shared.service';
 
 @Component({
   selector: 'app-all-products',
@@ -15,23 +17,25 @@ export class AllProductsComponent implements OnInit {
   productList:IShowProduct[]=[];
   subCat: { id: number, name: string }[] = [];
   SubcategoryId:number=0;
-  constructor(private http:HttpClient) { 
+  constructor(private categoryService:CategoryService,private sharedService:SharedService,private http:HttpClient) { 
     this.categoryId=0;
   }
 
 
   ngOnInit(): void {
-    this.GetAllCategorys();
+    this.getAllCategories();
   }
-GetAllCategorys()
-{
-  this.http.get('http://localhost:5092/api/Category/GetallCategories').subscribe(
-    data=>{
-      console.log(data);
-      this.AllCat=data;
-    }
-  )
-}
+  getAllCategories(){
+    this.categoryService.getAllCategoriesWithSubCategories().subscribe(
+      (data)=>{
+        console.log(data.data);
+        this.AllCat = data.data as INewCategoryResponse[];
+      },
+      (error)=>{
+        this.sharedService.showSnackBar(error,4000,'dangerSnackBar');
+      }
+    )
+  }
 GetAllSubCategorys()
 {
   this.http.get('http://localhost:5092/api/SubCategory/SubCategorysByCategoryID/'+this.categoryId).subscribe(

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IAddress, IBuy, IShipper } from 'src/helpers/interfaces/icheckout';
@@ -11,7 +11,7 @@ import { SharedService } from 'src/helpers/services/shared.service';
   templateUrl: './proceed-to-pay.component.html',
   styleUrls: ['./proceed-to-pay.component.scss']
 })
-export class ProceedToPayComponent implements OnInit {
+export class ProceedToPayComponent implements OnInit,AfterViewInit {
   shipperId:number=-1;
   shipperList:IShipper[]=[];
   addressId:number=-1;
@@ -25,6 +25,9 @@ export class ProceedToPayComponent implements OnInit {
     this.getShippers();
     this.getAddresses();
     this.getAllPaymentMethods();
+  }
+  ngAfterViewInit(): void {
+    this.ngOnInit();
   }
   getShippers(){
     this.checkoutServices.getAllShipper().subscribe(

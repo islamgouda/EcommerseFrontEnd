@@ -52,7 +52,7 @@
                 <label for="categoryId" class="mb-1">{{'subCategory.selectCategory'|translate}}</label>
                 <select   #categoryId="ngModel" required [class.validInput]="categoryId.value!=-1&&categoryId.touched" [class.invalidInput]="categoryId.value==-1 && categoryId.touched"  id="categoryId" name="categoryId" [(ngModel)]="subCategoryModel.categoryId" class="form-control">
                     <option value="-1">{{'subCategory.selectCategory'|translate}}</option>
-                    <option [selected]="catID==category.id"  *ngFor="let category of allCategories" value="{{category.id}}">{{category.name}}</option>
+                    <option [selected]="catID==category.id && catID!=-1"  *ngFor="let category of allCategories" value="{{category.id}}">{{category.name}}{{subCategoryModel.categoryId}}</option>
                 </select>
                     <div class="text-danger" *ngIf="categoryId.value==-1 && categoryId.touched&&categoryId.invalid">
                         <small class="text-danger" *ngIf="categoryId.value==-1">{{'subCategory.selectCategory'|translate}}</small>

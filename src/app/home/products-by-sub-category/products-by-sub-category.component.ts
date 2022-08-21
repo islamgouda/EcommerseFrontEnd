@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ICategory } from 'src/helpers/interfaces/icategory';
-import { IShowProduct } from 'src/helpers/interfaces/iproduct';
+import { INewCategoryResponse, IShowProduct } from 'src/helpers/interfaces/iproduct';
 import { ISubCategory } from 'src/helpers/interfaces/isub-category';
 import { CategoryService } from 'src/helpers/services/category.service';
 import { ProductService } from 'src/helpers/services/product.service';
@@ -28,13 +28,25 @@ export class ProductsBySubCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.getAllCategories();
   }
+  // getAllCategories(){
+  //   this.categoryService.getAll().subscribe(
+  //     data=>{
+  //       console.log("data - - -  -- "+data.data);
+  //       this.categoriesList = data as ICategory[];
+  //     }
+  //   );
+  // }
+
   getAllCategories(){
-    this.categoryService.getAll().subscribe(
-      data=>{
-        console.log("data - - -  -- "+data.data);
-        this.categoriesList = data as ICategory[];
+    this.categoryService.getAllCategoriesWithSubCategories().subscribe(
+      (data)=>{
+        console.log(data.data);
+        this.categoriesList = data.data as INewCategoryResponse[];
+      },
+      (error)=>{
+        this.sharedService.showSnackBar(error,4000,'dangerSnackBar');
       }
-    );
+    )
   }
   getRelatedSubCategory(){
     this.subCategoriesList=[];

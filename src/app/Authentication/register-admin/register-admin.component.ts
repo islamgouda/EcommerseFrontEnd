@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -5,6 +6,7 @@ import { Router } from '@angular/router';
 import { ConfirmPasswordValidator } from 'src/CustomValidations/ConfirmPassword';
 import { UserLogin } from 'src/helpers/interfaces/UserLogin';
 import { UserRegister } from 'src/helpers/interfaces/UserRegister';
+import { SharedService } from 'src/helpers/services/shared.service';
 
 @Component({
   selector: 'app-register-admin',
@@ -47,7 +49,7 @@ handleFemaleChange(evt:any) {
 
 
 
-  constructor(private http:HttpClient,
+  constructor(private http:HttpClient,private shared:SharedService,private location:Location,
 
     private router:Router,private fb:FormBuilder,) { }
 
@@ -75,19 +77,6 @@ handleFemaleChange(evt:any) {
 
 
 
-  //   registrationForm=this.fb.group({
-  //     username:['',[Validators.required,Validators.pattern('[a-zA-Z]+')]],
-  //     email:['',[Validators.required,Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
-  //     password:['',Validators.required],
-  //     confirmPassword:['',Validators.required],
-  
-  // })
-
-
-  // {
-  //   Validator:this.customValidator.passwordMatchValidator("password","confirmPassword")
-
-  // }
 
 
 
@@ -106,9 +95,12 @@ handleFemaleChange(evt:any) {
     },
     (error)=>console.log(error)
     );
+    this.back();
   }
 
-
+  back(){
+    this.location.back();
+  }
 
 
   login(){

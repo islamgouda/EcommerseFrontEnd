@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ICategory } from 'src/helpers/interfaces/icategory';
-import { IProduct, IShowProduct } from 'src/helpers/interfaces/iproduct';
+import { INewCategoryResponse, IProduct, IShowProduct } from 'src/helpers/interfaces/iproduct';
 import { CategoryService } from 'src/helpers/services/category.service';
 import { ProductService } from 'src/helpers/services/product.service';
+import { SharedService } from 'src/helpers/services/shared.service';
 
 @Component({
   selector: 'app-products-by-category',
@@ -15,7 +16,7 @@ export class ProductsByCategoryComponent implements OnInit {
   categoryId:number;
   categoryName:string="";
   categoriesList:ICategory[]=[];
-  constructor(private categoryService:CategoryService,private productService:ProductService) {
+  constructor(private sharedService:SharedService,private categoryService:CategoryService,private productService:ProductService) {
     this.categoryId = -1;
    }
   
@@ -24,16 +25,27 @@ export class ProductsByCategoryComponent implements OnInit {
   }
   serverErrorMessage:string="";
   getAllCategories(){
-    this.categoryService.getAll().subscribe(
+    this.categoryService.getAllCategoriesWithSubCategories().subscribe(
       (data)=>{
-        console.log("Data"+data);
-        this.categoriesList = <ICategory[]> data;
+        console.log(data.data);
+        this.categoriesList = data.data as INewCategoryResponse[];
       },
       (error)=>{
-        this.serverErrorMessage ="Errors In Retrieving Data !"+error;
+        this.sharedService.showSnackBar(error,4000,'dangerSnackBar');
       }
     )
   }
+  // getAllCategories(){
+  //   this.categoryService.getAll().subscribe(
+  //     (data)=>{
+  //       console.log("Data"+data);
+  //       this.categoriesList = <ICategory[]> data;
+  //     },
+  //     (error)=>{
+  //       this.serverErrorMessage ="Errors In Retrieving Data !"+error;
+  //     }
+  //   )
+  // }
   
   getproductsByCategoryId(){
     this.productList=[];
