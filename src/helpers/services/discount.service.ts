@@ -8,16 +8,20 @@ import { GenericApiHandlerService } from './generic-api-handler.service';
   providedIn: 'root'
 })
 export class DiscountService {
-  discountApi:string = "http://localhost:5092/api/Discount?id=";
+  
   constructor(private httpClient:HttpClient,private gerericService:GenericApiHandlerService) {
     
    }
 
    addNewDiscount(model:IDiscount):Observable<IDiscountResponse>
    {
-    return this.httpClient.post<IDiscountResponse>(this.discountApi,model,this.gerericService.httpOptions)
-    .pipe(catchError(error=>this.gerericService.handleError(error)));
+    let discountApi = "http://localhost:5092/api/Discount";
+    return this.httpClient.post<IDiscountResponse>(discountApi,model)
+    .pipe(
+      retry(3)
+    );
    }
+
    getAllDiscounts():Observable<IDiscountResponse>
    {
     let api = "http://localhost:5092/api/Discount/DiscountsByPartnerId";

@@ -1,4 +1,5 @@
 import { Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IAssignDiscountFormModel } from 'src/helpers/interfaces/iassign-discount-form-model';
@@ -6,7 +7,7 @@ import { IAssignDisountToProduct } from 'src/helpers/interfaces/iassign-disount-
 import { ICategory } from 'src/helpers/interfaces/icategory';
 import { IDiscount } from 'src/helpers/interfaces/idiscount';
 import { IDisplayProducts } from 'src/helpers/interfaces/idisplay-products';
-import { INewCategoryResponse, IProduct } from 'src/helpers/interfaces/iproduct';
+import { INewCategoryResponse, IProduct, IProductResponse, IShowProduct } from 'src/helpers/interfaces/iproduct';
 import { ISubCategory } from 'src/helpers/interfaces/isub-category';
 import { AssignDisountToProductService } from 'src/helpers/services/assign-disount-to-product.service';
 import { CategoryService } from 'src/helpers/services/category.service';
@@ -25,7 +26,7 @@ export class AssignDisountToProductComponent implements OnInit {
    textDirection:string;
    subCategories:ISubCategory[]=[]
    categories:ICategory[]=[];
-   products:IProduct[]=[];
+   products:any;
    discounts:IDiscount[]=[];
    model: IAssignDiscountFormModel = {productId: -1,categoryId: -1,subCategoryId: -1,discountId: -1};
    errorMessage:string="";
@@ -34,7 +35,7 @@ export class AssignDisountToProductComponent implements OnInit {
   isProductSelectOptionHidden:boolean=true;
    noDataRelated:string="No Related Sub Categories!"
    constructor(private location:Location,private activatedRoute:ActivatedRoute,
-     private sharedService:SharedService, private router:Router,
+     private sharedService:SharedService, private router:Router,private http:HttpClient,
      private productService:ProductService,
      private categoryService:CategoryService,
      private subCategoryService:SubCategoryService,
@@ -50,11 +51,6 @@ export class AssignDisountToProductComponent implements OnInit {
      this.getdiscounts();
    }
  
-  //  getCategories(){
-  //   this.categoryService.getAll().subscribe(
-  //     data=>this.categories = data.data as ICategory[],
-  //   );
-  // }
   getAllCategories(){
     this.categoryService.getAllCategoriesWithSubCategories().subscribe(
       (data)=>{
@@ -71,21 +67,6 @@ export class AssignDisountToProductComponent implements OnInit {
        data=>this.discounts = data.data as IDiscount[],
      );
    }
-  //  onChangeCategory(){
-  //     this.subCategoryService.getAll().subscribe(
-  //      data=>{
-  //        this.subCategories = (data.data as ISubCategory[]).filter(c=>c.categoryId==this.model.categoryId);
-  //        console.log("SubCats----------------------");
-  //       console.log(this.subCategories);
-  //        if(this.subCategories.length==0){
-  //          this.noDataRelated = "No Sub Categories Related To this Category !";
-  //          this.sharedService.showSnackBar(this.noDataRelated,4000,'warningSnackBar');
-  //        }else{
-  //          this.isSubCatSelectOptionHidden = false;
-  //        }
-  //      }
-  //     );
-  //  }
   onChangeCategory(){
     console.log("-------------------cat ID--------------------------")
     console.log(this.model.categoryId)
@@ -104,19 +85,20 @@ export class AssignDisountToProductComponent implements OnInit {
     );
  }
    onChangeSubCategory(){
-     this.productService.getProducts().subscribe(
-      data=>{
-        this.products = (data.data as IProduct[]).filter(c=>c.subcategoryID==this.model.subCategoryId);
-        console.log(this.products);
-        if(this.products.length==0){
-          this.noDataRelated = "No Products Related To this subCategory !";
-          this.sharedService.showSnackBar(this.noDataRelated,4000,'warningSnackBar');
-        }else{
-          this.isProductSelectOptionHidden = false;
-        }
-      },
-     );
+    this.isProductSelectOptionHidden = false;
+    this.GetAllProducts();  
   }
+  GetAllProducts()
+{
+  this.http.get('http://localhost:5092/api/Product/PartnerProductsBySubCategory/'+this.model.subCategoryId).subscribe(
+    data=>{
+      console.log(data);
+      this.products = data as any;
+      console.log(this.products);
+
+    }
+  )
+}
  
    back(){
      this.location.back();
@@ -131,7 +113,7 @@ export class AssignDisountToProductComponent implements OnInit {
          successMessage = language=="en"?`Discount Added Successfully!`:
          `تم إضافة الخصم بنجاح !`;
          this.sharedService.showSnackBar(successMessage,3000,'successSnackBar');
-         this.router.navigate(["/admin/adminLayout/showProducts"]);
+         this.back();
        },
        (error)=>{
          if(error.length==0){

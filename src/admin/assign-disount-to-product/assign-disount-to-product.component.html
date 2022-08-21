@@ -32,7 +32,7 @@
                 <label for="productID" class="mb-1">{{'product.selectProduct'|translate}}</label>
                 <select   #productID="ngModel" required [class.validInput]="productID.value!>0&&productID.touched" [class.invalidInput]="productID.value==-1 && productID.touched"  id="productID" name="productID" [(ngModel)]="model.productId" class="form-control">
                     <option value="-1">{{'product.selectSubCategory'|translate}}</option>
-                    <option *ngFor="let product of products" value="{{product.id}}">{{product.name}}</option>
+                    <option *ngFor="let product of products.data" value="{{product.id}}">{{product.name}}</option>
                 </select>
                     <div class="text-danger" *ngIf="productID.value<=0 && productID.touched">
                         <small class="text-danger" *ngIf="productID.value<=0">{{'product.selectProduct'|translate}}</small>

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 // import { Router } from '@angular/router';
 import { delay } from 'rxjs';
 import { ICategory } from 'src/helpers/interfaces/icategory';
+import { INewCategoryResponse } from 'src/helpers/interfaces/iproduct';
 import { CategoryService } from 'src/helpers/services/category.service';
 import { SharedService } from 'src/helpers/services/shared.service';
 
@@ -35,17 +36,28 @@ export class ShowCategoriesComponent implements OnInit {
 
   serverErrorMessage:string="";
   getAllCategories(){
-    this.categoryService.getAll().subscribe(
+    this.categoryService.getAllCategoriesWithSubCategories().subscribe(
       (data)=>{
-        console.log(data);
-        this.categoriesList = <ICategory[]>data;
+        console.log(data.data);
+        this.categoriesList = data.data as INewCategoryResponse[];
       },
       (error)=>{
-        this.serverErrorMessage=error;
-        this.getAllCategoryState ="Errors In Retrieving Data !";
+        this.sharedService.showSnackBar(error,4000,'dangerSnackBar');
       }
     )
   }
+  // getAllCategories(){
+  //   this.categoryService.getAll().subscribe(
+  //     (data)=>{
+  //       console.log(data);
+  //       this.categoriesList = <ICategory[]>data;
+  //     },
+  //     (error)=>{
+  //       this.serverErrorMessage=error;
+  //       this.getAllCategoryState ="Errors In Retrieving Data !";
+  //     }
+  //   )
+  // }
 
   changeCategory(){
     console.log("selected category id = "+this.selectedCategoreID);

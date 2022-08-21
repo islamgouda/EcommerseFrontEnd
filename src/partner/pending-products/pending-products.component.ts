@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { IProductResponse, IShowProduct } from 'src/helpers/interfaces/iproduct';
+import { SharedService } from 'src/helpers/services/shared.service';
 
 @Component({
   selector: 'app-pending-products',
@@ -9,7 +10,7 @@ import { IProductResponse, IShowProduct } from 'src/helpers/interfaces/iproduct'
 })
 export class PendingProductsComponent implements OnInit {
   productList:IShowProduct[]=[];
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,public shared:SharedService) { }
 
   ngOnInit(): void {
   
@@ -24,6 +25,6 @@ this.GetAllPending();
       }
     )
   }
-
+ 
 
 }

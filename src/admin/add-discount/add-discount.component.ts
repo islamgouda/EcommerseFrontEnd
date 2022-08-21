@@ -1,4 +1,5 @@
 import { DatePipe, Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -19,7 +20,7 @@ export class AddDiscountComponent implements OnInit {
   discountModel:IDiscount={name:"",description:"",name_Ar:"",description_Ar:"",descount_Persent:"",endTime:new Date,startTime:new Date,active:false};
   discountID:number=-1;
   errorMessage:string="";
-  constructor(private location:Location,private activatedRoute:ActivatedRoute,private sharedService:SharedService, private router:Router,private discountService:DiscountService) { 
+  constructor(private http:HttpClient,private location:Location,private activatedRoute:ActivatedRoute,private sharedService:SharedService, private router:Router,private discountService:DiscountService) { 
     this.textDirection = this.sharedService.textDirection;
     this.language = localStorage.getItem("lang")||"en";
     }
@@ -27,24 +28,38 @@ export class AddDiscountComponent implements OnInit {
   ngOnInit(): void {
     this.discountID  = this.getUrlParameter("id");
     this.getSelectedDiscount();
+    
   }
- 
-
+  
+  
   addNewDiscount(){
-    this.discountService.addNewDiscount(this.discountModel).subscribe(
-      (data)=>{
-        let language=localStorage.getItem("lang");
-        let successMessage ='';
-        successMessage = language=="en"?`Discount Added Successfully!`:
-        `تم إضافة خصم جديد بنجاح !`;
-        this.sharedService.showSnackBar(successMessage,3000,'successSnackBar');
-        this.router.navigate(["/admin/adminLayout/showAllDiscounts"]);
-      },
-      (error)=>{
-        this.sharedService.showSnackBar(error,3000,'dangerSnackBar');
+     this.http.post("http://localhost:5092/api/Discount",this.discountModel).subscribe(
+      data=>{
+        console.log("-----------------data response -------------");
+        console.log(data);
       }
-    );
+     );
   }
+  // addNewDiscount(){
+  //   console.log("-------------------model-------------------------");
+  //   console.log(this.discountModel);
+  //   this.discountService.addNewDiscount(this.discountModel).subscribe(
+  //     (data)=>{
+  //       if(data.succcess){
+  //       let language=localStorage.getItem("lang");
+  //       let successMessage ='';
+  //       successMessage = language=="en"?`Discount Added Successfully!`:
+  //       `تم إضافة خصم جديد بنجاح !`;
+  //       this.sharedService.showSnackBar(successMessage,3000,'successSnackBar');
+  //       this.back();
+  //     }
+  //   },
+  //     (error)=>{
+  //       console.log(error);
+  //       this.sharedService.showSnackBar("Error : "+error,3000,'dangerSnackBar');
+  //     }
+  //   );
+  // }
   updateDiscount(){
     let updatedSuccessfully = this.textDirection=='rtl'?"تم تعديل الخصم بنجاح":"Discount Updated Suuccessfully !";
     let updatedFailure = this.textDirection=='rtl'?"! لم يتم تعديل الخصم":"Dicount does not Updated  !";
