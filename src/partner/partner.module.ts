@@ -13,6 +13,8 @@ import { PartnerLandingPageComponent } from './partner-landing-page/partner-land
 import { AllProductsComponent } from './all-products/all-products.component';
 import { PendingProductsComponent } from './pending-products/pending-products.component';
 import { DiscountPipe } from 'src/helpers/pipes/discount.pipe';
+import { DeleteProductComponent } from './delete-product/delete-product.component';
+import { UpdateProductComponent } from './update-product/update-product.component';
 //adding to execute localization
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -25,7 +27,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     PartnerLandingPageComponent,
     AllProductsComponent,
     PendingProductsComponent,
- 
+    DeleteProductComponent,
+    UpdateProductComponent
     
     
   ],

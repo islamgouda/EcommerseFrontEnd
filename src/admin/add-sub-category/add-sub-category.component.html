@@ -14,7 +14,7 @@
         <form #subCaregoryForm="ngForm" (submit)="saveSubCategory()"  enctype="multipart/form-data" method="post" >
             <div class="form-group mt-5">
                 <label for="name" class="mb-1">{{'subCategory.subCategoryNameInen'|translate}}</label>
-                <input type="text" pattern="[a-zA-Z 0-9]{2,100}" #name="ngModel" required [class.validInput]="name.valid" [class.invalidInput]="name.invalid && name.touched"  id="name" name="Name" [(ngModel)]="subCategoryModel.name" class="form-control">
+                <input type="text" pattern="^[a-zA-Z - 0-9]{2,100}$" #name="ngModel" required [class.validInput]="name.valid" [class.invalidInput]="name.invalid && name.touched"  id="name" name="Name" [(ngModel)]="subCategoryModel.name" class="form-control">
                 <div class="text-danger" *ngIf="name.invalid && name.touched">
                     <small class="text-danger" *ngIf="name.errors!['required']">{{'subCategory.nameRequiredError'|translate}}</small>
                     <small class="text-danger" *ngIf="name.errors!['pattern']">{{'subCategory.namepatternErrorEn'|translate}}</small>
@@ -32,7 +32,7 @@
 
             <div class="form-group mt-2">
                 <label for="descriptionEn" class="mb-1">{{'subCategory.subCategoryDescriptionInen'|translate}}</label>
-                <input type="text" pattern="[a-zA-Z 0-9]{10,100}" #descriptionEn="ngModel" required [class.validInput]="descriptionEn.valid" [class.invalidInput]="descriptionEn.invalid && descriptionEn.touched"  id="descriptionEn" name="descriptionEn" [(ngModel)]="subCategoryModel.description" class="form-control">
+                <input type="text" pattern="^[a-zA-Z 0-9]{10,100}$" #descriptionEn="ngModel" required [class.validInput]="descriptionEn.valid" [class.invalidInput]="descriptionEn.invalid && descriptionEn.touched"  id="descriptionEn" name="descriptionEn" [(ngModel)]="subCategoryModel.description" class="form-control">
                 <div class="text-danger" *ngIf="descriptionEn.invalid && descriptionEn.touched">
                     <small class="text-danger" *ngIf="descriptionEn.errors!['required']">{{'subCategory.descriptionRequiredError'|translate}}</small>
                     <small class="text-danger" *ngIf="descriptionEn.errors!['pattern']">{{'subCategory.descriptionpatternErrorEn'|translate}}</small>
@@ -52,7 +52,7 @@
                 <label for="categoryId" class="mb-1">{{'subCategory.selectCategory'|translate}}</label>
                 <select   #categoryId="ngModel" required [class.validInput]="categoryId.value!=-1&&categoryId.touched" [class.invalidInput]="categoryId.value==-1 && categoryId.touched"  id="categoryId" name="categoryId" [(ngModel)]="subCategoryModel.categoryId" class="form-control">
                     <option value="-1">{{'subCategory.selectCategory'|translate}}</option>
-                    <option [selected]="catID==category.id && catID!=-1"  *ngFor="let category of allCategories" value="{{category.id}}">{{category.name}}{{subCategoryModel.categoryId}}</option>
+                    <option [selected]="catID==category.id && catID!=-1"  *ngFor="let category of allCategories" value="{{category.id}}">{{category.name}}</option>
                 </select>
                     <div class="text-danger" *ngIf="categoryId.value==-1 && categoryId.touched&&categoryId.invalid">
                         <small class="text-danger" *ngIf="categoryId.value==-1">{{'subCategory.selectCategory'|translate}}</small>
@@ -62,13 +62,12 @@
 
             <div class="form-group mt-2">
                 <label for="image" class="mb-1">{{'subCategory.subCategoryImage'|translate}}</label>
-                <input type="file" (change)="onImageSelect($event)"   pattern="^.*(.png|.jpg|.svg|.jpeg)" required #image="ngModel" required [class.validInput]="image.valid" [class.invalidInput]="image.invalid && image.touched"  id="image" name="image" [(ngModel)]="subCategoryModel.image" class="form-control">
+                <input type="file" (change)="onImageSelect($event)"   pattern="^.*(.jfif|.png|.jpg|.svg|.jpeg|.PNG|.JPG|.SVG|.JPEG|.JFIF|.Png|.Jpg|.Svg|.Jpeg|.Jfif)" required #image="ngModel" required [class.validInput]="image.valid" [class.invalidInput]="image.invalid && image.touched"  id="image" name="image" [(ngModel)]="subCategoryModel.image" class="form-control">
                 <div class="text-danger" *ngIf="image.invalid && image.touched">
                     <small class="text-danger" *ngIf="image.errors!['required']">{{'subCategory.imageRequired'|translate}}</small>
                     <small class="text-danger" *ngIf="image.errors!['pattern']">{{'subCategory.imageErrorFormat'|translate}}</small>
                 </div>
             </div>
-
             <input type="submit" value="{{'subCategory.save'|translate}}" [disabled]="subCaregoryForm.invalid||categoryId.value==-1" class="mt-4 form-control btn btn-outline-success"/>
         </form>
         <button (click)="back()" class="mt-4 form-control btn btn-outline-warning mt-3">{{'subCategory.cancel'|translate}}</button>

@@ -75,7 +75,7 @@
                     <button routerLink="/admin/adminLayout/addSubCategory/{{subCategoryModel.id}}" routerLinkActive="router-link-active"  class="btn btn-outline-success form-control mt-3 mb-2">{{'subCategory.update'|translate}}</button>
                 </div>
                 
-                <div class="col-12 col-md-6 card mt-3 mb-1 pt-2 shadow text-center fs-4">{{subCategoryModel.categoryName}}</div>
+                <div class="col-12 col-md-6 card mt-3 mb-1 pt-2 shadow text-center fs-5">{{'site.categoryName'|translate}} : {{textDirection=="ltr"?subCategoryModel.categoryName:subCategoryModel.arabicDescription}}</div>
                 <div class="col-12 col-md-3">
                     <button routerLink="/admin/adminLayout/deleteSubCategories/{{subCategoryModel.id}}" routerLinkActive="router-link-active"  class="btn btn-outline-danger form-control mt-3 mb-2">{{'subCategory.delete'|translate}}</button>
                 </div>

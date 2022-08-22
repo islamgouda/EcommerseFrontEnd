@@ -112,5 +112,20 @@ export class ProductService {
       catchError(error=>this.gerericService.handleError(error))
     );
   }
+
+  getProductsByArabicName(stringText:string):Observable<IProductResponse>{
+    let url = "http://localhost:5092/api/Product/ProductsByArabicName?Name="+stringText;
+    return this.httpClient.get<IProductResponse>(url).
+    pipe(
+      catchError(error=>this.gerericService.handleError(error))
+    );
+  }
+  getProductsByEnglishName(stringText:string):Observable<IProductResponse>{
+    let url = "http://localhost:5092/api/Product/ProductsByName?Name="+stringText;
+    return this.httpClient.get<IProductResponse>(url).
+    pipe(
+      catchError(error=>this.gerericService.handleError(error))
+    );
+  }
   
 }

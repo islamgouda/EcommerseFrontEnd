@@ -158,7 +158,13 @@
         "ok":"حسنا",
         "partners":"البائعين",
         "showAllPartners":"عرض كل البائعين",
-        "addNewPartner":"اضافة بائع جديد"
+        "addNewPartner":"اضافة بائع جديد",
+        "ourPartners":"البـــائــــعـــيــــن",
+        "list":"قائمة",
+        "name":" اسم البائع",
+        "userName":"اسم المستخدم",
+        "id":"الرقم التعريفى",
+        "noOfBranches":"عدد الأفرع"
     },
     "user":{
         "userPannel":"لوحة المستخدم",
@@ -214,7 +220,17 @@
         "productsBySubCategory":"فلتر المنتجات بالصنف الفرعى",
         "productsByPartner":"فلتر النتجات بالبائع",
         "productsByProductName":"فلتر باسم المنتج",
-        "productsByPrice":"فلتر بالسعر"
+        "productsByPrice":"فلتر بالسعر",
+        "addToCart":"إضافة الى سلة المشتريات",
+        "priceForOne":"سعر الواحدة",
+        "shoppingCart":"ســــلـة المشــتريــات",
+        "total":"السعر الاجمالى للمشتريات",
+        "proceedToPay":"متابعة عملية الشراء",
+        "back":"العودة",
+        "cartCount":"عدد السلع فى السله",
+        "noItems":"لا يوجد منتجات فى السلة",
+        "backToShopping":"العودة للموقع لإضافة المنتجات",
+        "options":"خيارات المستخدم"
     },
     "shipper":{
         "adminPannel":"لــوحة تــحكــم شركة الشحن",
@@ -227,6 +243,35 @@
         "onDelivery":"جاري التوصيل",
         "delivered":"تم التوصيل",
         "changeState":"تغيير الحالة"
+    },
+    "uProduct":{
+        "price":"السعر",
+        "discount":"الخصم",
+        "category":"الصنف",
+        "subCategory":"الصنف الفرعى",
+        "isAvailable":"متاح فى المخزن",
+        "isNotAvalable":"غير متاح فى المخزن",
+        "partnerName":"اسم البائع",
+        "description":"الوصف",
+        "back":"العودة",
+        "buy":"شراء الآن"
+    },
+    "site":{
+        "selectCategory":"اختر الصنف",
+        "search":"بحث",
+        "selectSubCategory":"اختر الصنف الفرعى",
+        "noProductsInCategory":"لا يوجد منتجات فى هذا الصنف لعرضها",
+        "noProductsInSubCategory":"لا يوجد منتجات فى هذا الصنف الفرعى لعرضها",
+        "noSubCategoryInCategory":"لا يوجد اصناف فرعية فى هذا الصنف",
+        "searchByName":"ابحث بالاسم",
+        "productName":"ادخل اسم المنتج",
+        "areYouSure":"هل انت متاكد انك تريد حذف المنتج",
+        "delete":"حـــذف",
+        "confirmDelete":"تاكيد الحذف",
+        "back":"العودة",
+        "searchProduct":"ابحث عن منتج ...",
+        "optional":"إختيارى",
+        "categoryName":"اسم الصنف"
     }
 
 

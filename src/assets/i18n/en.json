@@ -159,7 +159,13 @@
         "ok":"OK",
         "dashboard":"Partner Dashboard",
         "showAllPartners":"Show All Partners",
-        "addNewPartner":"Add New Partner"
+        "addNewPartner":"Add New Partner",
+        "ourPartners":"our Partners",
+        "list":"List",
+        "name":"Name",
+        "userName":"User Name",
+        "id":"Identification No",
+        "noOfBranches":"number Of Branches"
     },
     "user":{
         "userPannel":"User Pannel",
@@ -214,7 +220,17 @@
         "productsBySubCategory":"Products By Sub Category",
         "productsByPartner":"Products By Partner",
         "productsByProductName":"Products By Product Name",
-        "productsByPrice":"Products By Price"
+        "productsByPrice":"Products By Price",
+        "addToCart":"Add To Cart",
+        "priceForOne":"Price For One",
+        "shoppingCart":"Shopping Cart",
+        "total":"Total Price",
+        "proceedToPay":"Proceed To Pay",
+        "back":"Back",
+        "cartCount":"Cart Count",
+        "noItems":"No Items In The Cart !",
+        "backToShopping":"Back To Shopping",
+        "options":"User Options"
     },
     "shipper":{
         "adminPannel":"Shipper Admn Pannel",
@@ -227,5 +243,34 @@
         "onDelivery":"On Delivery",
         "delivered":"Delivered",
         "changeState":"Change State"
+    },
+    "uProduct":{
+        "price":"Prica",
+        "discount":"Discount",
+        "category":"Category",
+        "subCategory":"Sub Category",
+        "isAvailable":"Is Available",
+        "isNotAvalable":"Is Not Available",
+        "partnerName":"Partner Name",
+        "description":"Description",
+        "back":"Back",
+        "buy":"Buy Now"
+    },
+    "site":{
+        "selectCategory":"Select Category",
+        "search":"Search",
+        "selectSubCategory":"Select Sub Category",
+        "noProductsInCategory":"No Products In That Category To Display !",
+        "noProductsInSubCategory":"No Products In That Sub Category To Display !",
+        "noSubCategoryInCategory":"No Sub Categories In Category",
+        "searchByName":"Search By Name",
+        "productName":"Enter Product Name",
+        "delete":"Delete",
+        "confirmDelete":"Confirm Delete",
+        "back":"Back",
+        "areYouSure":"Are You Sure To Delete Product",
+        "searchProduct":"Search Product..." ,
+        "optional":"Optional",
+        "categoryName":"Category Name"
     }
 }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICategory, ICategoryResponse } from 'src/helpers/interfaces/icategory';
+import { INewCategoryResponse } from 'src/helpers/interfaces/iproduct';
 import { ISubCategory } from 'src/helpers/interfaces/isub-category';
 import { CategoryService } from 'src/helpers/services/category.service';
 import { GenericApiHandlerService } from 'src/helpers/services/generic-api-handler.service';
@@ -35,16 +36,17 @@ export class AddSubCategoryComponent implements OnInit {
     this.getSelectedSubCategory();
   }
   getAllCategories(){
-    this.categoryService.getAll().subscribe(
+    this.categoryService.getAllCategoriesWithSubCategories().subscribe(
       (data)=>{
-        console.log(data);
-        this.allCategories = <ICategory[]>data;
+        console.log(data.data);
+        this.allCategories = data.data as INewCategoryResponse[];
       },
       (error)=>{
         this.sharedService.showSnackBar(error,4000,'dangerSnackBar');
       }
     )
   }
+
 
   updateSubCategory(){
     let updatedSuccessfully = this.textDirection=='rtl'?"تم تعديل الصنف الفرعى بنجاح":"Sub Category Updated Suuccessfully !";

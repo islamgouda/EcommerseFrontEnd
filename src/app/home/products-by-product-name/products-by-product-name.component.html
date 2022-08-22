@@ -1,1 +1,42 @@
-<p>products-by-product-name works!</p>
+<div class="container-fluid">
+  </div>
+  <div class="row mt-3 mb-1">
+    <div class="col-12 col-md-2"></div>
+    <div class="col-12 col-md-6">
+            <input type="text" placeholder="{{'site.searchProduct'|translate}}" (keypress)="getproductsByProductName()"  [(ngModel)]="productName" class="form-control">
+      <hr>
+    </div>
+    <div class="col-12 col-md-2"></div>
+  </div>
+  <main>
+    <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
+      <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-3 g-3" >
+        <div class="col"  *ngFor="let product of productList">
+          <div class="card h-100 shadow-sm"> <img
+              src="{{product.images[0]}}"
+              class="card-img-top img-thumbnail" alt="...">
+            <div class="card-body" style="background-color: #F8F9F9 ;">
+              <div class="clearfix mb-3" style="font-size: 12px;"> <span class="float-start badge rounded-pill bg-danger" *ngIf="product.discount>0" >{{lang=='en'?"OFF":"خصم"}} {{product.discount|percent}}</span> <span
+                  class="float-end price-hp text-dark">{{(shared.calculateDiscount(product.price,product.discount))|currency}}</span>
+                <br><del class="price-hp text-danger"*ngIf="product.discount>0" >{{product.price|currency}}</del> </div>
+              <h5 class="card-title">{{lang=='en'?product.name:product.name_Ar}}</h5>
+              <div class="text-center my-4"> 
+              <div class="row">
+                <div class="col-6"><a *ngIf="shared.isRoleUser()" (click)="buy(product.id)"><i class="fa-solid handCursor fa-cart-shopping fs-4 text-warning"></i></a></div>
+                <div class="col-6"><a (click)="goDetails(product.id)"><i class="fa-solid handCursor fa-eye fs-4 text-secondary"></i></a></div>
+              </div>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-6">
+        <div class="alert alert-warning text-center fs-4"[hidden]="productName.length<1||productList.length>0&&productName.length>0">{{'site.noProductsInCategory'|translate}}
+         </div>
+    </div>
+    <div class="col-4"></div>
+  </div>

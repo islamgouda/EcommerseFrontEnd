@@ -22,7 +22,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AddProductComponent } from 'src/admin/add-product/add-product.component';
 import { ShowProductsComponent } from 'src/admin/show-products/show-products.component';
 import { UProductsComponent } from './uproducts/uproducts.component';
-import { UProductDetailsComponent } from './uproduct-details/uproduct-details.component';
 import { CartComponent } from './cart/cart.component';
 import { LoginUserComponent } from './Authentication/login-user/login-user.component';
 import { RegisterUserComponent } from './Authentication/register-user/register-user.component';
@@ -56,6 +55,7 @@ import { CartItemComponent } from './home/cart-item/cart-item.component';
 import { ProceedToPayComponent } from './home/proceed-to-pay/proceed-to-pay.component';
 import { AddPaymentMethodComponent } from './home/add-payment-method/add-payment-method.component';
 import { ShipperModule } from 'src/shipper/shipper.module';
+import { UProductDetailsComponent } from './home/u-product-details/u-product-details.component';
 
 
 
@@ -77,12 +77,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddProductComponent,
     ShowProductsComponent,
     UProductsComponent,
-    UProductDetailsComponent,
     CartComponent,
     LoginUserComponent,
     RegisterUserComponent,
     RegisterAdminComponent,
-
+    UProductDetailsComponent,
     UserDashboardComponent,
     BeaPartnerComponent,
 

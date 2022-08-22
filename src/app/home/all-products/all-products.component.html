@@ -1,78 +1,24 @@
-<div class="row p-3">
-   <ng-container *ngFor="let product of productList" >
-    <div class="col-md-4 ">
-      <div class="card mt-5 " >
-
-        <div class="image-container ">
-
-          <div class="first">
-
-            <div class="d-flex justify-content-between align-items-center">
-
-              <span class="discount"></span>
-              <!-- <span class="discount">{{product.price|discount:product.discount}}</span> -->
-              <span class="wishlist"><i class="fa fa-heart-o"></i></span>
-
-
+<main>
+  <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
+    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-3 g-3" >
+      <div class="col"  *ngFor="let product of productList">
+        <div class="card h-100 shadow-sm"> <img
+            src="{{product.images[0]}}"
+            class="card-img-top img-thumbnail" alt="...">
+          <div class="card-body" style="background-color: #F8F9F9 ;">
+            <div class="clearfix mb-3" style="font-size: 12px;"> <span class="float-start badge rounded-pill bg-danger" *ngIf="product.discount>0" >{{lang=='en'?"OFF":"خصم"}} {{product.discount|percent}}</span> <span
+                class="float-end price-hp text-dark">{{(shared.calculateDiscount(product.price,product.discount))|currency}}</span>
+              <br><del class="price-hp text-danger"*ngIf="product.discount>0" >{{product.price|currency}}</del> </div>
+            <h5 class="card-title">{{lang=='en'?product.name:product.name_Ar}}</h5>
+            <div class="text-center my-4"> 
+            <div class="row">
+              <div class="col-6" ><a (click)="buy(product.id)" *ngIf="shared.isRoleUser()"><i class="fa-solid handCursor fa-cart-shopping fs-4 text-warning"></i></a></div>
+              <div class="col-6"><a (click)="goDetails(product.id)"><i class="fa-solid handCursor fa-eye fs-4 text-secondary"></i></a></div>
+            </div>  
             </div>
-          </div>
-
-          <img src="{{product.images}}" class="img-fluid rounded thumbnail-image">
-
-
-        </div>
-
-
-        <div class="product-detail-container p-2 ">
-
-          <div class="d-flex justify-content-between align-items-center">
-
-            <h5 class="dress-name">{{product.name}}</h5>
-
-            <div class="d-flex flex-column mb-2">
-
-              
-              <span class="new-price text-success">${{product.price|discount:product.discount}}</span>
-              <del  *ngIf="product.discount!=0"><span class="new-price">{{product.price|currency}}</span></del>
-            </div>
-
-          </div>
-
-          <div class="d-flex justify-content-between align-items-center pt-1">
-            <div>
-              
-              <span class="rating-number">{{product.categoryName}}</span><br>
-              <span class="rating-number">{{product.subcategoryName}}</span>
-            </div>
-
-            <a class="text-decoration-none" (click)="buy(product.id)"><span class="buy">BUY +</span></a>
-
           </div>
         </div>
-
       </div>
-      <div class="mt-3">
-        <div class="card voutchers">
-
-          <div class="voutcher-divider">
-
-            <div class="voutcher-left text-center">
-              <span class="voutcher-name">Provided By</span>
-              <h5 class="voutcher-code">{{product.partenerName}}</h5>
-
-            </div>
-            <div class="voutcher-right text-center border-left">
-              <h5 class="discount-percent" *ngIf="product.discount>0;else noDiscount">{{product.discount|percent}}<br><span class="off">Off</span></h5>
-              <ng-template class="discount-percent mt-5" #noDiscount>No Discount</ng-template>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
     </div>
-  </ng-container>
   </div>
+</main>

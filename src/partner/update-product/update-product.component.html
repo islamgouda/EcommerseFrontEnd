@@ -1,0 +1,112 @@
+<div class="row">
+    <div class="col-12 col-md-2"></div>
+    <div class="col-12 col-md-8" [class]="textDirection">
+        <form #productForm="ngForm" (submit)=" update()"  enctype="multipart/form-data">
+            <div class="form-group mt-5">
+                <label for="name" class="mb-1">{{'product.productNameInen'|translate}}</label>
+                <input type="text" pattern="[a-zA-Z 0-9]{2,100}" #name="ngModel" required [class.validInput]="name.valid" [class.invalidInput]="name.invalid && name.touched"  id="name" name="name" [(ngModel)]="productModel.name" class="form-control">
+                <div class="text-danger" *ngIf="name.invalid && name.touched">
+                    <small class="text-danger" *ngIf="name.errors!['required']">{{'product.nameRequiredError'|translate}}</small>
+                    <small class="text-danger" *ngIf="name.errors!['pattern']">{{'product.namepatternErrorEn'|translate}}</small>
+                </div>
+            </div>
+             <div class="form-group mt-2">
+                <label for="nameAr" class="mb-1">{{'product.productNameInar'|translate}}</label>
+                <input type="text" pattern="[أ-ي 0-9]{2,100}" #nameAr="ngModel" required [class.validInput]="nameAr.valid" [class.invalidInput]="nameAr.invalid && nameAr.touched"  id="nameAr" name="nameAr" [(ngModel)]="productModel.name_Ar" class="form-control">
+                <div class="text-danger" *ngIf="nameAr.invalid && nameAr.touched">
+                    <small class="text-danger" *ngIf="nameAr.errors!['required']">{{'product.nameRequiredError'|translate}}</small>
+                    <small class="text-danger" *ngIf="nameAr.errors!['pattern']">{{'product.namepatternErrorAr'|translate}}</small>
+                </div>
+            </div>
+
+          <div class="form-group mt-2">
+                <label for="descriptionEn" class="mb-1">{{'product.productDescriptionInen'|translate}}</label>
+                <input type="text" pattern="[a-zA-Z 0-9]{10,100}" #descriptionEn="ngModel" required [class.validInput]="descriptionEn.valid" [class.invalidInput]="descriptionEn.invalid && descriptionEn.touched"  id="descriptionEn" name="descriptionEn" [(ngModel)]="productModel.description" class="form-control">
+                <div class="text-danger" *ngIf="descriptionEn.invalid && descriptionEn.touched">
+                    <small class="text-danger" *ngIf="descriptionEn.errors!['required']">{{'product.descriptionRequiredError'|translate}}</small>
+                    <small class="text-danger" *ngIf="descriptionEn.errors!['pattern']">{{'product.descriptionpatternErrorEn'|translate}}</small>
+                </div>
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="descriptionAr" class="mb-1">{{'product.productDescriptionInar'|translate}}</label>
+                <input type="text" pattern="[أ-ي 0-9]{10,100}" #descriptionAr="ngModel" required [class.validInput]="descriptionAr.valid" [class.invalidInput]="descriptionAr.invalid && descriptionAr.touched"  id="descriptionAr" name="descriptionAr" [(ngModel)]="productModel.description_Ar" class="form-control">
+                <div class="text-danger" *ngIf="descriptionAr.invalid && descriptionAr.touched">
+                    <small class="text-danger" *ngIf="descriptionAr.errors!['required']">{{'product.descriptionRequiredError'|translate}}</small>
+                    <small class="text-danger" *ngIf="descriptionAr.errors!['pattern']">{{'product.descriptionpatternErrorAr'|translate}}</small>
+                </div>
+            </div>
+
+
+            <div class="form-group mt-2">
+                <label for="price" class="mb-1">{{'product.productprice'|translate}}</label>
+                <input type="text" pattern="[0-9.]{1,9}" #price="ngModel" required [class.validInput]="price.valid" [class.invalidInput]="price.invalid && price.touched"  id="price" name="price" [(ngModel)]="productModel.price" class="form-control">
+                <div class="text-danger" *ngIf="price.invalid && price.touched">
+                    <small class="text-danger" *ngIf="price.errors!['required']">{{'product.priceRequiredError'|translate}}</small>
+                    <small class="text-danger" *ngIf="price.errors!['pattern']">{{'product.pricepatternError'|translate}}</small>
+                </div>
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="price" class="mb-1">{{'product.productquantity'|translate}}</label>
+                <input type="text" pattern="[0-9]{1,5}" #quantity="ngModel" required [class.validInput]="quantity.valid" [class.invalidInput]="quantity.invalid && quantity.touched"  id="quantity" name="quantity" [(ngModel)]="productModel.quantity" class="form-control">
+                <div class="text-danger" *ngIf="quantity.invalid && quantity.touched">
+                    <small class="text-danger" *ngIf="quantity.errors!['required']">{{'product.quantityRequiredError'|translate}}</small>
+                    <small class="text-danger" *ngIf="quantity.errors!['pattern']">{{'product.quantitypatternError'|translate}}</small>
+                </div>
+            </div>
+                
+            <!-- <div class="form-group mt-2">
+                <label for="CategoryID" class="mb-1">{{'product.selectCategory'|translate}}</label>
+                <select  (change)="onChangeCategory()" #CategoryID="ngModel" required [class.validInput]="CategoryID.value!>0&&CategoryID.touched" [class.invalidInput]="CategoryID.value==-1 && CategoryID.touched"  id="CategoryID" name="CategoryID" [(ngModel)]="productModel.CategoryID" class="form-control">
+                    <option *ngFor="let category of allCategories" value="{{category.id}}">{{category.name}}</option>
+                </select>
+                    <div class="text-danger" *ngIf="CategoryID.value<=0 && CategoryID.touched">
+                        <small class="text-danger" *ngIf="CategoryID.value<=0">{{'product.selectCategory'|translate}}</small>
+                        <small class="text-danger" *ngIf="CategoryID.errors!['required']">{{'product.selectCategory'|translate}}</small>
+                    </div>
+            </div>
+                
+
+
+            <div class="form-group mt-2" >
+                <label for="categoryId" class="mb-1">{{'product.selectSubCategory'|translate}}</label>
+                <select   #subCategoryID="ngModel" required [class.validInput]="subCategoryID.value!>0&&subCategoryID.touched" [class.invalidInput]="subCategoryID.value==-1 && subCategoryID.touched"  id="subCategoryID" name="subCategoryID" [(ngModel)]="productModel.subcategoryID" class="form-control">
+                    <option value="-1">{{'selectSubCategory'|translate}}</option>
+                    <option   *ngFor="let scategory of relatedSubCategories" value="{{scategory.id}}">{{scategory.name}}</option>
+                </select>
+                    <div class="text-danger" *ngIf="subCategoryID.value<=0 && subCategoryID.touched">
+                        <small class="text-danger" *ngIf="subCategoryID.value<=0">{{'product.selectSubCategory'|translate}}</small>
+                        <small class="text-danger" *ngIf="subCategoryID.errors!['required']">{{'product.selectSubCategory'|translate}}</small>
+                    </div>
+            </div>-->
+
+            <div class="row">
+                <div class="col-12 col-md-1"></div>
+                <div class="col-12 col-md-10 shadow mt-2 pb-2 bg-light">
+                    <div class="form-check mt-4 ">
+                        <input class="form-check-input cursor-pointer"  type="checkbox" [value]="productModel.isAvailable" #isActive="ngModel" name="isActive" [(ngModel)]="productModel.isAvailable"  id="isActive" >
+                        <label class="form-check-label cursor-pointer"  for="isActive">
+                            {{'product.isProductAvailable'|translate}}
+                        </label>
+                    </div> 
+                </div>
+                <div class="col-12 col-md-1"></div>
+            </div> 
+
+
+            <div class="form-group mt-2">
+                <label for="image" class="mb-1">{{'product.productImage'|translate}} ({{'site.optional'|translate}})</label>
+                <input type="file" multiple  pattern="^.*(.png|.jpg|.svg|.jpeg)"  #image="ngModel"  [class.validInput]="image.valid" [class.invalidInput]="image.invalid && image.touched" (change)="onfileChange($event)" id="image" name="image" [(ngModel)]="productModel.images" class="form-control">
+                <div class="text-danger" *ngIf="image.invalid && image.touched">
+                    <small class="text-danger" *ngIf="image.errors!['pattern']">{{'product.imageErrorFormat'|translate}}</small>
+                </div>
+            </div>
+
+            <input type="submit" value="{{'product.save'|translate}}" [disabled]="productForm.invalid" class="mt-4 form-control btn btn-outline-success"/>
+        </form>
+        <button  class="mt-4 form-control btn btn-outline-warning mt-3">{{'product.cancel'|translate}}</button>
+    </div>
+    <div class="col-12 col-md-2"></div> 
+</div>
+
