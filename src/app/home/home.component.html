@@ -1,13 +1,17 @@
-<div class="container-fluid" >
+<div class="container-fluid" style="background-color: #CACFD2;">
   <div class="row" [class]="textDirection" >
     <div class="col-12 col-md-3 home-bg" [class.pt-3]="textDirection=='rtl'" style="padding-right:0;padding-left:0;">
       <div style="margin-left: 20px;margin-right: 20px;">      
-        <a routerLink="/home/AllProducts" routerLinkActive="active" class="btn   btn-outline-dark form-control mb-2">{{'home.showAllProducts'|translate}}</a>
-        <a routerLink="/home/productsByCategory" routerLinkActive="active" class="btn  btn-outline-dark form-control mb-2">{{'home.productsByCategory'|translate}}</a>
-        <a routerLink="/home/productsBySubCategory" routerLinkActive="active" class="btn  btn-outline-dark form-control mb-2">{{'home.productsBySubCategory'|translate}}</a>
+        <a  routerLinkActive="active" class="btn  sidebarheadre  form-control mb-2" >{{'home.options'|translate}}</a>
+        <a routerLink="/home/AllProducts" routerLinkActive="active" class="btn  sidebar  form-control mb-2" >{{'home.showAllProducts'|translate}}</a>
+        <a routerLink="/home/productsByCategory" routerLinkActive="active" class="btn  sidebar form-control mb-2">{{'home.productsByCategory'|translate}}</a>
+        <a routerLink="/home/productsBySubCategory" routerLinkActive="active" class="btn  sidebar  form-control mb-2">{{'home.productsBySubCategory'|translate}}</a>
+        <a routerLink="/home/productsByProductName" routerLinkActive="active" class="btn  sidebar  form-control mb-2">{{'site.searchByName'|translate}}</a>
           </div>
     </div>
+    <!-- <div class="col-12 col-md-9" style="padding-right:0;padding-left:0; background-image: url('assets/images/home.gif');min-height: 450px;background-size: 80% 100%;background-repeat: no-repeat;"> -->
     <div class="col-12 col-md-9" style="padding-right:0;padding-left:0;">
+      
       <router-outlet></router-outlet>
     </div>
   </div>

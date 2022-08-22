@@ -53,7 +53,17 @@ export class SharedService {
     );
   }
   calculateDiscount(price:number,discount:number){
-    return price-(price*discount);
+    return (price-(price*discount)).toFixed(2);
+  }
+  isRoleUser(){
+    let roles = localStorage.getItem("Roles")||"";
+    let rolesList = roles.split(",");
+    for (let i = 0; i < rolesList.length; i++) {
+      if(rolesList[0]=="User"){
+        return true;
+      }
+    }
+    return false;
   }
 
 }

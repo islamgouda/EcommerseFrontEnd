@@ -17,7 +17,7 @@ export class AddDiscountComponent implements OnInit {
   textDirection:string;
   language:string;
   // updateDiscountWithId:number = -1;
-  discountModel:IDiscount={name:"",description:"",name_Ar:"",description_Ar:"",descount_Persent:"",endTime:new Date,startTime:new Date,active:false};
+  discountModel:IDiscount={name:"",description:"",name_Ar:"",description_Ar:"",descount_Persent:"",endTime:new Date,startTime:new Date,active:true};
   discountID:number=-1;
   errorMessage:string="";
   constructor(private http:HttpClient,private location:Location,private activatedRoute:ActivatedRoute,private sharedService:SharedService, private router:Router,private discountService:DiscountService) { 
@@ -83,6 +83,7 @@ export class AddDiscountComponent implements OnInit {
     }else{
         this.updateDiscount();
     }
+    window.location.reload();
     this.back();
   }
 

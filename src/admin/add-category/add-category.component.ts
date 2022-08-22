@@ -42,6 +42,9 @@ export class AddCategoryComponent implements OnInit {
         `تم إضافة صنف بنجاح !`;
         this.sharedService.showSnackBar(successMessage,3000,'successSnackBar');
         this.router.navigate(["/admin/adminLayout/showCategories"]);
+        if(data.success){
+          window.location.reload();
+        }
       },
       (error)=>{
         if(error=="")

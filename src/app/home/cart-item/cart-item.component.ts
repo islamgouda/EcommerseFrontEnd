@@ -13,8 +13,12 @@ export class CartItemComponent implements OnInit {
 
   cartItemsList:IShowCartItemProduct[]=[];
   cartCount:any;
+  lang:string; 
+  textDirection:string;
   constructor(private cartService:CartItemsService,private location:Location,private cartItemService:CartItemsService,private shared:SharedService) {
-   }
+   this.lang = localStorage.getItem("lang")||"en"; 
+   this.textDirection = this.lang=='en'?"ltr":"rtl";
+  }
 
   ngOnInit(): void {
     this.getAllCartItems();
@@ -37,12 +41,12 @@ export class CartItemComponent implements OnInit {
       discount = this.cartItemsList[i].price - (this.cartItemsList[i].price*this.cartItemsList[i].descount_Persent);
       total+=discount*this.cartItemsList[i].quantityOrdered;
     }
-    return total;
+    return total.toFixed(2);
   }
   deleteItemFromCart(id:number){
     this.cartItemService.deleteFromCart(id).subscribe(
       data=>{
-        this.shared.showSnackBar("Item Deleted Succesfully",3000,"warningSnackBar");
+        this.shared.showSnackBar(this.lang=='en'?"Item Deleted Succesfully":"تم حذف النتج من السلة",5000,"warningSnackBar");
         this.getAllCartItems();
       }
     );

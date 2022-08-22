@@ -1,3 +1,7 @@
+.nav-link{
+    color: white;
+    font-weight: 700;
+}
 .nav-width{
     width: 110px;
     border-left: 1px solid grey;
@@ -7,7 +11,7 @@
     border-left:none ;
 }
 .cart-wish-icon{
-    color: grey;
+    color: white;
     font-size: 25px;
     transition: all .3s ease-in-out;
 }
@@ -19,14 +23,36 @@
     background-color: rgba(128, 128, 128, 0.093);
 }
 .cart-wish-container:hover .cart-wish-icon{
-    color: brown;
+    color: white;
 }
-.cart-wish-container:hover
-{
-    background-color: white;
+// .cart-wish-container:hover
+// {
+//     background-color: white;
+// }
+.cart-wish-container:hover .cartHover{
+    color: orangered;
 }
 .select-item-dropdown {
     padding: 1px 30px ;
     border-bottom: 1px solid #0f31ac ;
 }
 
+
+.sidebar{
+    background-color:white  ;
+    color: indigo;font-weight: 700;
+}
+.sidebarheadre{
+    color:white  !important;
+    background-color:#343a40;
+}
+.linkActive{
+
+  color:coral ;
+  font-weight: 900;
+}
+.linkActiveUser{
+
+    color:white ;
+    font-weight: 900;
+  }

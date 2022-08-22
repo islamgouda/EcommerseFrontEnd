@@ -14,8 +14,10 @@ export class AllProductsComponent implements OnInit {
 
   productList:IShowProduct[]=[];
 
-  
-  constructor(private productService:ProductService,private shared:SharedService,private router:Router) { }
+  lang:string;
+  constructor(private productService:ProductService,public shared:SharedService,private router:Router) {
+    this.lang=localStorage.getItem("lang")||"en";
+   }
   
   ngOnInit(): void {
     this.getallProducts();
@@ -40,5 +42,9 @@ export class AllProductsComponent implements OnInit {
     }else{
       this.router.navigate([url,id]);
     }
+  }
+  goDetails(id:number){
+   let url="/home/productDetails/";
+   this.router.navigate([url,id]);
   }
 }

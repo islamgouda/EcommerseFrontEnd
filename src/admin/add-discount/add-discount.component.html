@@ -41,7 +41,7 @@
                 </div>
     
                 <div class="form-group mt-2">
-                    <label for="descount_Persent" class="mb-1">{{'discount.descount_Persent'|translate}}</label>
+                    <label for="descount_Persent" class="mb-1">{{'discount.discountPercent'|translate}}</label>
                     <input type="text" pattern="^((0\.\d+){1,2})$" #descount_Persent="ngModel" required [class.validInput]="descount_Persent.valid" [class.invalidInput]="descount_Persent.invalid && descount_Persent.touched"  id="descount_Persent" name="descount_Persent" [(ngModel)]="discountModel.descount_Persent" class="form-control">
                     <div class="text-danger" *ngIf="descount_Persent.invalid && descount_Persent.touched">
                         <small class="text-danger" *ngIf="descount_Persent.errors!['required']">{{'discount.discountPercentRequiredError'|translate}}</small>

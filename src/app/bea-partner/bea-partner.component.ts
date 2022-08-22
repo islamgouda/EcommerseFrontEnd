@@ -21,7 +21,7 @@ export class BeaPartnerComponent implements OnInit {
    this.responsedata=data; 
    console.log(data);
    });
-
+   
    
   }
 

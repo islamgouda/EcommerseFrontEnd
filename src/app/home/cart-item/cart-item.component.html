@@ -4,15 +4,15 @@
       <div class="col-xl-11">
 
         <div class="d-flex justify-content-between align-items-center mb-4">
-          <h1 class="fw-normal mb-0 text-black text-muted">Shopping Cart {{cartCount}}</h1>
+          <h1 class="fw-normal mb-0 text-black text-muted text-center">{{'home.shoppingCart'|translate}}</h1>
           <div>
             <!-- <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p> -->
           </div>
         </div>
         <div class="card" *ngIf="cartItemsList.length<=0">
             <div class="card-body p-4">
-                <h2 class="text-muted text-center">No Items In Cart</h2>
-              <button type="button" routerLink="/home/AllProducts" class="btn btn-warning btn-block btn-lg">Back To Shopping</button>
+                <h2 class="text-muted text-center">{{'home.noItems'|translate}}</h2>
+              <button type="button" routerLink="/home/AllProducts" class="btn btn-warning btn-block btn-lg">{{'home.backToShopping'|translate}}</button>
             </div>
           </div>
 
@@ -20,9 +20,9 @@
             <div class="col-12 col-md-2">
                 <img src="{{item.image}}" class="br-5" height="90px" width="100%">
             </div>
-            <div class="col-12 col-md-3  ">
-                <b class="mb-2 lead">{{item.name}}</b>
-                <p class="text-muted">{{item.discription}}</p>
+            <div class="col-12 col-md-4 mt-3 ">
+                <b class="mb-2 lead fw-bold">{{lang=='en'?item.name:item.arabicName}}</b>
+                <p class="text-muted mt-1">{{'home.priceForOne'|translate}} : {{item.price|discount:item.descount_Persent}}$</p>
             </div>
             <div class="col-12 col-md-2">
             <input disabled type="number" class="form-control mt-4 text-center" min="1" max={{item.quantityAvailable}} value={{item.quantityOrdered}} >
@@ -30,16 +30,16 @@
             <div class="col-12 col-md-3">
                 <div class="text-center mt-4 pt-2 lead text-success">${{item.price*item.quantityOrdered|discount:item.descount_Persent}}</div>
             </div>
-            <div class="col-12 col-md-2 pt-4 mt-2 text-left">
+            <div class="col-12 col-md-1 pt-4 mt-2 text-left">
                 <a (click)="deleteItemFromCart(item.productId)" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
             </div>
         </div>
-        <div class="row ltr mt-3 mb-3">
+        <div class="row ltr mt-3 mb-3" >
           <div class="col-12 col-md-2"></div>
-          <div class="col-12 col-md-5 fs-3 ">Total</div>
           <div class="col-12 col-md-3">
             <b class="lead fs-3">{{getTotal()|currency}}</b>
           </div>
+          <div class="col-12 col-md-5 fs-3 ">{{'home.total'|translate}}</div>
           <div class="col-12 col-md-2"></div>
         </div>
         
@@ -47,14 +47,14 @@
           <div class="col-12 col-md-6">
             <div class="card" *ngIf="cartItemsList.length>0">
               <div class="card-body p-4">
-                <button routerLink="/home/checkOut" type="button" class="btn btn-warning form-control btn-block btn-lg">Proceed to Pay</button>
+                <button routerLink="/home/checkOut" type="button" class="btn btn-warning form-control btn-block btn-lg">{{'home.proceedToPay'|translate}}</button>
               </div>
             </div>
           </div>
           <div class="col-12 col-md-6">
             <div class="card">
               <div class="card-body p-4">
-                <button (click)="back()" type="button" class="btn btn-warning form-control btn-block btn-lg">Back</button>
+                <button (click)="back()" type="button" class="btn btn-warning form-control btn-block btn-lg">{{'home.back'|translate}}</button>
               </div>
             </div>
           </div>

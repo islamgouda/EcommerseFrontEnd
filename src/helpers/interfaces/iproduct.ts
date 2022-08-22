@@ -53,6 +53,8 @@ export interface IShowProduct {
     partenerName:string;
     categoryName:string;
     subcategoryName:string;
+    categoryID?: number;
+    subcategoryID?: number;
 }
 
 export interface IShowCartItemProduct {

@@ -12,8 +12,8 @@
       <input  type="number" [(ngModel)]="partner.numberOfBranches" required class="form-control"  id="pwd" placeholder="Enter Number of Branches/Stores" name="pswd">
     </div>
     <button class="btn btn-primary" (click)="RequestPartnership()">Submit</button><br>
-    <small *ngIf="responsedata.status==='Ok'">{{ responsedata.message}}</small>
-    <small class="text-danger" *ngIf="responsedata.status==='Error'">{{ responsedata.message}}</small>
+    <!-- <small *ngIf="responsedata.status==='Ok'">{{ responsedata.message}}</small>
+    <small class="text-danger" *ngIf="responsedata.status==='Error'">{{ responsedata.message}}</small> -->
     </form>
     
 </div>

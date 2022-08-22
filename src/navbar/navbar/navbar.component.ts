@@ -16,6 +16,7 @@ import { IShowCartItemProduct } from 'src/helpers/interfaces/iproduct';
 })
 export class NavbarComponent implements OnInit,AfterViewInit {
   username:string=" ";
+  isShipper:boolean=false;
   lang:any; 
   textDirection:string;
   IsAdmin:boolean=false;
@@ -23,15 +24,16 @@ export class NavbarComponent implements OnInit,AfterViewInit {
   IsUser:boolean=false;
   IsLoggedIn:boolean=true;
   cartItemsCount:any;
-  constructor(private cartService:CartItemsService,private translateservice:TranslateService,private router:Router,private sharedService:SharedService,private loginService:LoginServiceService) 
+  constructor(private cartService:CartItemsService,private translateservice:TranslateService,private router:Router,public sharedService:SharedService,private loginService:LoginServiceService) 
    {
-    this.translateservice.setDefaultLang("en");
+    this.translateservice.setDefaultLang("en"); 
     this.translateservice.use(localStorage.getItem('lang')||'en');
     this.textDirection = this.sharedService.textDirection
      this.loginService.getMe().subscribe((name) => {
         this.username=name.userName;
         localStorage.setItem('Roles',name.roles);
         console.log(name.roles);
+        this.isShipper=name.roles.includes("Shiper")
        // console.log(name.roles.includes('Admin'));
         this.IsAdmin=name.roles.includes('Admin');
         this.IsPartner=name.roles.includes('Partener');
@@ -39,6 +41,7 @@ export class NavbarComponent implements OnInit,AfterViewInit {
         console.log(this.IsUser);
    });
    this.IsLoggedIn=localStorage.getItem('token')==null;
+   
   }
 
   ngOnInit(): void {

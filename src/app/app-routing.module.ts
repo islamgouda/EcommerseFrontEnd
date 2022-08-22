@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HasRoleGuard } from 'src/has-role.guard';
+import { HomeLandingPageComponent } from 'src/home-landing-page/home-landing-page.component';
 import { AddUserAddressComponent } from 'src/partner/add-user-address/add-user-address.component';
 import { LoginUserComponent } from './Authentication/login-user/login-user.component';
 import { RegisterAdminComponent } from './Authentication/register-admin/register-admin.component';
@@ -21,7 +22,9 @@ import { ProductsByPartnerComponent } from './home/products-by-partner/products-
 import { ProductsByPriceComponent } from './home/products-by-price/products-by-price.component';
 import { ProductsByProductNameComponent } from './home/products-by-product-name/products-by-product-name.component';
 import { ProductsBySubCategoryComponent } from './home/products-by-sub-category/products-by-sub-category.component';
+import { UProductDetailsComponent } from './home/u-product-details/u-product-details.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 import { UProductsComponent } from './uproducts/uproducts.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
@@ -34,11 +37,13 @@ const routes: Routes = [
   }, //userdashboardto requests
   { path: "bePartner", component: BeaPartnerComponent },
   { path: "beShipper", component: BeaShipperComponent },
-  { path: "", component:HomeComponent}, //deafualt page
+  { path: "home", redirectTo:'home/landing', pathMatch: 'full'}, //deafualt page
+  { path: "", redirectTo:'home/landing', pathMatch: 'full'}, //deafualt page
   {
     path: 'home', component: HomeComponent, children: [
-      { path: "", component: AllProductsComponent },
+      { path: "landing", component: HomeLandingPageComponent },
       { path: 'AllProducts', component: AllProductsComponent },
+      { path: 'productDetails/:id', component:UProductDetailsComponent },
       { path: 'productsByCategory', component: ProductsByCategoryComponent },
       { path: 'productsBySubCategory', component: ProductsBySubCategoryComponent },
       { path: 'productsByPartner', component: ProductsByPartnerComponent },

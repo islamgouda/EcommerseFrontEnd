@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ICategory } from 'src/helpers/interfaces/icategory';
 import { INewCategoryResponse, IProduct, IShowProduct } from 'src/helpers/interfaces/iproduct';
 import { CategoryService } from 'src/helpers/services/category.service';
@@ -13,11 +14,14 @@ import { SharedService } from 'src/helpers/services/shared.service';
 export class ProductsByCategoryComponent implements OnInit {
 
   productList:any[]=[];
+  isClicked:boolean=false;
   categoryId:number;
   categoryName:string="";
+  lang:string;
   categoriesList:ICategory[]=[];
-  constructor(private sharedService:SharedService,private categoryService:CategoryService,private productService:ProductService) {
+  constructor(public shared:SharedService,private router:Router,private sharedService:SharedService,private categoryService:CategoryService,private productService:ProductService) {
     this.categoryId = -1;
+    this.lang=localStorage.getItem("lang")||"en";
    }
   
   ngOnInit(): void {
@@ -35,19 +39,10 @@ export class ProductsByCategoryComponent implements OnInit {
       }
     )
   }
-  // getAllCategories(){
-  //   this.categoryService.getAll().subscribe(
-  //     (data)=>{
-  //       console.log("Data"+data);
-  //       this.categoriesList = <ICategory[]> data;
-  //     },
-  //     (error)=>{
-  //       this.serverErrorMessage ="Errors In Retrieving Data !"+error;
-  //     }
-  //   )
-  // }
+  
   
   getproductsByCategoryId(){
+    this.isClicked=true;
     this.productList=[];
     this.productService.getProductsByCategoryId(this.categoryId).subscribe(
       data=>{
@@ -59,6 +54,21 @@ export class ProductsByCategoryComponent implements OnInit {
       }
     );
     
+  }
+  getDiscount(price:number,discount:number){
+    return price*discount;
+  }
+  buy(id:number){
+    let url = "/home/addToCart/";
+    if(localStorage.getItem('token')==null){
+      this.router.navigate(['/LoginUser']);
+    }else{
+      this.router.navigate([url,id]);
+    }
+  }
+  goDetails(id:number){
+   let url="/home/productDetails/";
+   this.router.navigate([url,id]);
   }
  
 
